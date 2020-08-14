@@ -2,58 +2,44 @@
 <rss version="2.0">
     <channel>
         <title>Casbin Blog</title>
-        <link>http://casbin.org/blog</link>
+        <link>https://casbin.org/blog</link>
         <description>The best place to stay up-to-date with the latest Casbin news and events.</description>
-        <lastBuildDate>Tue, 24 Oct 2017 06:00:00 GMT</lastBuildDate>
-        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-        <generator>Feed for Node.js</generator>
+        <lastBuildDate>Tue, 21 Apr 2020 06:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title>Casbin Blog</title>
-            <url>http://casbin.org/img/docusaurus.svg</url>
-            <link>http://casbin.org/blog</link>
+            <url>https://casbin.org/img/casbin.svg</url>
+            <link>https://casbin.org/blog</link>
         </image>
-        <copyright>Copyright © 2018 Your Name or Your Company Name</copyright>
+        <copyright>Copyright © 2020 Casbin contributors.</copyright>
         <item>
-            <title><![CDATA[New Version 1.0.0]]></title>
-            <link>http://casbin.org/blog/2017/10/24/new-version-1.0.0.html</link>
-            <guid>http://casbin.org/blog/2017/10/24/new-version-1.0.0.html</guid>
-            <pubDate>Tue, 24 Oct 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This blog post will test file name parsing issues when periods are present.</p>
-]]></description>
+            <title><![CDATA[Yang Luo - Google Open Source Peer Bonus Winner]]></title>
+            <link>https://casbin.org/blog/2020/04/21/google-award.html</link>
+            <guid>https://casbin.org/blog/2020/04/21/google-award.html</guid>
+            <pubDate>Tue, 21 Apr 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Today, we are pleased to announce that Casbin's founder, <a href="https://github.com/hsluoyz">Yang Luo</a> is awarded the &quot;Google Open Source Peer Bonus winners&quot; for his work on <a href="https://casbin.org/">Casbin</a>, <a href="https://nmap.org/npcap/">Npcap</a> and <a href="https://nmap.org/">Nmap</a> in 2019 Q3.</p> <p><img src="https://hsluoyz.github.io/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.png" alt="ospb"></p> <blockquote> <p>The original award letter can be accessed <a href="https://github.com/hsluoyz/hsluoyz.github.io/blob/master/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.pdf">here</a>.</p> </blockquote> <p>The <a href="https://opensource.google.com/docs/growing/peer-bonus/">Google Open S...</a></p>]]></description>
         </item>
         <item>
-            <title><![CDATA[Adding RSS Support]]></title>
-            <link>http://casbin.org/blog/2017/09/26/adding-rss.html</link>
-            <guid>http://casbin.org/blog/2017/09/26/adding-rss.html</guid>
-            <pubDate>Tue, 26 Sep 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This is a test post.</p>
-<p>A whole bunch of other information.</p>
-]]></description>
+            <title><![CDATA[Reworking our Documentation]]></title>
+            <link>https://casbin.org/blog/2018/09/23/new-website.html</link>
+            <guid>https://casbin.org/blog/2018/09/23/new-website.html</guid>
+            <pubDate>Sun, 23 Sep 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Today, we migrated Casbin's documentation from GitHub Wiki to <code>Docs</code> of this website, which is powered by Docusaurus. Docusaurus provides lots of awesome features like better Markdown styles, full-text search, versioning, translation.</p> <p>The documentation...</p>]]></description>
         </item>
         <item>
-            <title><![CDATA[Adding RSS Support - RSS Truncation Test]]></title>
-            <link>http://casbin.org/blog/2017/09/25/testing-rss.html</link>
-            <guid>http://casbin.org/blog/2017/09/25/testing-rss.html</guid>
-            <pubDate>Mon, 25 Sep 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</p>
-<p>This should be truncated.</p>
-]]></description>
+            <title><![CDATA[node-Casbin: New Member of Casbin Family]]></title>
+            <link>https://casbin.org/blog/2018/08/27/node-casbin.html</link>
+            <guid>https://casbin.org/blog/2018/08/27/node-casbin.html</guid>
+            <pubDate>Mon, 27 Aug 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Today, we successfully ported Casbin to Node.js, which is named as: <a href="https://github.com/casbin/node-casbin">node-Casbin</a>.</p> <p><strong>node-Casbin</strong> shares the similar usage and API with other implementations of Casbin. The middlewares for Express, Koa2 and Egg.js are ready to use. The storage adapter for...</p>]]></description>
         </item>
         <item>
-            <title><![CDATA[New Blog Post]]></title>
-            <link>http://casbin.org/blog/2017/04/10/blog-post-two.html</link>
-            <guid>http://casbin.org/blog/2017/04/10/blog-post-two.html</guid>
-            <pubDate>Mon, 10 Apr 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Blog Title]]></title>
-            <link>http://casbin.org/blog/2016/03/11/blog-post.html</link>
-            <guid>http://casbin.org/blog/2016/03/11/blog-post.html</guid>
-            <pubDate>Fri, 11 Mar 2016 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
-]]></description>
+            <title><![CDATA[Casbin Server is Launched!]]></title>
+            <link>https://casbin.org/blog/2018/08/07/launching-casbin-server.html</link>
+            <guid>https://casbin.org/blog/2018/08/07/launching-casbin-server.html</guid>
+            <pubDate>Tue, 07 Aug 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Some of our customers ask if Casbin can be used as a service instead of a library. The answer is <strong>YES</strong>. Today, we launched the <a href="https://github.com/casbin/casbin-server">Casbin Server</a> project as a concrete solution for <strong>Access Control as a Service</strong>.</p> <p><strong>Casbin Server</strong> is under active development by ou...</p>]]></description>
         </item>
     </channel>
 </rss>

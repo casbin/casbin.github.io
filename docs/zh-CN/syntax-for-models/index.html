@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Model语法 · Casbin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="- Model CONF 至少应包含四个部分: `[request_definition], [policy_definition], [policy_effect], [matchers]`。"/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="Model语法 · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="- Model CONF 至少应包含四个部分: `[request_definition], [policy_definition], [policy_effect], [matchers]`。"/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/overview" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/management-api" target="_self">API</a></li><li class=""><a href="/zh-CN/editor" target="_self">编辑器</a></li><li class=""><a href="https://dashboard.casbin.org" target="_self">Dashboard</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="https://trend.casbin.org" target="_self">Trend</a></li><li class=""><a href="https://cloud.casbin.org" target="_self">Cloud</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/syntax-for-models">English</a></li><li><a href="/docs/ko/syntax-for-models">한국어</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">参与翻译</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Model</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">基础知识</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/overview">概述</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/installation">安装</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/get-started">开始使用</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/how-it-works">工作原理</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/tutorials">教程</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Model</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/supported-models">支持的Models</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-CN/syntax-for-models">Model语法</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/function">函数</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac">基于角色的访问控制</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac-with-domains">域内RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/abac">ABAC</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">存储</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/model-storage">Model存储</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/policy-storage">Policy存储</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/policy-subset-loading">政策子集加载</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">扩充功能</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/adapters">适配器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/watchers">观察者</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/role-managers">角色管理器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/middlewares">中间件</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/management-api">管理 API</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac-api">RBAC API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">高级用法。</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/multi-threading">多线程</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/benchmark">基准测试</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">管理</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/admin-portal">管理员门户</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/service">Casbin 服务</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/log-error">日志 &amp; 错误处理</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/online-editor">在线编辑器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/webpage-controller">Webpage Controller</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更多</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/adopters">本项目使用者</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/privacy-policy">Privacy Policy</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/terms-of-service">Terms of Service</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Model语法</h1></header><article><div><span><ul>
+<li><p>Model CONF 至少应包含四个部分: <code>[request_definition], [policy_definition], [policy_effect], [matchers]</code>。</p></li>
+<li><p>如果 model 使用 RBAC, 还需要添加<code>[role_definition]</code>部分。</p></li>
+<li><p>Model CONF 文件可以包含注释。注释以 <code>#</code> 开头， <code>#</code> 会注释该行剩余部分。</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="request定义"></a><a href="#request定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request定义</h2>
+<p><code>[request_definition]</code> 部分用于request的定义，它明确了 <code>e.Enforce(...)</code> 函数中参数的含义。</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[request_definition]</span>
+<span class="hljs-attr">r</span> = sub, obj, act
+</code></pre>
+<p><code>sub, obj, act</code> 表示经典三元组: 访问实体 (Subject)，访问资源 (Object) 和访问方法 (Action)。 但是, 你可以自定义你自己的请求表单, 如果不需要指定特定资源，则可以这样定义 <code>sub、act</code> ，或者如果有两个访问实体, 则为 <code>sub、sub2、obj、act</code>。</p>
+<h2><a class="anchor" aria-hidden="true" id="policy定义"></a><a href="#policy定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Policy定义</h2>
+<p><code>[policy_definition]</code> 部分是对policy的定义，以下文的 model 配置为例:</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_definition]</span>
+<span class="hljs-attr">p</span> = sub, obj, act
+<span class="hljs-attr">p2</span> = sub, act
+</code></pre>
+<p>这些是我们对policy规则的具体描述</p>
+<pre><code class="hljs">p, alice, data1, read
+p2, bob, write-all-objects
+</code></pre>
+<p>policy部分的每一行称之为一个策略规则， 每条策略规则通常以形如<code>p</code>, <code>p2</code>的<code>policy type</code>开头。 如果存在多个policy定义，那么我们会根据前文提到的<code>policy type</code>与具体的某条定义匹配。 上面的policy的绑定关系将会在matcher中使用， 罗列如下：</p>
+<pre><code class="hljs">(alice, data1, read) -&gt; (p.sub, p.obj, p.act)
+(bob, write-all-objects) -&gt; (p2.sub, p2.act)
+</code></pre>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>当前只支持形如 <code>p</code>的单个policy定义. <code>p2</code> 类型的尚未支持。 通常情况下, 用户无需使用多个 policy 定义， 如果您有其他情形的policy定义诉求，请在 <a href="https://github.com/casbin/casbin/issues/new">https://github.com/casbin/casbin/issues/new</a> 提出issue告知我们。</p>
+</div></div>
+    <div class="admonition admonition-tip">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"/></svg></div> tip</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Policy rule中的元素总会被视作<code>string</code>。如果您对此有任何疑问，请查看讨论：<a href="https://github.com/casbin/casbin/issues/113">https://github.com/casbin/casbin/issues/113</a></p>
+</div></div><h2><a class="anchor" aria-hidden="true" id="policy-effect定义"></a><a href="#policy-effect定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Policy effect定义</h2>
+<p><code>[policy_effect]</code> 部分是对policy生效范围的定义， 原语定义了当多个policy rule同时匹配访问请求request时,该如何对多个决策结果进行集成以实现统一决策。 以下示例展示了一个只有一条规则生效，其余都被拒绝的情况：</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = some(where (p.eft == allow))
+</code></pre>
+<p>该Effect原语表示如果存在任意一个决策结果为<code>allow</code>的匹配规则，则最终决策结果为<code>allow</code>，即allow-override。 其中<code>p.eft</code> 表示策略规则的决策结果，可以为<code>allow</code> 或者<code>deny</code>，当不指定规则的决策结果时,取默认值<code>allow</code> 。 通常情况下，policy的<code>p.eft</code>默认为<code>allow</code>， 因此前面例子中都使用了这个默认值。</p>
+<p>这是另一个policy effect的例子：</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = !some(where (p.eft == deny))
+</code></pre>
+<p>该Effect原语表示不存在任何决策结果为<code>deny</code>的匹配规则，则最终决策结果为<code>allow</code> ，即deny-override。 <code>some</code> 量词判断是否存在一条策略规则满足匹配器。 <code>any</code> 量词则判断是否所有的策略规则都满足匹配器 (此处未使用)。 policy effect还可以利用逻辑运算符进行连接：</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = some(where (p.eft == allow)) &amp;&amp; !some(where (p.eft == deny))
+</code></pre>
+<p>该Effect原语表示当至少存在一个决策结果为<code>allow</code>的匹配规则，且不存在决策结果为<code>deny</code>的匹配规则时，则最终决策结果为<code>allow</code>。 这时<code>allow</code>授权和<code>deny</code>授权同时存在，但是<code>deny</code>优先。</p>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>尽管我们设计了政策效果的语法。 目前的执行只是使用硬编码的政策效果，因为我们认为这种灵活性没有多大必要。 目前为止你必须使用内置的 policy effects，不能自定义。</p>
+</div></div><p>支持的 policy effects 如下：</p>
+<table>
+<thead>
+<tr><th>Policy effect</th><th>Meaning</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>some(where (p.eft == allow))</td><td>allow-override</td><td><a href="/docs/en/supported-models#examples">ACL, RBAC, etc.</a></td></tr>
+<tr><td>!some(where (p.eft == deny))</td><td>deny-override</td><td><a href="/docs/en/supported-models#examples">Deny-override</a></td></tr>
+<tr><td>some(where (p.eft == allow)) &amp;&amp; !some(where (p.eft == deny))</td><td>allow-and-deny</td><td><a href="/docs/en/supported-models#examples">Allow-and-deny</a></td></tr>
+<tr><td>priority(p.eft) || deny</td><td>priority</td><td><a href="/docs/en/supported-models#examples">Priority</a></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="matchers"></a><a href="#matchers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Matchers</h2>
+<p><code>[matchers]</code> is the definition for policy matchers. The matchers are expressions. It defines how the policy rules are evaluated against the request.</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[matchers]</span>
+<span class="hljs-attr">m</span> = r.sub == p.sub &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
+</code></pre>
+<p>The above matcher is the simplest, it means that the subject, object and action in a request should match the ones in a policy rule.</p>
+<p>You can use arithmetic like <code>+, -, *, /</code> and logical operators like <code>&amp;&amp;, ||, !</code> in matchers.</p>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Although it seems like there will be multiple matchers such as <code>m1</code>, <code>m2</code> like other primitives, currently, we only support one matcher <code>m</code>. You can always use the above logical operators to implement complicated logic judgment in one matcher. So we believe there is no need to support multiple matchers for now. Let me know if you have other opinions.</p>
+</div></div><h3><a class="anchor" aria-hidden="true" id="expression-evaluator"></a><a href="#expression-evaluator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Expression evaluator</h3>
+<p>The matcher evaluation in Casbin is implemented by expression evaluators in each language. Casbin integrates their powers to provide the unified PERM language. Besides all the model syntax provided here, those expression evaluators may provide extra functionality, which may be not supported by another language or implementation. Use it at your own risk.</p>
+<p>The expression evaluators used by each Casbin implementation are:</p>
+<table>
+<thead>
+<tr><th>Implementation</th><th>Language</th><th>Expression evaluator</th></tr>
+</thead>
+<tbody>
+<tr><td>Casbin</td><td>Golang</td><td><a href="https://github.com/Knetic/govaluate">https://github.com/Knetic/govaluate</a></td></tr>
+<tr><td>jCasbin</td><td>Java</td><td><a href="https://github.com/killme2008/aviator">https://github.com/killme2008/aviator</a></td></tr>
+<tr><td>Node-Casbin</td><td>Node.js</td><td><a href="https://github.com/donmccurdy/expression-eval">https://github.com/donmccurdy/expression-eval</a></td></tr>
+<tr><td>PHP-Casbin</td><td>PHP</td><td><a href="https://github.com/symfony/expression-language">https://github.com/symfony/expression-language</a></td></tr>
+<tr><td>PyCasbin</td><td>Python</td><td><a href="https://github.com/danthedeckie/simpleeval">https://github.com/danthedeckie/simpleeval</a></td></tr>
+<tr><td>Casbin.NET</td><td>C#</td><td><a href="https://github.com/davideicardi/DynamicExpresso">https://github.com/davideicardi/DynamicExpresso</a></td></tr>
+<tr><td>Casbin4D</td><td>Delphi</td><td><a href="https://github.com/casbin4d/Casbin4D/tree/master/SourceCode/Common/Third%20Party/TExpressionParser">https://github.com/casbin4d/Casbin4D/tree/master/SourceCode/Common/Third%20Party/TExpressionParser</a></td></tr>
+<tr><td>casbin-rs</td><td>Rust</td><td><a href="https://github.com/jonathandturner/rhai">https://github.com/jonathandturner/rhai</a></td></tr>
+</tbody>
+</table>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>If you encounter performance issue about Casbin, it's probably caused by the low efficiency of the expression evaluator. You can both send issue to Casbin or the expression evaluator directly for advice to speed up. See <a href="/docs/en/benchmark">Benchmarks</a> section for details.</p>
+</div></div></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-CN/supported-models"><span class="arrow-prev">← </span><span>支持的Models</span></a><a class="docs-next button" href="/docs/zh-CN/function"><span>函数</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#request定义">Request定义</a></li><li><a href="#policy定义">Policy定义</a></li><li><a href="#policy-effect定义">Policy effect定义</a></li><li><a href="#matchers">Matchers</a><ul class="toc-headings"><li><a href="#expression-evaluator">Expression evaluator</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-CN/get-started">Getting Started</a><a href="/docs/zh-CN/management-api">Management API</a><a href="/docs/zh-CN/rbac-api">RBAC API</a><a href="/docs/zh-CN/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/zh-CN/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/CasbinNews" class="twitter-follow-button">Follow @CasbinNews</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2020 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:zh-CN"]}
+              });
+            </script></body></html>

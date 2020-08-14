@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>지원하는 접근 제어 모델 · Casbin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="1. [**ACL (Access Control List)**](https://en.wikipedia.org/wiki/Access_control_list)"/><meta name="docsearch:language" content="ko"/><meta property="og:title" content="지원하는 접근 제어 모델 · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="1. [**ACL (Access Control List)**](https://en.wikipedia.org/wiki/Access_control_list)"/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ko"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ko/overview" target="_self">문서</a></li><li class="siteNavGroupActive"><a href="/docs/ko/management-api" target="_self">API</a></li><li class=""><a href="/ko/editor" target="_self">편집기</a></li><li class=""><a href="https://dashboard.casbin.org" target="_self">Dashboard</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="https://trend.casbin.org" target="_self">Trend</a></li><li class=""><a href="https://cloud.casbin.org" target="_self">Cloud</a></li><li class=""><a href="/ko/help" target="_self">도움말</a></li><li class=""><a href="/blog/" target="_self">블로그</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>한국어</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/supported-models">English</a></li><li><a href="/docs/zh-CN/supported-models">中文</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">번역 참여하기</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>모델</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">기초</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/overview">개요(Overview)</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/installation">설치</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/get-started">시작하기</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/how-it-works">작동 원리</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/tutorials">자습서</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">모델</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ko/supported-models">지원하는 접근 제어 모델</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/syntax-for-models">모델(Model) 문법</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/function">함수</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/rbac-with-domains">RBAC + 도메인</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/abac">ABAC</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">저장소</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/model-storage">모델(Model) 저장</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/policy-storage">정책(Policy) 저장</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/policy-subset-loading">정책(Policy) 부분 집합 불러오기</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">확장 기능</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/adapters">어댑터</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/watchers">감시자</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/role-managers">역할(Role) 관리자</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/middlewares">미들웨어</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/management-api">Management API</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/rbac-api">RBAC API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">고급 사용법 (Advanced usage)</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/multi-threading">멀티 스레딩</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/benchmark">벤치마크</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">관리</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/admin-portal">관리자 포탈</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/service">Casbin 서비스</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/log-error">로깅 및 오류 처리</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/online-editor">온라인 편집기</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/webpage-controller">Webpage Controller</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">자세히</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ko/adopters">Casbin 적용 사례</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/privacy-policy">Privacy Policy</a></li><li class="navListItem"><a class="navItem" href="/docs/ko/terms-of-service">Terms of Service</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">지원하는 접근 제어 모델</h1></header><article><div><span><ol>
+<li><a href="https://en.wikipedia.org/wiki/Access_control_list"><strong>ACL (Access Control List)</strong></a></li>
+<li><strong>ACL + <a href="https://en.wikipedia.org/wiki/Superuser">슈퍼유저</a></strong></li>
+<li><strong>사용자 없는 ACL</strong>: 인증이나 사용자 로그인이 없는 시스템에 유용</li>
+<li><strong>리소스 없는 ACL</strong>: 개별 리소스 보다는 리소스 타입을 통틀어 권한 관리를 원할 때 (예: <code>write-article</code>, <code>read-log</code>) 특정 article이나 log가 아닌 전체에 대해서 통제할 때</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC (Role-Based Access Control, 역할-기반 접근 제어)</a></strong></li>
+<li><strong>RBAC + 리소스 역할</strong>: 사용자와 리소스 모두 역할(혹은 그룹) 에 연결될 수 있음.</li>
+<li><strong>RBAC + 도메인/테넌트</strong>: 사용자가 도메인/테넌트에 따라 다른 역할 집합에 연결됨.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Attribute-Based_Access_Control">ABAC (Attribute-Based Access Control, 속성-기반 접근 제어)</a></strong>: 리소스의 속성을 사용해서 접근 제어 구성 가능 (예: <code>resource.Owner</code>)</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a></strong>: <code>/res/*</code>, <code>/res/:id</code> 등의 경로 및 <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> 같은 HTTP Method 사용 가능.</li>
+<li><strong>거부(Deny) 우선</strong>: 권한 부여에 허용(allow) 및 거부(deny) 사용 가능하며, 거부가 허용에 우선함.</li>
+<li><strong>우선순위</strong>: 정책(Policy) 규칙은 네트워크 방화벽 규칙처럼 우선순위 지정 가능.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="예시"></a><a href="#예시" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시</h2>
+<table>
+<thead>
+<tr><th>모델</th><th>모델 설정 파일</th><th>정책 설정 파일</th></tr>
+</thead>
+<tbody>
+<tr><td>ACL</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_model.conf">basic_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_policy.csv">basic_policy.csv</a></td></tr>
+<tr><td>ACL + 슈퍼유저</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_with_root_model.conf">basic_with_root_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_policy.csv">basic_policy.csv</a></td></tr>
+<tr><td>사용자 없는 ACL</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_without_users_model.conf">basic_without_users_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_without_users_policy.csv">basic_without_users_policy.csv</a></td></tr>
+<tr><td>리소스 없는 ACL</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_without_resources_model.conf">basic_without_resources_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/basic_without_resources_policy.csv">basic_without_resources_policy.csv</a></td></tr>
+<tr><td>RBAC</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_model.conf">rbac_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_policy.csv">rbac_policy.csv</a></td></tr>
+<tr><td>RBAC + 리소스 역할</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_model.conf">rbac_with_resource_roles_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_policy.csv">rbac_with_resource_roles_policy.csv</a></td></tr>
+<tr><td>RBAC + 도메인/테넌트</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_domains_model.conf">rbac_with_domains_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_domains_policy.csv">rbac_with_domains_policy.csv</a></td></tr>
+<tr><td>ABAC</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/abac_model.conf">abac_model.conf</a></td><td>N/A</td></tr>
+<tr><td>RESTful</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
+<tr><td>거부(Deny) 우선</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_not_deny_model.conf">rbac_with_not_deny_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_deny_policy.csv">rbac_with_deny_policy.csv</a></td></tr>
+<tr><td>허용/거부</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_deny_model.conf">rbac_with_deny_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_deny_policy.csv">rbac_with_deny_policy.csv</a></td></tr>
+<tr><td>우선순위</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/priority_model.conf">priority_model.conf</a></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/priority_policy.csv">priority_policy.csv</a></td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ko/tutorials"><span class="arrow-prev">← </span><span>자습서</span></a><a class="docs-next button" href="/docs/ko/syntax-for-models"><span>모델(Model) 문법</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#예시">예시</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/ko/get-started">Getting Started</a><a href="/docs/ko/management-api">Management API</a><a href="/docs/ko/rbac-api">RBAC API</a><a href="/docs/ko/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/ko/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/CasbinNews" class="twitter-follow-button">Follow @CasbinNews</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2020 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:ko"]}
+              });
+            </script></body></html>
