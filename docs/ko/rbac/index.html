@@ -87,7 +87,7 @@
 <span class="hljs-attr">g</span> = _, _
 <span class="hljs-attr">g2</span> = _, _
 </code></pre>
-<p>The above role definition shows that <code>g</code> is a RBAC system, and <code>g2</code> is another RBAC system. <code>_, _</code> means there are two parties inside an inheritance relation. As a common case, you usually use <code>g</code> alone if you only need roles on users. and you can use <code>g</code> and <code>g2</code> when you need roles (or groups) on both users and resources. Please see the <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_model.conf">rbac_model.conf</a> and <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_model.conf">rbac_model_with_resource_roles.conf</a> for examples.</p>
+<p>The above role definition shows that <code>g</code> is a RBAC system, and <code>g2</code> is another RBAC system. <code>_, _</code> means there are two parties inside an inheritance relation. As a common case, you usually use <code>g</code> alone if you only need roles on users. You can also use <code>g</code> and <code>g2</code> when you need roles (or groups) on both users and resources. Please see the <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_model.conf">rbac_model.conf</a> and <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_model.conf">rbac_model_with_resource_roles.conf</a> for examples.</p>
 <p>Casbin stores the actual user-role mapping (or resource-role mapping if you are using roles on resources) in the policy, for example:</p>
 <pre><code class="hljs">p, data2_admin, data2, read
 g, alice, data2_admin

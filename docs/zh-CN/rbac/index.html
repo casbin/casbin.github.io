@@ -87,7 +87,7 @@
 <span class="hljs-attr">g</span> = _, _
 <span class="hljs-attr">g2</span> = _, _
 </code></pre>
-<p>上述角色定义表明, <code>g</code> 是一个 RBAC系统, <code>g2</code> 是另一个 RBAC 系统。 <code>_, _</code>表示角色继承关系的前项和后项，即前项继承后项角色的权限。 一般来讲，如果您需要进行角色和用户的绑定，直接使用<code>g</code> 即可。 当您需要表示角色（或者组）与用户和资源的绑定关系时，可以使用<code>g</code> 和 <code>g2</code> 这样的表现形式。 请参见 <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_model.conf">rbac_model</a> 和 <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_model.conf">rbac_model_with_resource_roles</a> 的示例。</p>
+<p>上述角色定义表明, <code>g</code> 是一个 RBAC系统, <code>g2</code> 是另一个 RBAC 系统。 <code>_, _</code>表示角色继承关系的前项和后项，即前项继承后项角色的权限。 一般来讲，如果您需要进行角色和用户的绑定，直接使用<code>g</code> 即可。 You can also use <code>g</code> and <code>g2</code> when you need roles (or groups) on both users and resources. 请参见 <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_model.conf">rbac_model</a> 和 <a href="https://github.com/casbin/casbin/blob/master/examples/rbac_with_resource_roles_model.conf">rbac_model_with_resource_roles</a> 的示例。</p>
 <p>在Casbin里，我们以policy表示中实际的用户角色映射关系 (或是资源-角色映射关系)，例如:</p>
 <pre><code class="hljs">p, data2_admin, data2, read
 g, alice, data2_admin
