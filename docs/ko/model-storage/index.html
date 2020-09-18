@@ -140,9 +140,9 @@ e = some(where (p.eft == allow))
 [matchers]
 m = g(r.sub, p.sub) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 `</span>
-m := NewModel(text)
+m, _ := NewModelFromString(text)
 
-<span class="hljs-comment">// .CSV 파일 어댑터로 정책 규칙을 불러옵니다.</span>
+<span class="hljs-comment">// Load the policy rules from the .CSV file adapter.</span>
 <span class="hljs-comment">// 파일 대신 다른 어댑터를 사용하려면 변경하세요.</span>
 a := persist.NewFileAdapter(<span class="hljs-string">"examples/rbac_policy.csv"</span>)
 
