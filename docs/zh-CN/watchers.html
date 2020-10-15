@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">观察者</h1></header><article><div><span><p>我们支持使用分布式消息系统，例如 <a href="https://github.com/coreos/etcd">etcd</a> 来保持多个Casbin执行器实例之间的一致性。 因此，我们的用户可以同时使用多个Casbin 执行器来处理大量的权限检查请求。</p>
 <p>与策略存储 adapters类似，我们没有把watcher的代码放在主库中。 任何对新消息系统的支持都应该作为atcher程序来实现。 完整的Casbin watchers列表如下所示。 欢迎任何第三方对 watcher 进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-1291-tab-1292" class="nav-link active" data-group="group_1291" data-tab="tab-group-1291-content-1292">Go</div><div id="tab-group-1291-tab-1293" class="nav-link" data-group="group_1291" data-tab="tab-group-1291-content-1293">Java</div><div id="tab-group-1291-tab-1294" class="nav-link" data-group="group_1291" data-tab="tab-group-1291-content-1294">Node.js</div><div id="tab-group-1291-tab-1295" class="nav-link" data-group="group_1291" data-tab="tab-group-1291-content-1295">Python</div><div id="tab-group-1291-tab-1296" class="nav-link" data-group="group_1291" data-tab="tab-group-1291-content-1296">.NET</div></div><div class="tab-content"><div id="tab-group-1291-content-1292" class="tab-pane active" data-group="group_1291" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-1297-tab-1298" class="nav-link active" data-group="group_1297" data-tab="tab-group-1297-content-1298">Go</div><div id="tab-group-1297-tab-1299" class="nav-link" data-group="group_1297" data-tab="tab-group-1297-content-1299">Java</div><div id="tab-group-1297-tab-1300" class="nav-link" data-group="group_1297" data-tab="tab-group-1297-content-1300">Node.js</div><div id="tab-group-1297-tab-1301" class="nav-link" data-group="group_1297" data-tab="tab-group-1297-content-1301">Python</div><div id="tab-group-1297-tab-1302" class="nav-link" data-group="group_1297" data-tab="tab-group-1297-content-1302">.NET</div></div><div class="tab-content"><div id="tab-group-1297-content-1298" class="tab-pane active" data-group="group_1297" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -95,7 +95,7 @@
 <tr><td><a href="https://github.com/rusenask/casbin-go-cloud-watcher">NATS, RabbitMQ, GCP Pub/Sub, AWS SNS &amp; SQS, Kafka, InMemory</a></td><td>Messaging System</td><td><a href="https://github.com/rusenask/">rusenask</a></td><td>Watcher based on <a href="https://gocloud.dev/">Go Cloud Dev Kit</a> that works with leading cloud providers and self-hosted infrastructure</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1291-content-1293" class="tab-pane" data-group="group_1291" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-1297-content-1299" class="tab-pane" data-group="group_1297" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -103,7 +103,7 @@
 <tr><td><a href="https://github.com/fanlide/jcasbin-extra">Etcd Adapter</a></td><td>KV store</td><td><a href="https://github.com/fanlide">@fanlide</a></td><td>Watcher for <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1291-content-1294" class="tab-pane" data-group="group_1291" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-1297-content-1300" class="tab-pane" data-group="group_1297" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -113,7 +113,7 @@
 <tr><td><a href="https://github.com/node-casbin/pubsub-watcher">Pub/Sub Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/elaijuh">hjl</a></td><td>Watcher for <a href="https://cloud.google.com/pubsub/docs">Google Cloud Pub/Sub</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1291-content-1295" class="tab-pane" data-group="group_1291" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-1297-content-1301" class="tab-pane" data-group="group_1297" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -121,7 +121,7 @@
 <tr><td><a href="https://github.com/ScienceLogic/flask-casbin-redis-watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/ScienceLogic">ScienceLogic</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1291-content-1296" class="tab-pane" data-group="group_1291" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-1297-content-1302" class="tab-pane" data-group="group_1297" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
