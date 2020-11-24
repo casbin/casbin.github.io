@@ -85,7 +85,14 @@
 <pre><code class="hljs css language-log"><span class="hljs-number">2017</span>/<span class="hljs-number">07</span>/<span class="hljs-number">15</span> <span class="hljs-number">19</span>:<span class="hljs-number">43</span>:<span class="hljs-number">56</span> [Request: alice, data1, read ---&gt; <span class="hljs-literal">true</span>]
 </code></pre>
 <p>The logging is not enabled by default. You can toggle it via <code>Enforcer.EnableLog()</code> or the last parameter of <code>NewEnforcer()</code>.</p>
-<h3><a class="anchor" aria-hidden="true" id="use-different-logger-for-different-enforcer"></a><a href="#use-different-logger-for-different-enforcer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use different logger for different enforcer</h3>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>We already support logging the model, enforce request, role, policy in Golang. You can define your own log for logging Casbin.</p>
+</div></div><h3><a class="anchor" aria-hidden="true" id="use-different-logger-for-different-enforcer"></a><a href="#use-different-logger-for-different-enforcer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use different logger for different enforcer</h3>
 <p>Every enforcer could have its own logger to log info, and it could be changed at run-time.</p>
 <p>And you could use a proper logger via the last paramter of <code>NewEnforcer()</code>, if you using this way to initialize your enforcer, you needn't use the enabled parameter, cause the priority of the enabled field in logger is higher.</p>
 <pre><code class="hljs css language-go"><span class="hljs-comment">// Set a default logger as enforcer e1's logger.</span>
@@ -99,7 +106,7 @@ e2.SetLogger(&amp;YouOwnLogger)
 e3, _ := casbin.NewEnforcer(<span class="hljs-string">"examples/rbac_model.conf"</span>, a, logger)
 </code></pre>
 <h4><a class="anchor" aria-hidden="true" id="supported-loggers"></a><a href="#supported-loggers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported loggers</h4>
-<p>We provide some loggers to help you log informations.</p>
+<p>We provide some loggers to help you log information.</p>
 <div class="tabs"><div class="nav-tabs"><div id="tab-group-215-tab-216" class="nav-link active" data-group="group_215" data-tab="tab-group-215-content-216">Go</div></div><div class="tab-content"><div id="tab-group-215-content-216" class="tab-pane active" data-group="group_215" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Logger</th><th>Author</th><th>Description</th></tr>
@@ -110,8 +117,8 @@ e3, _ := casbin.NewEnforcer(<span class="hljs-string">"examples/rbac_model.conf"
 </tbody>
 </table>
 </span></div></div></div></div>
-<h4><a class="anchor" aria-hidden="true" id="how-to-write-an-logger"></a><a href="#how-to-write-an-logger" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to write an logger</h4>
-<p>You own logger should implement the <code>Logger</code> interface by providing at least six mandatory methods:<code>EnableLog(bool)</code>, <code>IsEnabled() bool</code>, <code>LogModel(event int, line []string, model [][]string)</code>, <code>LogEnforce(event int, line string, request *[]interface{}, policies *[]string, result *[]interface{})</code>, <code>LogRole(event int, line string, role []string)</code> and <code>LogPolicy(event int, line string, pPolicyFormat []string, gPolicyFormat []string, pPolicy *[]interface{}, gPolicy *[]interface{})</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="how-to-write-a-logger"></a><a href="#how-to-write-a-logger" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to write a logger</h4>
+<p>Your logger should implement the <a href="https://github.com/casbin/casbin/blob/master/log/logger.go#L20">Logger</a> interface.</p>
 <table>
 <thead>
 <tr><th>Method</th><th>Type</th><th>Description</th></tr>
@@ -125,85 +132,88 @@ e3, _ := casbin.NewEnforcer(<span class="hljs-string">"examples/rbac_model.conf"
 <tr><td>LogPolicy()</td><td>mandatory</td><td>Log info related to policy.</td></tr>
 </tbody>
 </table>
-<p>We provide different params for different methods, you could pay more attention to those params you need.</p>
-<p>And there is a param called <code>event</code> to describe the log information, we have defined 7 events now:</p>
-<pre><code class="hljs css language-go"><span class="hljs-keyword">const</span> (
-    LogTypeGrantedAccessRequest  = <span class="hljs-literal">iota</span> <span class="hljs-comment">// Enforcer grants a request.</span>
-    LogTypeRejectedAccessRequest        <span class="hljs-comment">// Enforcer rejects a request.</span>
-    LogTypeLoadPolicy                   <span class="hljs-comment">// Enforcer starts or stops auto loading policy.</span>
-    LogTypePrintModel                   <span class="hljs-comment">// Print model.</span>
-    LogTypePrintPolicy                  <span class="hljs-comment">// Print policy.</span>
-    LogTypePrintRole                    <span class="hljs-comment">// Print role.</span>
-    LogTypeLinkRole                     <span class="hljs-comment">// Build role links.</span>
-)
-</code></pre>
-<p>Then, you could use your custom <code>logger</code> using the method of <code>Enforcer.SetLogger()</code>.</p>
+<p>You can pass your custom <code>logger</code> to <code>Enforcer.SetLogger()</code>.</p>
 <p>Here is an example about how to customize a logger for Golang:</p>
 <pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
     <span class="hljs-string">"fmt"</span>
-
-    <span class="hljs-string">"github.com/casbin/casbin/log"</span>
+    <span class="hljs-string">"log"</span>
+    <span class="hljs-string">"strings"</span>
 )
 
-<span class="hljs-comment">// Define the logger structure.</span>
-<span class="hljs-keyword">type</span> Logger <span class="hljs-keyword">struct</span> {
-    enable <span class="hljs-keyword">bool</span> <span class="hljs-comment">// Using a field to record logger's status.</span>
+<span class="hljs-comment">// DefaultLogger is the implementation for a Logger using golang log.</span>
+<span class="hljs-keyword">type</span> DefaultLogger <span class="hljs-keyword">struct</span> {
+    enabled <span class="hljs-keyword">bool</span>
 }
 
-<span class="hljs-comment">// Declare this logger.</span>
-<span class="hljs-keyword">var</span> logger Logger
-
-<span class="hljs-comment">// EnableLog controls whether to print the message, you could change this value depends on your own struct.</span>
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">EnableLog</span><span class="hljs-params">(enable <span class="hljs-keyword">bool</span>)</span></span> {
-    <span class="hljs-comment">// Change your logger status.</span>
-    l.enable = enable
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">EnableLog</span><span class="hljs-params">(enable <span class="hljs-keyword">bool</span>)</span></span> {
+    l.enabled = enable
 }
 
-<span class="hljs-comment">// IsEnabled returns if logger is enabled, decides whether log functions are turned on.</span>
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-title">bool</span></span> {
-    <span class="hljs-keyword">return</span> l.enable
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-title">bool</span></span> {
+    <span class="hljs-keyword">return</span> l.enabled
 }
 
-<span class="hljs-comment">// Line is a param we generate in default form.</span>
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">LogModel</span><span class="hljs-params">(event <span class="hljs-keyword">int</span>, line []<span class="hljs-keyword">string</span>, model [][]<span class="hljs-keyword">string</span>)</span></span> {
-    <span class="hljs-comment">// Judging log status.</span>
-    <span class="hljs-keyword">if</span> !l.IsEnabled() {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">LogModel</span><span class="hljs-params">(model [][]<span class="hljs-keyword">string</span>)</span></span> {
+    <span class="hljs-keyword">if</span> !l.enabled {
+        <span class="hljs-keyword">return</span>
+    }
+    <span class="hljs-keyword">var</span> str strings.Builder
+    str.WriteString(<span class="hljs-string">"Model: "</span>)
+    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> model {
+        str.WriteString(fmt.Sprintf(<span class="hljs-string">"%v\n"</span>, v))
+    }
+
+    log.Println(str.String())
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">LogEnforce</span><span class="hljs-params">(matcher <span class="hljs-keyword">string</span>, request []<span class="hljs-keyword">interface</span>{}, result <span class="hljs-keyword">bool</span>, explains [][]<span class="hljs-keyword">string</span>)</span></span> {
+    <span class="hljs-keyword">if</span> !l.enabled {
         <span class="hljs-keyword">return</span>
     }
 
-    fmt.Println(model)
+    <span class="hljs-keyword">var</span> reqStr strings.Builder
+    reqStr.WriteString(<span class="hljs-string">"Request: "</span>)
+    <span class="hljs-keyword">for</span> i, rval := <span class="hljs-keyword">range</span> request {
+        <span class="hljs-keyword">if</span> i != <span class="hljs-built_in">len</span>(request)<span class="hljs-number">-1</span> {
+            reqStr.WriteString(fmt.Sprintf(<span class="hljs-string">"%v, "</span>, rval))
+        } <span class="hljs-keyword">else</span> {
+            reqStr.WriteString(fmt.Sprintf(<span class="hljs-string">"%v"</span>, rval))
+        }
+    }
+    reqStr.WriteString(fmt.Sprintf(<span class="hljs-string">" ---&gt; %t\n"</span>, result))
+
+    reqStr.WriteString(<span class="hljs-string">"Hit Policy: "</span>)
+    <span class="hljs-keyword">for</span> i, pval := <span class="hljs-keyword">range</span> explains {
+        <span class="hljs-keyword">if</span> i != <span class="hljs-built_in">len</span>(explains)<span class="hljs-number">-1</span> {
+            reqStr.WriteString(fmt.Sprintf(<span class="hljs-string">"%v, "</span>, pval))
+        } <span class="hljs-keyword">else</span> {
+            reqStr.WriteString(fmt.Sprintf(<span class="hljs-string">"%v \n"</span>, pval))
+        }
+    }
+
+    log.Println(reqStr.String())
 }
 
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">LogEnforce</span><span class="hljs-params">(event <span class="hljs-keyword">int</span>, line <span class="hljs-keyword">string</span>, request *[]<span class="hljs-keyword">interface</span>{}, policies *[]<span class="hljs-keyword">string</span>, result *[]<span class="hljs-keyword">interface</span>{})</span></span> {
-    <span class="hljs-keyword">if</span> !l.IsEnabled() {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">LogPolicy</span><span class="hljs-params">(policy <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][][]<span class="hljs-keyword">string</span>)</span></span> {
+    <span class="hljs-keyword">if</span> !l.enabled {
         <span class="hljs-keyword">return</span>
     }
 
-    <span class="hljs-comment">// Make different log according to different events.</span>
-    <span class="hljs-keyword">if</span> event == log.LogTypeGrantedAccessRequest {
-        fmt.Println(<span class="hljs-string">"FAIL: "</span>, request, result)
-        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">var</span> str strings.Builder
+    str.WriteString(<span class="hljs-string">"Policy: "</span>)
+    <span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> policy {
+        str.WriteString(fmt.Sprintf(<span class="hljs-string">"%s : %v\n"</span>, k, v))
     }
 
-    fmt.Println(<span class="hljs-string">"PASS: "</span>, request, policies)
+    log.Println(str.String())
 }
 
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">LogPolicy</span><span class="hljs-params">(event <span class="hljs-keyword">int</span>, line <span class="hljs-keyword">string</span>, pPolicyFormat []<span class="hljs-keyword">string</span>, gPolicyFormat []<span class="hljs-keyword">string</span>, pPolicy *[]<span class="hljs-keyword">interface</span>{}, gPolicy *[]<span class="hljs-keyword">interface</span>{})</span></span> {
-    <span class="hljs-keyword">if</span> !l.IsEnabled() {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *DefaultLogger)</span> <span class="hljs-title">LogRole</span><span class="hljs-params">(roles []<span class="hljs-keyword">string</span>)</span></span> {
+    <span class="hljs-keyword">if</span> !l.enabled {
         <span class="hljs-keyword">return</span>
     }
 
-    <span class="hljs-comment">// pPolicyFormat means the p policy's format, such as: sub sub obj act</span>
-    <span class="hljs-comment">// gPolicyFormat means the g policy's format, such as: _ _</span>
-    fmt.Println(pPolicy, gPolicy)
-}
-
-<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l *Logger)</span> <span class="hljs-title">LogRole</span><span class="hljs-params">(event <span class="hljs-keyword">int</span>, line <span class="hljs-keyword">string</span>, role []<span class="hljs-keyword">string</span>)</span></span> {
-    <span class="hljs-keyword">if</span> !l.IsEnabled() {
-        <span class="hljs-keyword">return</span>
-    }
-
-    fmt.Println(role)
+    log.Println(<span class="hljs-string">"Roles: "</span>, roles)
 }
 
 </code></pre>
