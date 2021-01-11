@@ -81,10 +81,11 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">함수</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="functions-in-matchers"></a><a href="#functions-in-matchers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions in matchers</h2>
-<p>You can even specify functions in a matcher to make it more powerful. You can use the built-in functions or specify your own function. All built-in functions take such a format:</p>
+<p>You can even specify functions in a matcher to make it more powerful. You can use the built-in functions or specify your own function. All built-in functions take such a format(except <code>keyGet</code> and <code>keyGet2</code>):</p>
 <pre><code class="hljs css language-C"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">function_name</span><span class="hljs-params">(<span class="hljs-built_in">string</span> arg1, <span class="hljs-built_in">string</span> arg2)</span>
 </span></code></pre>
 <p>It returns whether <code>arg1</code> matches <code>arg2</code>.</p>
+<p><code>keyGet</code> and <code>keyGet2</code> will return the string which matching the wildcard, and return <code>&quot;&quot;</code> if nothing was matched.</p>
 <p>The supported built-in functions are:</p>
 <table>
 <thead>
@@ -92,7 +93,9 @@
 </thead>
 <tbody>
 <tr><td>keyMatch</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>*</code> pattern like <code>/alice_data/*</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
+<tr><td>keyGet</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>*</code> pattern like <code>/alice_data/*</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keyget_model.conf">keyget_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
 <tr><td>keyMatch2</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>:</code> pattern like <code>/alice_data/:resource</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_model.conf">keymatch2_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_policy.csv">keymatch2_policy.csv</a></td></tr>
+<tr><td>keyGet2</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or <code>:</code> pattern like <code>/alice_data/:resource</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keyget2_model.conf">keyget2_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_policy.csv">keymatch2_policy.csv</a></td></tr>
 <tr><td>keyMatch3</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>{}</code> pattern like <code>/alice_data/{resource}</code></td><td></td></tr>
 <tr><td>keyMatch4</td><td>a URL path like <code>/alice_data/123/book/123</code></td><td>a URL path or a <code>{}</code> pattern like <code>/alice_data/{id}/book/{id}</code></td><td></td></tr>
 <tr><td>regexMatch</td><td>any string</td><td>a regular expression pattern</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>

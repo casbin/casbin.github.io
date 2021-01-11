@@ -81,27 +81,30 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">函数</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="matchers中的函数"></a><a href="#matchers中的函数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Matchers中的函数</h2>
-<p>你甚至可以在Matcher中指定函数，使它更强大。 你可以使用内置函数，或者指定你自己的函数。 所有内置的函数均采用以下格式：</p>
+<p>你甚至可以在Matcher中指定函数，使它更强大。 你可以使用内置函数，或者指定你自己的函数。 All built-in functions take such a format(except <code>keyGet</code> and <code>keyGet2</code>):</p>
 <pre><code class="hljs css language-C"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">function_name</span><span class="hljs-params">(<span class="hljs-built_in">string</span> arg1, <span class="hljs-built_in">string</span> arg2)</span>
 </span></code></pre>
 <p>它返回<code>arg1</code>是否匹配<code>arg2</code>。</p>
-<p>支持的内置函数如下：</p>
+<p><code>keyGet</code> and <code>keyGet2</code> will return the string which matching the wildcard, and return <code>&quot;&quot;</code> if nothing was matched.</p>
+<p>The supported built-in functions are:</p>
 <table>
 <thead>
 <tr><th>Function</th><th>arg1</th><th>arg2</th><th>Example</th></tr>
 </thead>
 <tbody>
 <tr><td>keyMatch</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>*</code> pattern like <code>/alice_data/*</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
+<tr><td>keyGet</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>*</code> pattern like <code>/alice_data/*</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keyget_model.conf">keyget_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
 <tr><td>keyMatch2</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>:</code> pattern like <code>/alice_data/:resource</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_model.conf">keymatch2_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_policy.csv">keymatch2_policy.csv</a></td></tr>
+<tr><td>keyGet2</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or <code>:</code> pattern like <code>/alice_data/:resource</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keyget2_model.conf">keyget2_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch2_policy.csv">keymatch2_policy.csv</a></td></tr>
 <tr><td>keyMatch3</td><td>a URL path like <code>/alice_data/resource1</code></td><td>a URL path or a <code>{}</code> pattern like <code>/alice_data/{resource}</code></td><td></td></tr>
 <tr><td>keyMatch4</td><td>a URL path like <code>/alice_data/123/book/123</code></td><td>a URL path or a <code>{}</code> pattern like <code>/alice_data/{id}/book/{id}</code></td><td></td></tr>
 <tr><td>regexMatch</td><td>any string</td><td>a regular expression pattern</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
 <tr><td>ipMatch</td><td>an IP address like <code>192.168.2.123</code></td><td>an IP address or a CIDR like <code>192.168.2.0/24</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/ipmatch_model.conf">ipmatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/ipmatch_policy.csv">ipmatch_policy.csv</a></td></tr>
 </tbody>
 </table>
-<p>请在 <a href="https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go">https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go</a> 查看以上功能的详细信息。</p>
+<p>See details for above functions at: <a href="https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go">https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go</a></p>
 <h2><a class="anchor" aria-hidden="true" id="怎样增加自定义函数"></a><a href="#怎样增加自定义函数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>怎样增加自定义函数</h2>
-<p>首先，准备好你的函数。 它接受一些参数，然后返回一个布尔类型：</p>
+<p>First prepare your function. It takes several parameters and return a bool:</p>
 <pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">KeyMatch</span><span class="hljs-params">(key1 <span class="hljs-keyword">string</span>, key2 <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">bool</span></span> {
     i := strings.Index(key2, <span class="hljs-string">"*"</span>)
     <span class="hljs-keyword">if</span> i == <span class="hljs-number">-1</span> {
@@ -114,7 +117,7 @@
     <span class="hljs-keyword">return</span> key1 == key2[:i]
 }
 </code></pre>
-<p>然后用<code>interface{}</code>类型包装：</p>
+<p>Then wrap it with <code>interface{}</code> types:</p>
 <pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">KeyMatchFunc</span><span class="hljs-params">(args ...<span class="hljs-keyword">interface</span>{})</span> <span class="hljs-params">(<span class="hljs-keyword">interface</span>{}, error)</span></span> {
     name1 := args[<span class="hljs-number">0</span>].(<span class="hljs-keyword">string</span>)
     name2 := args[<span class="hljs-number">1</span>].(<span class="hljs-keyword">string</span>)
@@ -122,10 +125,10 @@
     <span class="hljs-keyword">return</span> (<span class="hljs-keyword">bool</span>)(KeyMatch(name1, name2)), <span class="hljs-literal">nil</span>
 }
 </code></pre>
-<p>最后，在Casbin的执行者(enforcer)中注册这个函数：</p>
+<p>At last, register the function to the Casbin enforcer:</p>
 <pre><code class="hljs css language-go">e.AddFunction(<span class="hljs-string">"my_func"</span>, KeyMatchFunc)
 </code></pre>
-<p>现在，你可以在你的model CONF中像这样使用这个函数：</p>
+<p>Now, you can use the function in your model CONF like this:</p>
 <pre><code class="hljs css language-ini"><span class="hljs-section">[matchers]</span>
 <span class="hljs-attr">m</span> = r.sub == p.sub &amp;&amp; my_func(r.obj, p.obj) &amp;&amp; r.act == p.act
 </code></pre>
