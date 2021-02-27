@@ -12,7 +12,7 @@
             {"zIndex":100}
           )
         });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ko"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ko/overview" target="_self">문서</a></li><li class="siteNavGroupActive"><a href="/docs/ko/management-api" target="_self">API</a></li><li class=""><a href="/ko/editor" target="_self">편집기</a></li><li class=""><a href="https://plugins.jetbrains.com/plugin/14809-casbin" target="_self">JetBrains Plugin</a></li><li class=""><a href="https://door.casbin.com" target="_self">Casdoor</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="https://oa.casbin.com" target="_self">OA</a></li><li class=""><a href="https://trend.casbin.org" target="_self">Trend</a></li><li class=""><a href="/ko/help" target="_self">도움말</a></li><li class=""><a href="/blog/" target="_self">블로그</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>한국어</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/zh-CN/watchers">中文</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">번역 참여하기</a></li></ul></div></li><script>
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ko"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ko/overview" target="_self">문서</a></li><li class="siteNavGroupActive"><a href="/docs/ko/management-api" target="_self">API</a></li><li class=""><a href="/ko/editor" target="_self">편집기</a></li><li class=""><a href="https://plugins.jetbrains.com/plugin/14809-casbin" target="_self">JetBrains Plugin</a></li><li class=""><a href="https://door.casbin.com" target="_self">Casdoor</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="https://oa.casbin.com" target="_self">OA</a></li><li class=""><a href="https://trend.casbin.org" target="_self">Trend</a></li><li class=""><a href="/ko/help" target="_self">도움말</a></li><li class=""><a href="/blog/" target="_self">블로그</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>한국어</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/zh-CN/watchers">中文</a></li><li><a href="/docs/ru/watchers">Русский</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">번역 참여하기</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">감시자</h1></header><article><div><span><p>We support to use distributed messaging systems like <a href="https://github.com/coreos/etcd">etcd</a> to keep consistence between multiple Casbin enforcer instances. So our users can concurrently use multiple Casbin enforcers to handle large number of permission checking requests.</p>
 <p>Similar to policy storage adapters, we don't put watcher code in the main library. Any support for a new messaging system should be implemented as a watcher. A complete list of Casbin watchers is provided as below. Any 3rd-party contribution on a new watcher is welcomed, please inform us and I will put it in this list:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-1378-tab-1379" class="nav-link active" data-group="group_1378" data-tab="tab-group-1378-content-1379">Go</div><div id="tab-group-1378-tab-1380" class="nav-link" data-group="group_1378" data-tab="tab-group-1378-content-1380">Java</div><div id="tab-group-1378-tab-1381" class="nav-link" data-group="group_1378" data-tab="tab-group-1378-content-1381">Node.js</div><div id="tab-group-1378-tab-1382" class="nav-link" data-group="group_1378" data-tab="tab-group-1378-content-1382">Python</div><div id="tab-group-1378-tab-1383" class="nav-link" data-group="group_1378" data-tab="tab-group-1378-content-1383">.NET</div></div><div class="tab-content"><div id="tab-group-1378-content-1379" class="tab-pane active" data-group="group_1378" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2743-tab-2744" class="nav-link active" data-group="group_2743" data-tab="tab-group-2743-content-2744">Go</div><div id="tab-group-2743-tab-2745" class="nav-link" data-group="group_2743" data-tab="tab-group-2743-content-2745">Java</div><div id="tab-group-2743-tab-2746" class="nav-link" data-group="group_2743" data-tab="tab-group-2743-content-2746">Node.js</div><div id="tab-group-2743-tab-2747" class="nav-link" data-group="group_2743" data-tab="tab-group-2743-content-2747">Python</div><div id="tab-group-2743-tab-2748" class="nav-link" data-group="group_2743" data-tab="tab-group-2743-content-2748">.NET</div></div><div class="tab-content"><div id="tab-group-2743-content-2744" class="tab-pane active" data-group="group_2743" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -94,7 +94,7 @@
 <tr><td><a href="https://github.com/rusenask/casbin-go-cloud-watcher">NATS, RabbitMQ, GCP Pub/Sub, AWS SNS &amp; SQS, Kafka, InMemory</a></td><td>Messaging System</td><td><a href="https://github.com/rusenask/">rusenask</a></td><td>Watcher based on <a href="https://gocloud.dev/">Go Cloud Dev Kit</a> that works with leading cloud providers and self-hosted infrastructure</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1378-content-1380" class="tab-pane" data-group="group_1378" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2743-content-2745" class="tab-pane" data-group="group_2743" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -102,7 +102,7 @@
 <tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Etcd Adapter</a></td><td>KV store</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td>Watcher for <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1378-content-1381" class="tab-pane" data-group="group_1378" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2743-content-2746" class="tab-pane" data-group="group_2743" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -113,7 +113,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>Database</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1378-content-1382" class="tab-pane" data-group="group_1378" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2743-content-2747" class="tab-pane" data-group="group_2743" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -122,7 +122,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>Database</td><td>Casbin</td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-1378-content-1383" class="tab-pane" data-group="group_1378" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2743-content-2748" class="tab-pane" data-group="group_2743" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
