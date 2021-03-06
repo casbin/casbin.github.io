@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>API tutorial · Casbin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Casbin API Tutorial"/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="API tutorial · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="## Casbin API Tutorial"/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/overview" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/management-api" target="_self">API</a></li><li class=""><a href="/zh-CN/editor" target="_self">编辑器</a></li><li class=""><a href="https://plugins.jetbrains.com/plugin/14809-casbin" target="_self">JetBrains 插件</a></li><li class=""><a href="https://door.casbin.com" target="_self">Casdoor</a></li><li class=""><a href="https://forum.casbin.com" target="_self">论坛</a></li><li class=""><a href="https://oa.casbin.com" target="_self">OA</a></li><li class=""><a href="https://trend.casbin.org" target="_self">趋势</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/api-tutorial">English</a></li><li><a href="/docs/ko/api-tutorial">한국어</a></li><li><a href="/docs/ru/api-tutorial">Русский</a></li><li><a href="/docs/fr/api-tutorial">Français</a></li><li><a href="/docs/ja/api-tutorial">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">参与翻译</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">基础知识</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/overview">概述</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/get-started">开始使用</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/how-it-works">工作原理</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/tutorials">教程</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Model</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/supported-models">支持的Models</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/syntax-for-models">Model语法</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/function">函数</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac">基于角色的访问控制</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac-with-domains">域内RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/priority-model">优先级模型</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">存储</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/model-storage">Model存储</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/policy-storage">Policy存储</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/policy-subset-loading">政策子集加载</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">扩充功能</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/adapters">适配器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/watchers">观察者</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/dispatchers">调度器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/role-managers">角色管理器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/middlewares">中间件</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-CN/api-tutorial">API tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/management-api">管理 API</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/rbac-api">RBAC API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">高级用法</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/multi-threading">多线程</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/benchmark">基准测试</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/performance">性能优化</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">管理</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/admin-portal">管理员门户</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/service">Casbin 服务</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/log-error">日志 &amp; 错误处理</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/online-editor">在线编辑器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/frontend">前端使用</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更多</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-CN/adopters">本项目使用者</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/privacy-policy">隐私政策</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-CN/terms-of-service">服务条款</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">API tutorial</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="casbin-api-tutorial"></a><a href="#casbin-api-tutorial" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Casbin API Tutorial</h2>
+<p>This tutorial only shows you how to use Casbin APIs and doesn't explain how Casbin is installed and how it works. You can find those tutorials here: <a href="https://casbin.org/docs/en/get-started">installation of Casbin</a> and <a href="https://casbin.org/docs/en/how-it-works">how Casbin works</a>. So, when you start reading this tutorial, we assume that you have fully installed and imported Casbin into your code.</p>
+<h2><a class="anchor" aria-hidden="true" id="enforce-api"></a><a href="#enforce-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enforce API</h2>
+<p>Let's start at the enforce API of Casbin. We will load a RBAC model from <code>model.conf</code>, and load policies from <code>policy.csv</code>. You can learn the Model syntax <a href="https://casbin.org/docs/en/syntax-for-models">here</a>, and we won't talk about it in this tutorial. We assume that you can understand the config files given below:</p>
+<p><code>model.conf</code></p>
+<pre><code class="hljs"><span class="hljs-section">[request_definition]</span>
+<span class="hljs-attr">r</span> = sub, obj, act
+
+<span class="hljs-section">[policy_definition]</span>
+<span class="hljs-attr">p</span> = sub, obj, act
+
+<span class="hljs-section">[role_definition]</span>
+<span class="hljs-attr">g</span> = _, _
+
+<span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = some(where (p.eft == allow))
+
+<span class="hljs-section">[matchers]</span>
+<span class="hljs-attr">m</span> = g(r.sub, p.sub) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
+</code></pre>
+<p><code>policy.csv</code></p>
+<pre><code class="hljs">p, <span class="hljs-keyword">admin</span>, data1, <span class="hljs-keyword">read</span>
+p, <span class="hljs-keyword">admin</span>, data1, <span class="hljs-keyword">write</span>
+p, <span class="hljs-keyword">admin</span>, data2, <span class="hljs-keyword">read</span>
+p, <span class="hljs-keyword">admin</span>, data2, <span class="hljs-keyword">write</span>
+p, alice, data1, <span class="hljs-keyword">read</span>
+p, bob, data2, <span class="hljs-keyword">write</span>
+g, amber, <span class="hljs-keyword">admin</span>
+g, abc, <span class="hljs-keyword">admin</span>
+</code></pre>
+<p>After reading the config files, please read the following code.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// load information from files</span>
+enforcer, err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    log.Fatalf(<span class="hljs-string">"error, detail: %s"</span>, err)
+}
+ok, err := enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+</code></pre>
+<p>This code loads the access control model and policies from local files. Function <code>casbin.NewEnforcer()</code> will return an enforcer. It will recognize its 2 parameters as file paths, and load the files from there. Errors occurred in the process are stored in <code>err</code>. This code used the default adapter to load model and policies. And of course you can get the same result by using a third-party adapter.</p>
+<p>Code <code>ok, err := enforcer.Enforce(&quot;alice&quot;, &quot;data1&quot;, &quot;read&quot;)</code>  is to confirm access permissions. If alice can access the data1 with the operation read, the returned value <code>ok</code> will be <code>true</code>, otherwise it'll be <code>false</code>. In this example, the value of <code>ok</code> is <code>true</code>.</p>
+<p>Of course, Casbin prepared a lot of APIs like this. Those APIs added some extra functions on the basic one. They are:</p>
+<ul>
+<li><p><code>ok, err := enforcer.EnforceWithMatcher(matcher, request)</code></p>
+<p>With a matcher.</p></li>
+<li><p><code>ok, reason, err := enforcer.EnforceEx(request)</code></p>
+<p>Return the matched rule to the variable  <code>reason</code>.</p></li>
+<li><p><code>ok, reason, err := enforcer.EnforceExWithMatcher(matcher, request)</code></p>
+<p>A combination of the above.</p></li>
+<li><p><code>boolArray, err := enforcer.BatchEnforce(requests)</code></p>
+<p>Do a list job, returns an array.</p></li>
+</ul>
+<p>This is a simple use of Casbin. You can use Casbin to start an authorization server via these APIs. We will show you some other types of APIs in the next paragraphs.</p>
+<h2><a class="anchor" aria-hidden="true" id="getter-api"></a><a href="#getter-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getter API</h2>
+<p>These APIs are used to get exact objects in policies. This time we loaded an enforcer like the last example and get something from it.</p>
+<p>Please read the following code:</p>
+<pre><code class="hljs css language-go">enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+allSubjects := enforcer.GetAllSubjects()
+fmt.Println(allSubjects)
+</code></pre>
+<p>Same as the last example, the first 4 lines loaded some necessary information from local files. We won't talk about that here anymore.</p>
+<p>Code <code>allSubjects := enforcer.GetAllSubjects()</code> got all the subjects in the policy file and returned them as an array. Then we printed that array.</p>
+<p>Normally, the output of the code should be:</p>
+<pre><code class="hljs">[admin alice bob]
+</code></pre>
+<p>You can also change the function <code>GetAllSubjects()</code> to <code>GetAllNamedSubjects()</code> ，to get the list of subjects that show up in the current named policy.</p>
+<p>Similarly, we prepared <code>GetAll</code> functions for <code>Objects, Actions, Roles</code>. The only thing you need to do is to change the word <code>Subject</code> in the function name to what you want if you want to access those functions.</p>
+<p>Besides, we have more getters for policies. The call method and return value are similar to those above.</p>
+<ul>
+<li><code>policy = e.GetPolicy()</code> gets all the authorization rules in the policy.</li>
+<li><code>filteredPolicy := e.GetFilteredPolicy(0, &quot;alice&quot;)</code> gets all the authorization rules in the policy, field filters can be specified.</li>
+<li><code>namedPolicy := e.GetNamedPolicy(&quot;p&quot;)</code> gets all the authorization rules in the named policy.</li>
+<li><code>filteredNamedPolicy = e.GetFilteredNamedPolicy(&quot;p&quot;, 0, &quot;bob&quot;)</code> gets all the authorization rules in the named policy, field filters can be specified.</li>
+<li><code>groupingPolicy := e.GetGroupingPolicy()</code> gets all the role inheritance rules in the policy.</li>
+<li><code>filteredGroupingPolicy := e.GetFilteredGroupingPolicy(0, &quot;alice&quot;)</code> gets all the role inheritance rules in the policy, field filters can be specified.</li>
+<li><code>namedGroupingPolicy := e.GetNamedGroupingPolicy(&quot;g&quot;)</code> gets all the role inheritance rules in the policy.</li>
+<li><code>namedGroupingPolicy := e.GetFilteredNamedGroupingPolicy(&quot;g&quot;, 0, &quot;alice&quot;)</code> gets all the role inheritance rules in the policy.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="policy-api"></a><a href="#policy-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Policy API</h2>
+<p>Casbin prepared a lot of APIs for policies. These APIs allow you to add, delete or edit policies dynamically at runtime.</p>
+<p>This code shows you how to add, remove and update your policies, and told you how to confirm that a policy exists:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// load information from files</span>
+enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+   fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+
+<span class="hljs-comment">// add a policy, then use HasPolicy() to confirm that</span>
+enforcer.AddPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+hasPolicy := enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(hasPolicy) <span class="hljs-comment">// true, we added that policy successfully</span>
+
+<span class="hljs-comment">// remove a policy, then use HasPolicy() to confirm that</span>
+enforcer.RemovePolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(hasPolicy) <span class="hljs-comment">// false, we deleted that policy successfully</span>
+
+<span class="hljs-comment">// update a policy, then use HasPolicy() to confirm that</span>
+enforcer.UpdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>})
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(hasPolicy) <span class="hljs-comment">// false, the origin policy has lapsed</span>
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>)
+fmt.Println(hasPolicy) <span class="hljs-comment">// true, the new policy is in use</span>
+</code></pre>
+<p>Using these four kinds of APIs can edit your policies. Like these, we prepared same kinds of APIs to <code>FilteredPolicy, NamedPolicy, FilteredNamedPolicy, GroupingPolicy, NamedGroupingPolicy, FilteredGroupingPolicy, FilteredNamedGroupingPolicy</code>. To use them, you only need to replace word <code>Policy</code> in the function name to the words above.</p>
+<p>Besides, if you change parameters to arrays, you can batch edit you policies.</p>
+<p>For example, to functions like this:</p>
+<pre><code class="hljs css language-go">enforcer.UpdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>})
+</code></pre>
+<p>if we change <code>Policy</code> to <code>Policies</code>, and edit the parameter to:</p>
+<pre><code class="hljs css language-go">enforcer.UpdatePolicies([][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}}, [][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}})
+</code></pre>
+<p>then we can batch edit these policies.</p>
+<p>Same operations also useful to <code>GroupingPolicy, NamedGroupingPolicy</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="rbac-api"></a><a href="#rbac-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC API</h2>
+<p>Casbin provided come APIs for you to modify the RBAC model and policies. If you are familiar with RBAC, you can use these APIs easily.</p>
+<p>Here we only show you how to use RBAC APIs of Casbin and won't talk about RBAC itself. You can get more details <a href="https://casbin.org/docs/en/rbac">here</a>.</p>
+<p>We use this code to load model and policies just like before.</p>
+<pre><code class="hljs css language-go">enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+</code></pre>
+<p>then, use a instance of Enforcer <code>enforcer</code> to access these APIs.</p>
+<pre><code class="hljs css language-go">roles, err := enforcer.GetRolesForUser(<span class="hljs-string">"amber"</span>)
+fmt.Println(roles) <span class="hljs-comment">// [admin]</span>
+users, err := enforcer.GetUsersForRole(<span class="hljs-string">"admin"</span>)
+fmt.Println(users) <span class="hljs-comment">// [amber abc]</span>
+</code></pre>
+<p><code>GetRolesForUser()</code> returned an array that contained all roles contained amber. In this example, amber has only one role admin, so array <code>roles</code> is <code>[admin]</code>. And similarly, you can use <code>GetUsersForRole()</code> to get users belongs to the role. The return value of this function is also an array.</p>
+<pre><code class="hljs css language-go">enforcer.HasRoleForUser(<span class="hljs-string">"amber"</span>, <span class="hljs-string">"admin"</span>) <span class="hljs-comment">// true</span>
+</code></pre>
+<p>You can use <code>HasRoleForUser()</code> to confirm whether the user belongs to the role. In this example, amber is a member of admin, so the return value of the function is <code>true</code>.</p>
+<pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// true</span>
+enforcer.DeletePermission(<span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)
+fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// false</span>
+</code></pre>
+<p>You can use <code>DeletePermission()</code> to delete a permission.</p>
+<pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// true</span>
+enforcer.DeletePermissionForUser(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// false</span>
+</code></pre>
+<p>And use <code>DeletePermissionForUser()</code> to delete a permission for a user.</p>
+<p>Casbin have a lot of APIs like this. Their call methods and return values have the same style as the above APIs. You can find these APIs in <a href="https://casbin.org/docs/en/rbac-api">next documents</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-CN/middlewares"><span class="arrow-prev">← </span><span>中间件</span></a><a class="docs-next button" href="/docs/zh-CN/management-api"><span>管理 API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#casbin-api-tutorial">Casbin API Tutorial</a></li><li><a href="#enforce-api">Enforce API</a></li><li><a href="#getter-api">Getter API</a></li><li><a href="#policy-api">Policy API</a></li><li><a href="#rbac-api">RBAC API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-CN/get-started">Getting Started</a><a href="/docs/zh-CN/management-api">Management API</a><a href="/docs/zh-CN/rbac-api">RBAC API</a><a href="/docs/zh-CN/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/zh-CN/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/CasbinNews" class="twitter-follow-button">Follow @CasbinNews</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2021 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:zh-CN"]}
+              });
+            </script></body></html>
