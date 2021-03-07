@@ -100,6 +100,7 @@
 <tr><td>keyMatch4</td><td>a URL path like <code>/alice_data/123/book/123</code></td><td>a URL path or a <code>{}</code> pattern like <code>/alice_data/{id}/book/{id}</code></td><td></td></tr>
 <tr><td>regexMatch</td><td>any string</td><td>a regular expression pattern</td><td><a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_model.conf">keymatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/keymatch_policy.csv">keymatch_policy.csv</a></td></tr>
 <tr><td>ipMatch</td><td>an IP address like <code>192.168.2.123</code></td><td>an IP address or a CIDR like <code>192.168.2.0/24</code></td><td><a href="https://github.com/casbin/casbin/blob/master/examples/ipmatch_model.conf">ipmatch_model.conf</a>/<a href="https://github.com/casbin/casbin/blob/master/examples/ipmatch_policy.csv">ipmatch_policy.csv</a></td></tr>
+<tr><td>globMatch</td><td>a path-like path like <code>/alice_data/resource1</code></td><td>a glob pattern like <code>/alice_data/*</code></td><td></td></tr>
 </tbody>
 </table>
 <p>See details for above functions at: <a href="https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go">https://github.com/casbin/casbin/blob/master/util/builtin_operators_test.go</a></p>
