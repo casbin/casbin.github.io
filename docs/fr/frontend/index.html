@@ -83,14 +83,14 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Frontend Usage</h1></header><article><div><span><p><a href="https://github.com/casbin/casbin.js">Casbin.js</a> is a Casbin addon that facilites your access-control management in the frontend application.</p>
 <h2><a class="anchor" aria-hidden="true" id="installation"></a><a href="#installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
 <pre><code class="hljs">npm <span class="hljs-keyword">install </span>casbin.<span class="hljs-keyword">js
-</span></code></pre>
+</span>npm <span class="hljs-keyword">install </span>casbin
+</code></pre>
 <p>or</p>
 <pre><code class="hljs">yarn <span class="hljs-keyword">add</span><span class="bash"> casbin.js</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="quick-start"></a><a href="#quick-start" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quick Start</h2>
-<p>You can use <code>manual</code> mode in your frontend application, and set the permission whenever you wish:</p>
+<p>You can use <code>manual</code> mode in your frontend application, and set the permission whenever you wish.</p>
 <pre><code class="hljs css language-Javascript"><span class="hljs-keyword">const</span> casbinjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"casbin.js"</span>);
-
 <span class="hljs-comment">// Set the user's permission:</span>
 <span class="hljs-comment">// He/She can read `data1` and `data2` objects and can write `data1` object</span>
 <span class="hljs-keyword">const</span> permission = {
@@ -100,11 +100,30 @@
 
 <span class="hljs-comment">// Run casbin.js in manual mode, which requires you to set the permission manually.</span>
 <span class="hljs-keyword">const</span> authorizer = <span class="hljs-keyword">new</span> casbinjs.Authorizer(<span class="hljs-string">"manual"</span>);
-
-authorizer.setPermission(permission);
-<span class="hljs-built_in">console</span>.log(authorizer.can(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data1"</span>));  <span class="hljs-comment">// True</span>
-<span class="hljs-built_in">console</span>.log(authorizer.cannot(<span class="hljs-string">"write"</span>, <span class="hljs-string">"data2"</span>));  <span class="hljs-comment">// True</span>
 </code></pre>
+<p>now we got an authorizer <code>authorizer</code>. We can get permission rules from it by using the API <code>authorizer.can()</code> and <code>authorizer.cannot()</code>. The return values of these 2 APIs are JavaScript Promises (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">details here</a>), so we should use the <code>then()</code> method of the return value like this:</p>
+<pre><code class="hljs css language-javascript">result = authorizer.can(<span class="hljs-string">"write"</span>, <span class="hljs-string">"data1"</span>);
+result.then(<span class="hljs-function">(<span class="hljs-params">success, failed</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you can write data1"</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you cannot write data1"</span>);
+    }
+});
+<span class="hljs-comment">// output: you can write data1</span>
+</code></pre>
+<p>and <code>cannot()</code> is used in the same way:</p>
+<pre><code class="hljs css language-javascript">result = authorizer.cannot(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data2"</span>);
+result.then(<span class="hljs-function">(<span class="hljs-params">success, failed</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you cannot read data2"</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you can read data2"</span>);
+    }
+});
+<span class="hljs-comment">// output: you can read data2</span>
+</code></pre>
+<p>in the code above, variable <code>success</code> in parameters means the request get the result without throwing an error, and doesn't mean that the permission rule is <code>true</code>. <code>failed</code> is also unrelated to the permission rules. It only makes sense when something goes wrong in the process of the request.</p>
 <p>You can refer to our <a href="https://github.com/casbin-js/examples">React example</a> to see a practical usage of Casbin.js</p>
 <!-- #### Permission Object
 Casbin.js will accept a JSON object to manipulate the correspoding permission of a visitor. For example:
@@ -131,9 +150,12 @@ The permission object above shows the visitor can `read` `data1` and `data2` obj
 authorizer.setUser(<span class="hljs-string">"Tom"</span>);
 
 <span class="hljs-comment">// Evaluate the permission</span>
-<span class="hljs-keyword">if</span> authorizer.can(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data1"</span>) {
-    <span class="hljs-comment">// Some frontend procedure ...</span>
-}
+result = authorizer.can(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data1"</span>);
+result.then(<span class="hljs-function">(<span class="hljs-params">success, failed</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-comment">// Some frontend procedure ...</span>
+    }
+});
 </code></pre>
 <p>Correspondingly, you need to expose an interface (e.g. a RestAPI) to generate the permission object and pass it to the frontend. In your API controller, call <code>CasbinJsGetUserPermission</code> to construct the permission object. Here is an example in Beego:</p>
 <pre><code class="hljs css language-Go"><span class="hljs-comment">// Router</span>
