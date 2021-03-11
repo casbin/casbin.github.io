@@ -97,7 +97,7 @@
 </code></pre>
 <p>我们在 <code>matcher</code> 中使用 <code>r.obj.Owner</code> 代替 <code>r.obj</code>。 在 <code>Enforce()</code> 函数中传递的 <code>r.obj</code> 函数是结构或类实例，而不是字符串。 Casbin将使用映像来检索 <code>obj</code>结构或类中的成员变量。</p>
 <p>这里是 <code>r.obj</code> construction 或 class 的定义：</p>
-<pre><code class="hljs css language-go">ype testResource <span class="hljs-keyword">struct</span> {
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> testResource <span class="hljs-keyword">struct</span> {
     Name  <span class="hljs-keyword">string</span>
     Owner <span class="hljs-keyword">string</span>
 }
