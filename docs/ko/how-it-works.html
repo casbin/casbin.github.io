@@ -81,7 +81,24 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">작동 원리</h1></header><article><div><span><p>Casbin의 접근 제어 모델은 <strong>PERM 메타 모델 (Policy, Effect, Request, Matchers)</strong> 형식으로 추상화되어 CONF 파일에 저장됩니다. 따라서 프로젝트의 권한 부여 메커니즘을 전환하거나 확장하기 위해서는 단지 Conf 설정 파일을 변경하는 것으로 가능합니다. 가용한 모델을 결합하여 여러분의 필요에 맞는 접근 제어 모델을 구성할 수 있습니다. 예를 들면 RBAC 역할과 ABAC 속성을 혼용하여 하나의 모델에서 사용 가능하며, 같은 정책 규칙(Policy Rule) 을 공유할 수 있습니다.</p>
-<p>Casbin에서 가장 단순하고 기본적인 모델은 ACL(Access Control List) 입니다. ACL 모델의 CONF 파일은 이렇게 생겼습니다.</p>
+<p>The PERM model is composed of four foundations (Policy, Effect, Request, Matchers) describing the relationship between resources and users.</p>
+<h3><a class="anchor" aria-hidden="true" id="request"></a><a href="#request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request</h3>
+<p>Define the request parameters. A basic request is a tuple object, at least including subject (accessed entity), object (accessed resource) and action (access method)</p>
+<p>For instance, a request definition may look like this: <code>r={sub,obj,act}</code></p>
+<p>It actually defines the parameter name and order which we should provide for access control matching function.</p>
+<h3><a class="anchor" aria-hidden="true" id="policy"></a><a href="#policy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Policy</h3>
+<p>Define the model of the access strategy. In fact, it is to define the name and order of the fields in the Policy rule document.</p>
+<p>For instace: <code>p={sub, obj, act}</code> or <code>p={sub, obj, act, eft}</code></p>
+<p>Note: If eft (policy result) is not defined, then the result field in the policy file will not be read, and the matching policy result will be allowed by default.</p>
+<h3><a class="anchor" aria-hidden="true" id="matcher"></a><a href="#matcher" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Matcher</h3>
+<p>Matching rules of Request and Policy.</p>
+<p>For example: <code>m = r.sub == p.sub &amp;&amp; r.act == p.act &amp;&amp; r.obj == p.obj</code> This simple and common matching rule means that if the requested parameters (entities, resources, and methods) are equal, that is, if they can be found in the policy, then the policy result (<code>p.eft</code>) is returned. The result of the strategy will be saved in <code>p.eft</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="effect"></a><a href="#effect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Effect</h3>
+<p>It can be understood as a model in which a logical combination judgment is performed again on the matching results of Matchers.</p>
+<p>For example: <code>e = some(where(p.eft == allow))</code></p>
+<p>This sentence means that if the matching strategy result p.eft has the result of (some) allow, then the final result is true</p>
+<p>Let's look at another example: <code>e = some(where (p.eft == allow)) &amp;&amp; !some(where (p.eft == deny))</code> The logical meaning of this example combination is: if there is a strategy that matches the result of allow and no strategy that matches the result of deny, the result is true. In other words, it is true when the matching strategies are all allow, if there is any deny, both are false (more simply, when allow and deny exist at the same time, deny takes precedence)</p>
+<p>The most basic and simplest model in Casbin is ACL. ACL's model CONF is:</p>
 <pre><code class="hljs css language-ini"><span class="hljs-comment"># Request 정의</span>
 <span class="hljs-section">[request_definition]</span>
 <span class="hljs-attr">r</span> = sub, obj, act
@@ -99,28 +116,28 @@
 <span class="hljs-attr">m</span> = r.sub == p.sub &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 
 </code></pre>
-<p>다음은 ACL 모델의 정책(Policy) 예제입니다.</p>
+<p>An example policy for ACL model is like:</p>
 <pre><code class="hljs">p, alice, data1, read
 p, bob, data2, write
 </code></pre>
-<p>이것은 다음을 의미합니다.</p>
+<p>It means:</p>
 <ul>
 <li>alice는 data1에 대해 read 할 수 있음</li>
 <li>bob은 data2에 대해 write 할 수 있음</li>
 </ul>
-<p>각 줄의 끝에 '\'를 붙여서 여러 줄로 작성할 수 있습니다.</p>
+<p>We also support multi-line mode by appending '\' in the end:</p>
 <pre><code class="hljs css language-ini"># 조건식
 [matchers]
 m = r.sub == p.sub &amp;&amp; r.obj == p.obj \ 
   &amp;&amp; r.act == p.act
 </code></pre>
-<p>ABAC를 사용할 때는 다음과 같이 조건식에 <code>in</code> 연산자를 사용할 수 있습니다. (현재 <strong>golang</strong> 에서만 사용할 수 있고 jCasbin과 Node-Casbin에서는 아직 지원하지 않습니다.)</p>
+<p>Further more, if you are using ABAC, you can try operator <code>in</code> like following in Casbin <strong>golang</strong> edition (jCasbin and Node-Casbin are not supported yet):</p>
 <pre><code class="hljs css language-ini"><span class="hljs-comment"># 조건식</span>
 <span class="hljs-section">[matchers]</span>
 <span class="hljs-attr">m</span> = r.obj == p.obj &amp;&amp; r.act == p.act || r.obj in (<span class="hljs-string">'data2'</span>, <span class="hljs-string">'data3'</span>)
 </code></pre>
-<p>배열을 사용할 때는 <strong>반드시</strong> 배열의 요소를 <strong>2개 이상</strong> 포함하세요. 그렇지 않으면 심각한 오류가 발생할 수 있습니다.</p>
-<p>더 많은 연산자에 대해서 알아보려면 <a href="https://github.com/Knetic/govaluate">govaluate</a>를 참조하세요.</p>
+<p>But you <strong>SHOULD</strong> make sure that the length of the array is <strong>MORE</strong> than <strong>1</strong>, otherwise there will cause it to panic.</p>
+<p>For more operators, you may take a look at <a href="https://github.com/Knetic/govaluate">govaluate</a></p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ko/get-started"><span class="arrow-prev">← </span><span>시작하기</span></a><a class="docs-next button" href="/docs/ko/tutorials"><span>자습서</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/ko/get-started">Getting Started</a><a href="/docs/ko/management-api">Management API</a><a href="/docs/ko/rbac-api">RBAC API</a><a href="/docs/ko/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/ko/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/CasbinNews" class="twitter-follow-button">Follow @CasbinNews</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2021 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
                 </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
