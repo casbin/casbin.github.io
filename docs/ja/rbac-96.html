@@ -83,16 +83,17 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ja" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Casbin RBAC v.s. RBAC96</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="casbin-rbac-and-rbac96"></a><a href="#casbin-rbac-and-rbac96" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Casbin RBAC and RBAC96</h2>
 <p>In this document, we'll compare Casbin RBAC with <a href="https://profsandhu.com/cs6393_s12/lecture-rbac96.pdf">RBAC96</a>.</p>
 <p>Casbin RBAC supports almost all the features of RBAC96, and added new features above that.</p>
-<ul>
-<li><p>RBAC0: fully supported</p>
-<p>RBAC0 is the basic version of RBAC96. It clarified the relationship between Users, Roles and Permissions.</p></li>
-<li><p>RBAC1: fully supported</p>
-<p>RBAC1 added role hierarchies on RBAC0, meaning if <code>alice</code> has <code>role1</code>, <code>role1</code> has <code>role2</code>, then <code>alice</code> will also have <code>role2</code> and inherit its permissions.</p></li>
-<li><p>RBAC2: mutually exclusive handling is supported (<a href="https://casbin.org/docs/en/syntax-for-models#policy-effect">like this</a>), but quantitative limits are not</p>
-<p>RBAC2 added constrains on RBAC0. So RBAC2 can handle mutually exclusions found in policies.</p></li>
-<li><p>RBAC3: mutually exclusive handling is supported (<a href="https://casbin.org/docs/en/syntax-for-models#policy-effect">like this</a>), but quantitative limits are not</p>
-<p>RBAC3 is a combination of RBAC1 and RBAC2. RBAC3 supports role hierarchies and constrains in RBAC1 and RBAC2.</p></li>
-</ul>
+<table>
+<thead>
+<tr><th>RBAC version</th><th>Support Level</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>RBAC0</td><td>fully supported</td><td>RBAC0 is the basic version of RBAC96. It clarified the relationship between Users, Roles and Permissions.</td></tr>
+<tr><td>RBAC1</td><td>fully supported</td><td>RBAC1 added role hierarchies on RBAC0, meaning if <code>alice</code> has <code>role1</code>, <code>role1</code> has <code>role2</code>, then <code>alice</code> will also have <code>role2</code> and inherit its permissions.</td></tr>
+<tr><td>RBAC2</td><td>mutually exclusive handling is supported (<a href="https://casbin.org/docs/en/syntax-for-models#policy-effect">like this</a>), but quantitative limits are not</td><td>RBAC2 added constrains on RBAC0. So RBAC2 can handle mutually exclusions found in policies.</td></tr>
+<tr><td>RBAC3</td><td>mutually exclusive handling is supported (<a href="https://casbin.org/docs/en/syntax-for-models#policy-effect">like this</a>), but quantitative limits are not</td><td>RBAC3 is a combination of RBAC1 and RBAC2. RBAC3 supports role hierarchies and constrains in RBAC1 and RBAC2.</td></tr>
+</tbody>
+</table>
 <h2><a class="anchor" aria-hidden="true" id="difference-between-casbin-rbac-and-rbac96"></a><a href="#difference-between-casbin-rbac-and-rbac96" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Difference between Casbin RBAC and RBAC96</h2>
 <ol>
 <li><p>In Casbin, the distinction between User and Role is not clear</p>
