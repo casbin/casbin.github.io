@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Watchers</h1></header><article><div><span><p>We support to use distributed messaging systems like <a href="https://github.com/coreos/etcd">etcd</a> to keep consistence between multiple Casbin enforcer instances. So our users can concurrently use multiple Casbin enforcers to handle large number of permission checking requests.</p>
 <p>Similar to policy storage adapters, we don't put watcher code in the main library. Any support for a new messaging system should be implemented as a watcher. A complete list of Casbin watchers is provided as below. Any 3rd-party contribution on a new watcher is welcomed, please inform us and I will put it in this list:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-2983-tab-2984" class="nav-link active" data-group="group_2983" data-tab="tab-group-2983-content-2984">Go</div><div id="tab-group-2983-tab-2985" class="nav-link" data-group="group_2983" data-tab="tab-group-2983-content-2985">Java</div><div id="tab-group-2983-tab-2986" class="nav-link" data-group="group_2983" data-tab="tab-group-2983-content-2986">Node.js</div><div id="tab-group-2983-tab-2987" class="nav-link" data-group="group_2983" data-tab="tab-group-2983-content-2987">Python</div><div id="tab-group-2983-tab-2988" class="nav-link" data-group="group_2983" data-tab="tab-group-2983-content-2988">.NET</div></div><div class="tab-content"><div id="tab-group-2983-content-2984" class="tab-pane active" data-group="group_2983" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2987-tab-2988" class="nav-link active" data-group="group_2987" data-tab="tab-group-2987-content-2988">Go</div><div id="tab-group-2987-tab-2989" class="nav-link" data-group="group_2987" data-tab="tab-group-2987-content-2989">Java</div><div id="tab-group-2987-tab-2990" class="nav-link" data-group="group_2987" data-tab="tab-group-2987-content-2990">Node.js</div><div id="tab-group-2987-tab-2991" class="nav-link" data-group="group_2987" data-tab="tab-group-2987-content-2991">Python</div><div id="tab-group-2987-tab-2992" class="nav-link" data-group="group_2987" data-tab="tab-group-2987-content-2992">.NET</div><div id="tab-group-2987-tab-2993" class="nav-link" data-group="group_2987" data-tab="tab-group-2987-content-2993">Ruby</div></div><div class="tab-content"><div id="tab-group-2987-content-2988" class="tab-pane active" data-group="group_2987" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -96,7 +96,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Watcher for <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-2983-content-2985" class="tab-pane" data-group="group_2983" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2987-content-2989" class="tab-pane" data-group="group_2987" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -104,7 +104,7 @@
 <tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Etcd Adapter</a></td><td>KV store</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td>Watcher for <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-2983-content-2986" class="tab-pane" data-group="group_2983" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2987-content-2990" class="tab-pane" data-group="group_2987" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -115,7 +115,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>Database</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-2983-content-2987" class="tab-pane" data-group="group_2983" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2987-content-2991" class="tab-pane" data-group="group_2987" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -124,12 +124,20 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>Database</td><td>Casbin</td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-2983-content-2988" class="tab-pane" data-group="group_2983" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-2987-content-2992" class="tab-pane" data-group="group_2987" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-2987-content-2993" class="tab-pane" data-group="group_2987" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/evrone/casbin-ruby-redis-watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/evrone">evrone</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
 </span></div></div></div></div>
