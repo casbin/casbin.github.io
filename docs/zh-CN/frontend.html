@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>前端使用 · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="[Casbin.js](https://github.com/casbin/casbin.js) is a Casbin addon that facilites your access-control management in the frontend application."/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="前端使用 · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="[Casbin.js](https://github.com/casbin/casbin.js) is a Casbin addon that facilites your access-control management in the frontend application."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>前端使用 · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="[Casbin.js](https://github.com/casbin/casbin.js)是一个能够帮助你在前端应用中管理访问控制权限的Casbin前端版本。"/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="前端使用 · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="[Casbin.js](https://github.com/casbin/casbin.js)是一个能够帮助你在前端应用中管理访问控制权限的Casbin前端版本。"/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -80,7 +80,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">前端使用</h1></header><article><div><span><p><a href="https://github.com/casbin/casbin.js">Casbin.js</a> is a Casbin addon that facilites your access-control management in the frontend application.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">前端使用</h1></header><article><div><span><p><a href="https://github.com/casbin/casbin.js">Casbin.js</a>是一个能够帮助你在前端应用中管理访问控制权限的Casbin前端版本。</p>
 <h2><a class="anchor" aria-hidden="true" id="安装"></a><a href="#安装" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装</h2>
 <pre><code class="hljs">npm <span class="hljs-keyword">install </span>casbin.<span class="hljs-keyword">js
 </span>npm <span class="hljs-keyword">install </span>casbin
@@ -89,19 +89,19 @@
 <pre><code class="hljs">yarn <span class="hljs-keyword">add</span><span class="bash"> casbin.js</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="快速开始"></a><a href="#快速开始" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>快速开始</h2>
-<p>You can use <code>manual</code> mode in your frontend application, and set the permission whenever you wish.</p>
+<p>您可以在您的前端应用程序中使用 <code>manual</code> 模式，并随时设置权限。</p>
 <pre><code class="hljs css language-Javascript"><span class="hljs-keyword">const</span> casbinjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"casbin.js"</span>);
-<span class="hljs-comment">// Set the user's permission:</span>
-<span class="hljs-comment">// He/She can read `data1` and `data2` objects and can write `data1` object</span>
+<span class="hljs-comment">// 设置用户权限</span>
+<span class="hljs-comment">// 他/她可以可以读取data1和data2并且可以写入data1</span>
 <span class="hljs-keyword">const</span> permission = {
     <span class="hljs-string">"read"</span>: [<span class="hljs-string">"data1"</span>, <span class="hljs-string">"data2"</span>],
     <span class="hljs-string">"write"</span>: [<span class="hljs-string">"data1"</span>]
 }
 
-<span class="hljs-comment">// Run casbin.js in manual mode, which requires you to set the permission manually.</span>
+<span class="hljs-comment">// 在manual模式使用Casbin.js需要您手动设置权限</span>
 <span class="hljs-keyword">const</span> authorizer = <span class="hljs-keyword">new</span> casbinjs.Authorizer(<span class="hljs-string">"manual"</span>);
 </code></pre>
-<p>now we got an authorizer <code>authorizer</code>. We can get permission rules from it by using the API <code>authorizer.can()</code> and <code>authorizer.cannot()</code>. The return values of these 2 APIs are JavaScript Promises (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">details here</a>), so we should use the <code>then()</code> method of the return value like this:</p>
+<p>现在我们有了一个授权者 <code>authorizer</code>。 我们可以通过使用API <code>authorizer.can()</code>和<code>authorizer.cannot()</code>获得得许可规则。 这2个API的返回值是JavaScript Promise (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">详细信息</a>) 所以我们应该使用 <code>then()</code> 返回值的方法，例如：</p>
 <pre><code class="hljs css language-javascript">result = authorizer.can(<span class="hljs-string">"write"</span>, <span class="hljs-string">"data1"</span>);
 result.then(<span class="hljs-function">(<span class="hljs-params">success, failed</span>) =&gt;</span> {
     <span class="hljs-keyword">if</span> (success) {
@@ -110,9 +110,9 @@ result.then(<span class="hljs-function">(<span class="hljs-params">success, fail
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you cannot write data1"</span>);
     }
 });
-<span class="hljs-comment">// output: you can write data1</span>
+<span class="hljs-comment">// 输出：您可以写入data1</span>
 </code></pre>
-<p>and <code>cannot()</code> is used in the same way:</p>
+<p><code>cannnot()</code> 以同样方式使用：</p>
 <pre><code class="hljs css language-javascript">result = authorizer.cannot(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data2"</span>);
 result.then(<span class="hljs-function">(<span class="hljs-params">success, failed</span>) =&gt;</span> {
     <span class="hljs-keyword">if</span> (success) {
@@ -121,9 +121,9 @@ result.then(<span class="hljs-function">(<span class="hljs-params">success, fail
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"you can read data2"</span>);
     }
 });
-<span class="hljs-comment">// output: you can read data2</span>
+<span class="hljs-comment">// 输出：您可以读取data2</span>
 </code></pre>
-<p>in the code above, variable <code>success</code> in parameters means the request get the result without throwing an error, and doesn't mean that the permission rule is <code>true</code>. <code>failed</code> is also unrelated to the permission rules. It only makes sense when something goes wrong in the process of the request.</p>
+<p>在上面的代码中，变量 <code>success</code> 意味着请求获得结果而不产生错误， 而不意味着权限规则是 <code>true</code> <code>failed</code> is also unrelated to the permission rules. It only makes sense when something goes wrong in the process of the request.</p>
 <p>You can refer to our <a href="https://github.com/casbin-js/examples">React example</a> to see a practical usage of Casbin.js</p>
 <!-- #### Permission Object
 Casbin.js will accept a JSON object to manipulate the correspoding permission of a visitor. For example:
