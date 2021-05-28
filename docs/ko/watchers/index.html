@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">감시자</h1></header><article><div><span><p>We support to use distributed messaging systems like <a href="https://github.com/coreos/etcd">etcd</a> to keep consistence between multiple Casbin enforcer instances. So our users can concurrently use multiple Casbin enforcers to handle large number of permission checking requests.</p>
 <p>Similar to policy storage adapters, we don't put watcher code in the main library. Any support for a new messaging system should be implemented as a watcher. A complete list of Casbin watchers is provided as below. Any 3rd-party contribution on a new watcher is welcomed, please inform us and I will put it in this list:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3159-tab-3160" class="nav-link active" data-group="group_3159" data-tab="tab-group-3159-content-3160">Go</div><div id="tab-group-3159-tab-3161" class="nav-link" data-group="group_3159" data-tab="tab-group-3159-content-3161">Java</div><div id="tab-group-3159-tab-3162" class="nav-link" data-group="group_3159" data-tab="tab-group-3159-content-3162">Node.js</div><div id="tab-group-3159-tab-3163" class="nav-link" data-group="group_3159" data-tab="tab-group-3159-content-3163">Python</div><div id="tab-group-3159-tab-3164" class="nav-link" data-group="group_3159" data-tab="tab-group-3159-content-3164">.NET</div><div id="tab-group-3159-tab-3165" class="nav-link" data-group="group_3159" data-tab="tab-group-3159-content-3165">Ruby</div></div><div class="tab-content"><div id="tab-group-3159-content-3160" class="tab-pane active" data-group="group_3159" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3183-tab-3184" class="nav-link active" data-group="group_3183" data-tab="tab-group-3183-content-3184">Go</div><div id="tab-group-3183-tab-3185" class="nav-link" data-group="group_3183" data-tab="tab-group-3183-content-3185">Java</div><div id="tab-group-3183-tab-3186" class="nav-link" data-group="group_3183" data-tab="tab-group-3183-content-3186">Node.js</div><div id="tab-group-3183-tab-3187" class="nav-link" data-group="group_3183" data-tab="tab-group-3183-content-3187">Python</div><div id="tab-group-3183-tab-3188" class="nav-link" data-group="group_3183" data-tab="tab-group-3183-content-3188">.NET</div><div id="tab-group-3183-tab-3189" class="nav-link" data-group="group_3183" data-tab="tab-group-3183-content-3189">Ruby</div></div><div class="tab-content"><div id="tab-group-3183-content-3184" class="tab-pane active" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -97,7 +97,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Watcher for <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3159-content-3161" class="tab-pane" data-group="group_3159" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3183-content-3185" class="tab-pane" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -105,7 +105,7 @@
 <tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Etcd Adapter</a></td><td>KV store</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td>Watcher for <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3159-content-3162" class="tab-pane" data-group="group_3159" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3183-content-3186" class="tab-pane" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -116,7 +116,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>Database</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3159-content-3163" class="tab-pane" data-group="group_3159" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3183-content-3187" class="tab-pane" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -125,7 +125,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>Database</td><td>Casbin</td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3159-content-3164" class="tab-pane" data-group="group_3159" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3183-content-3188" class="tab-pane" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -133,7 +133,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3159-content-3165" class="tab-pane" data-group="group_3159" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3183-content-3189" class="tab-pane" data-group="group_3183" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>

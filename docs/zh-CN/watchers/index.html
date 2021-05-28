@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">观察者</h1></header><article><div><span><p>我们支持使用分布式消息系统，例如 <a href="https://github.com/coreos/etcd">etcd</a> 来保持多个Casbin执行器实例之间的一致性。 因此，我们的用户可以同时使用多个Casbin 执行器来处理大量的权限检查请求。</p>
 <p>与策略存储 adapters类似，我们没有把watcher的代码放在主库中。 任何对新消息系统的支持都应该作为watcher程序来实现。 完整的Casbin watchers列表如下所示。 欢迎任何第三方对 watcher 进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3152-tab-3153" class="nav-link active" data-group="group_3152" data-tab="tab-group-3152-content-3153">Go</div><div id="tab-group-3152-tab-3154" class="nav-link" data-group="group_3152" data-tab="tab-group-3152-content-3154">Java</div><div id="tab-group-3152-tab-3155" class="nav-link" data-group="group_3152" data-tab="tab-group-3152-content-3155">Node.js</div><div id="tab-group-3152-tab-3156" class="nav-link" data-group="group_3152" data-tab="tab-group-3152-content-3156">Python</div><div id="tab-group-3152-tab-3157" class="nav-link" data-group="group_3152" data-tab="tab-group-3152-content-3157">.NET</div><div id="tab-group-3152-tab-3158" class="nav-link" data-group="group_3152" data-tab="tab-group-3152-content-3158">Ruby</div></div><div class="tab-content"><div id="tab-group-3152-content-3153" class="tab-pane active" data-group="group_3152" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3176-tab-3177" class="nav-link active" data-group="group_3176" data-tab="tab-group-3176-content-3177">Go</div><div id="tab-group-3176-tab-3178" class="nav-link" data-group="group_3176" data-tab="tab-group-3176-content-3178">Java</div><div id="tab-group-3176-tab-3179" class="nav-link" data-group="group_3176" data-tab="tab-group-3176-content-3179">Node.js</div><div id="tab-group-3176-tab-3180" class="nav-link" data-group="group_3176" data-tab="tab-group-3176-content-3180">Python</div><div id="tab-group-3176-tab-3181" class="nav-link" data-group="group_3176" data-tab="tab-group-3176-content-3181">.NET</div><div id="tab-group-3176-tab-3182" class="nav-link" data-group="group_3176" data-tab="tab-group-3176-content-3182">Ruby</div></div><div class="tab-content"><div id="tab-group-3176-content-3177" class="tab-pane active" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -97,7 +97,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Watcher for <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3152-content-3154" class="tab-pane" data-group="group_3152" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3176-content-3178" class="tab-pane" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -105,7 +105,7 @@
 <tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Etcd 适配器</a></td><td>KV store</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td><a href="https://github.com/coreos/etcd">etcd</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3152-content-3155" class="tab-pane" data-group="group_3152" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3176-content-3179" class="tab-pane" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -116,7 +116,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>数据库</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3152-content-3156" class="tab-pane" data-group="group_3152" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3176-content-3180" class="tab-pane" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -125,7 +125,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>数据库</td><td>Casbin</td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3152-content-3157" class="tab-pane" data-group="group_3152" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3176-content-3181" class="tab-pane" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -133,7 +133,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td><a href="http://redis.io/">Redis</a>的Watcher</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3152-content-3158" class="tab-pane" data-group="group_3152" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3176-content-3182" class="tab-pane" data-group="group_3176" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
