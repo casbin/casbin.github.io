@@ -81,7 +81,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">角色管理器</h1></header><article><div><span><p>角色管理器用于管理Casbin中的RBAC角色层次结构(用户角色映射)。 角色管理器可以从Casbin策略规则或外部源(如LDAP、Okta、Auth0、Azure AD等) 检索角色数据。 我们支持角色管理器的不同实现。 为了保持代码轻量级，我们没有把角色管理器代码放在主库中(默认的角色管理器除外)。 下面提供了Casbin角色管理器的完整列表。 欢迎任何第三方对角色管理器进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3151-tab-3152" class="nav-link active" data-group="group_3151" data-tab="tab-group-3151-content-3152">Go</div><div id="tab-group-3151-tab-3153" class="nav-link" data-group="group_3151" data-tab="tab-group-3151-content-3153">Java</div><div id="tab-group-3151-tab-3154" class="nav-link" data-group="group_3151" data-tab="tab-group-3151-content-3154">Node.js</div><div id="tab-group-3151-tab-3155" class="nav-link" data-group="group_3151" data-tab="tab-group-3151-content-3155">PHP</div><div id="tab-group-3151-tab-3156" class="nav-link" data-group="group_3151" data-tab="tab-group-3151-content-3156">Python</div></div><div class="tab-content"><div id="tab-group-3151-content-3152" class="tab-pane active" data-group="group_3151" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3157-tab-3158" class="nav-link active" data-group="group_3157" data-tab="tab-group-3157-content-3158">Go</div><div id="tab-group-3157-tab-3159" class="nav-link" data-group="group_3157" data-tab="tab-group-3157-content-3159">Java</div><div id="tab-group-3157-tab-3160" class="nav-link" data-group="group_3157" data-tab="tab-group-3157-content-3160">Node.js</div><div id="tab-group-3157-tab-3161" class="nav-link" data-group="group_3157" data-tab="tab-group-3157-content-3161">PHP</div><div id="tab-group-3157-tab-3162" class="nav-link" data-group="group_3157" data-tab="tab-group-3157-content-3162">Python</div></div><div class="tab-content"><div id="tab-group-3157-content-3158" class="tab-pane active" data-group="group_3157" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Role manager</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -93,7 +93,7 @@
 </tbody>
 </table>
 <p>For developers: all role managers must implement the <a href="https://github.com/casbin/casbin/blob/master/rbac/role_manager.go">RoleManager</a> interface. <a href="https://github.com/casbin/session-role-manager">Session Role Manager</a> can be used as a reference implementation.</p>
-</span></div></div><div id="tab-group-3151-content-3153" class="tab-pane" data-group="group_3151" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3157-content-3159" class="tab-pane" data-group="group_3157" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Role manager</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -102,7 +102,7 @@
 </tbody>
 </table>
 <p>For developers: all role managers must implement the <a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/RoleManager.java">RoleManager</a> interface. <a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/DefaultRoleManager.java">Default Role Manager</a> can be used as a reference implementation.</p>
-</span></div></div><div id="tab-group-3151-content-3154" class="tab-pane" data-group="group_3151" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3157-content-3160" class="tab-pane" data-group="group_3157" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Role manager</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -112,7 +112,7 @@
 </tbody>
 </table>
 <p>For developers: all role managers must implement the <a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/roleManager.ts">RoleManager</a> interface. <a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/defaultRoleManager.ts">Default Role Manager</a> can be used as a reference implementation.</p>
-</span></div></div><div id="tab-group-3151-content-3155" class="tab-pane" data-group="group_3151" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3157-content-3161" class="tab-pane" data-group="group_3157" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Role manager</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -121,7 +121,7 @@
 </tbody>
 </table>
 <p>For developers: all role managers must implement the <a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/RoleManager.php">RoleManager</a> interface. <a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/DefaultRoleManager/RoleManager.php">Default Role Manager</a> can be used as a reference implementation.</p>
-</span></div></div><div id="tab-group-3151-content-3156" class="tab-pane" data-group="group_3151" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3157-content-3162" class="tab-pane" data-group="group_3157" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Role manager</th><th>Author</th><th>Description</th></tr>
 </thead>
