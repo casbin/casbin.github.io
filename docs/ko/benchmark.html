@@ -80,7 +80,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">벤치마크</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-187-tab-188" class="nav-link active" data-group="group_187" data-tab="tab-group-187-content-188">Go</div><div id="tab-group-187-tab-189" class="nav-link" data-group="group_187" data-tab="tab-group-187-content-189">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-187-content-188" class="tab-pane active" data-group="group_187" tabindex="-1"><div><span><p>The overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. The testbed is:</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">벤치마크</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-205-tab-206" class="nav-link active" data-group="group_205" data-tab="tab-group-205-content-206">Go</div><div id="tab-group-205-tab-207" class="nav-link" data-group="group_205" data-tab="tab-group-205-content-207">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-205-content-206" class="tab-pane active" data-group="group_205" tabindex="-1"><div><span><p>The overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. The testbed is:</p>
 <pre><code class="hljs">Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 2601 Mhz, 4 Core(s), 8 Logical Processor(s)<br /></code></pre>
 <p>The benchmarking result of <code>go test -bench=. -benchmem</code> is as follows (op = an <code>Enforce()</code> call, ms = millisecond, KB = kilo bytes):</p>
 <table>
@@ -101,7 +101,7 @@
 <tr><td>Priority</td><td>9 rules (2 users, 2 roles)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-187-content-189" class="tab-pane" data-group="group_187" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
+</span></div></div><div id="tab-group-205-content-207" class="tab-pane" data-group="group_205" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 Cores, 12 Threads<br /></code></pre>
 <p>The benchmarking result of <code>luajit bench.lua</code> is as follows (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
