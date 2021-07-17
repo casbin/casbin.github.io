@@ -80,7 +80,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ru" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-208-tab-209" class="nav-link active" data-group="group_208" data-tab="tab-group-208-content-209">Go</div><div id="tab-group-208-tab-210" class="nav-link" data-group="group_208" data-tab="tab-group-208-content-210">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-208-content-209" class="tab-pane active" data-group="group_208" tabindex="-1"><div><span><p>The overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. The testbed is:</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ru" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-211-tab-212" class="nav-link active" data-group="group_211" data-tab="tab-group-211-content-212">Go</div><div id="tab-group-211-tab-213" class="nav-link" data-group="group_211" data-tab="tab-group-211-content-213">CPP</div><div id="tab-group-211-tab-214" class="nav-link" data-group="group_211" data-tab="tab-group-211-content-214">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-211-content-212" class="tab-pane active" data-group="group_211" tabindex="-1"><div><span><p>The overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. The testbed is:</p>
 <pre><code class="hljs">Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 2601 Mhz, 4 Core(s), 8 Logical Processor(s)<br /></code></pre>
 <p>The benchmarking result of <code>go test -bench=. -benchmem</code> is as follows (op = an <code>Enforce()</code> call, ms = millisecond, KB = kilo bytes):</p>
 <table>
@@ -101,7 +101,28 @@
 <tr><td>Priority</td><td>9 rules (2 users, 2 roles)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-208-content-210" class="tab-pane" data-group="group_208" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
+</span></div></div><div id="tab-group-211-content-213" class="tab-pane" data-group="group_211" tabindex="-1"><div><span><p>The overhead of policy enforcement of <a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> is benchmarked in <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> directory with the help of <a href="https://github.com/google/benchmark">Google's benchmarking tool</a>. The testbed for these benchmarks is:</p>
+<pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 GHz, 8 cores, 16 threads<br /></code></pre>
+<p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ns = nanoseconds):</p>
+<table>
+<thead>
+<tr><th>Test case</th><th>Rule size</th><th>Time overhead (ns/op)</th></tr>
+</thead>
+<tbody>
+<tr><td>ACL</td><td>2 rules (2 users)</td><td>95.6</td></tr>
+<tr><td>RBAC</td><td>5 rules (2 users, 1 role)</td><td>95.6</td></tr>
+<tr><td>RBAC (small)</td><td>1100 rules (1000 users, 100 roles)</td><td>110</td></tr>
+<tr><td>RBAC (medium)</td><td>11000 rules (10000 users, 1000 roles)</td><td>119</td></tr>
+<tr><td>RBAC (large)</td><td>110000 rules (100000 users, 10000 roles)</td><td>90.3217</td></tr>
+<tr><td>RBAC with resource roles</td><td>6 rules (2 users, 2 roles)</td><td>96.0</td></tr>
+<tr><td>RBAC with domains/tenants</td><td>6 rules (2 users, 1 role, 2 domains)</td><td>134</td></tr>
+<tr><td>ABAC</td><td>0 rule (0 user)</td><td>NA</td></tr>
+<tr><td>RESTful</td><td>5 rules (3 users)</td><td>NA</td></tr>
+<tr><td>Deny-override</td><td>6 rules (2 users, 1 role)</td><td>96.2</td></tr>
+<tr><td>Priority</td><td>9 rules (2 users, 2 roles)</td><td>96.1</td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-211-content-214" class="tab-pane" data-group="group_211" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement is benchmarked in <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 Cores, 12 Threads<br /></code></pre>
 <p>The benchmarking result of <code>luajit bench.lua</code> is as follows (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
