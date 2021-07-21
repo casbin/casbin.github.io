@@ -110,7 +110,7 @@ g, amber, <span class="hljs-keyword">admin</span>
 g, abc, <span class="hljs-keyword">admin</span>
 </code></pre>
 <p>阅读完配置文件后，请阅读以下代码：</p>
-<pre><code class="hljs css language-go"><span class="hljs-comment">// load information from files</span>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// 从文件中加载信息</span>
 enforcer, err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
 <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
     log.Fatalf(<span class="hljs-string">"error, detail: %s"</span>, err)
@@ -128,11 +128,11 @@ fmt.Println(ok, reason) <span class="hljs-comment">// true [admin data1 read]</s
 <p>Casbin准备了很多这样的API。 这些API在基本的功能上增加了一些额外的功能。 They are:</p>
 <ul>
 <li><p><code>ok, err := enforcer.EnforceWithMatcher(matcher, request)</code></p>
-<p>With a matcher.</p></li>
+<p>与一个匹配器。</p></li>
 <li><p><code>ok, reason, err := enforcer.EnforceExWithMatcher(matcher, request)</code></p>
 <p><code>EnforceWithMatcher()</code>和<code>EnforceEx()</code>的组合。</p></li>
 <li><p><code>boolArray, err := enforcer.BatchEnforce(requests)</code></p>
-<p>Do a list job, returns an array.</p></li>
+<p>对列表执行，然后返回一个数组</p></li>
 </ul>
 <p>这是一个简单的Casbin使用案例。 你可以使用Casbin通过这些API来启动一个授权服务器。 我们将在接下来的段落中向你展示一些其他类型的API。</p>
 <h2><a class="anchor" aria-hidden="true" id="管理-api"></a><a href="#管理-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>管理 API</h2>
@@ -146,8 +146,8 @@ fmt.Println(ok, reason) <span class="hljs-comment">// true [admin data1 read]</s
 allSubjects := enforcer.GetAllSubjects()
 fmt.Println(allSubjects)
 </code></pre>
-<p>就行上一个例子一样，前四行代码从本地文档中载入了一些必要的信息。 We won't talk about that here anymore.</p>
-<p>Code <code>allSubjects := enforcer.GetAllSubjects()</code> got all the subjects in the policy file and returned them as an array. Then we printed that array.</p>
+<p>就行上一个例子一样，前四行代码从本地文档中载入了一些必要的信息。 我们将不再在这里谈这一点。</p>
+<p>代码<code>allSubjects := enforcer.GetAllSubjects()</code> 把策略文档里的所有 subjects 提取出来，并且将它们作为一个数组返回。 然后我们打印这个数组</p>
 <p>通常情况下，这段代码的输出会是这样：</p>
 <pre><code class="hljs">[admin alice bob]
 </code></pre>
@@ -155,8 +155,8 @@ fmt.Println(allSubjects)
 <p>同样地，我们为 <code>Objects, Actions, Roles</code> 准备了 <code>GetAll</code> 函数 你唯一需要做的是，如果你想访问这些函数，将函数名称中的<code>Subject</code>一词改为你想要的。</p>
 <p>同时，我们还有更多用于策略获取的API。 它们的调用方法和返回的值，都和上面提到的非常相似。</p>
 <ul>
-<li><code>policy = e.GetPolicy()</code> gets all the authorization rules in the policy.</li>
-<li><code>filteredPolicy := e.GetFilteredPolicy(0, &quot;alice&quot;)</code> gets all the authorization rules in the policy, field filters can be specified.</li>
+<li><code>policy = e.GetPolicy()</code>用于获取策略中的授权规则。</li>
+<li><code>filteredPolicy := e.GetFilteredPolicy(0, &quot;alice&quot;)</code>用于获取策略中的授权的规则，可以自定义“域过滤器”(field filters)。</li>
 <li><code>namedPolicy := e.GetNamedPolicy(&quot;p&quot;)</code> gets all the authorization rules in the named policy.</li>
 <li><code>filteredNamedPolicy = e.GetFilteredNamedPolicy(&quot;p&quot;, 0, &quot;bob&quot;)</code> gets all the authorization rules in the named policy, field filters can be specified.</li>
 <li><code>groupingPolicy := e.GetGroupingPolicy()</code> gets all the role inheritance rules in the policy.</li>
@@ -164,43 +164,43 @@ fmt.Println(allSubjects)
 <li><code>namedGroupingPolicy := e.GetNamedGroupingPolicy(&quot;g&quot;)</code> gets all the role inheritance rules in the policy.</li>
 <li><code>namedGroupingPolicy := e.GetFilteredNamedGroupingPolicy(&quot;g&quot;, 0, &quot;alice&quot;)</code> gets all the role inheritance rules in the policy.</li>
 </ul>
-<h3><a class="anchor" aria-hidden="true" id="add-delete-update-api"></a><a href="#add-delete-update-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add, Delete, Update API</h3>
-<p>Casbin prepared a lot of APIs for policies. These APIs allow you to add, delete or edit policies dynamically at runtime.</p>
+<h3><a class="anchor" aria-hidden="true" id="添加，删除，更新-api"></a><a href="#添加，删除，更新-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>添加，删除，更新 API</h3>
+<p>Casbin为策略准备了很多API。 这些API允许您在运行时动态地添加、删除或编辑策略。</p>
 <p>This code shows you how to add, remove and update your policies, and told you how to confirm that a policy exists:</p>
-<pre><code class="hljs css language-go"><span class="hljs-comment">// load information from files</span>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// 从文件中加载信息</span>
 enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
 <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
    fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
 }
 
-<span class="hljs-comment">// add a policy, then use HasPolicy() to confirm that</span>
+<span class="hljs-comment">// 添加一条策略，然后使用 HasPolicy() 来确认</span>
 enforcer.AddPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
 hasPolicy := enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
-fmt.Println(hasPolicy) <span class="hljs-comment">// true, we added that policy successfully</span>
+fmt.Println(hasPolicy) <span class="hljs-comment">// 若显示为 true，也就是我们成功添加了策略</span>
 
-<span class="hljs-comment">// remove a policy, then use HasPolicy() to confirm that</span>
+<span class="hljs-comment">// 移除一条策略，然后使用 HasPolicy() 来确认</span>
 enforcer.RemovePolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
 hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
-fmt.Println(hasPolicy) <span class="hljs-comment">// false, we deleted that policy successfully</span>
+fmt.Println(hasPolicy) <span class="hljs-comment">// 若显示为 false，也就是我们成功删除了策略</span>
 
-<span class="hljs-comment">// update a policy, then use HasPolicy() to confirm that</span>
+<span class="hljs-comment">// 更新一条策略，然后使用 HasPolicy() 来确认</span>
 enforcer.UpdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>})
 hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
-fmt.Println(hasPolicy) <span class="hljs-comment">// false, the origin policy has lapsed</span>
+fmt.Println(hasPolicy) <span class="hljs-comment">// 若显示为 false 原来的策略已失效</span>
 hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>)
-fmt.Println(hasPolicy) <span class="hljs-comment">// true, the new policy is in use</span>
+fmt.Println(hasPolicy) <span class="hljs-comment">// 若显示为true，则策略被成功更新</span>
 </code></pre>
-<p>Using these four kinds of APIs can edit your policies. Like these, we prepared same kinds of APIs to <code>FilteredPolicy, NamedPolicy, FilteredNamedPolicy, GroupingPolicy, NamedGroupingPolicy, FilteredGroupingPolicy, FilteredNamedGroupingPolicy</code>. To use them, you only need to replace word <code>Policy</code> in the function name to the words above.</p>
-<p>Besides, if you change parameters to arrays, you can batch edit you policies.</p>
-<p>For example, to functions like this:</p>
+<p>使用这四种API可以编辑策略。 像这些一样，我们为 <code>FilteredPolicy, NamedPolicy, FilteredNamedPolicy, GroupingPolicy, NamedGroupingPolicy, FilteredGroupingPolicy, FilteredNamedGroupingPolicy</code>准备了同样种类的API。 要使用它们，您只需要把函数名中的单词 <code>Policy</code>替换为上面提到的单词。</p>
+<p>此外，如果你将参数更改为数组，你可以批量编辑你的策略。</p>
+<p>例如，对于这样的函数：</p>
 <pre><code class="hljs css language-go">enforcer.UpdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>})
 </code></pre>
-<p>if we change <code>Policy</code> to <code>Policies</code>, and edit the parameter to:</p>
+<p>如果我们把<code>Policy</code> 改为<code>Policies</code>，并编辑参数为：</p>
 <pre><code class="hljs css language-go">enforcer.UpdatePolicies([][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}}, [][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}})
 </code></pre>
-<p>then we can batch edit these policies.</p>
+<p>然后我们可以批量编辑这些策略。</p>
 <p>同样的操作对<code>GroupingPolicy、NamedGroupingPolicy</code>也有用。</p>
-<h2><a class="anchor" aria-hidden="true" id="rbac-api"></a><a href="#rbac-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC API</h2>
+<h2><a class="anchor" aria-hidden="true" id="基于角色的访问控制接口"></a><a href="#基于角色的访问控制接口" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>基于角色的访问控制接口</h2>
 <p>Casbin为你提供了来API来修改RBAC模型和策略。 如果你熟悉RBAC，你可以很容易地使用这些API：</p>
 <p>这里我们只告诉你如何使用Casbin的RBAC APIs，而不会谈论RBAC本身。 您可以从<a href="https://casbin.org/docs/en/rbac">这里</a>获取详情。</p>
 <p>我们使用这段代码来加载模型和政策，就像以前一样。</p>
@@ -209,28 +209,28 @@ fmt.Println(hasPolicy) <span class="hljs-comment">// true, the new policy is in 
     fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
 }
 </code></pre>
-<p>then, use a instance of Enforcer <code>enforcer</code> to access these APIs.</p>
+<p>然后，使用Enforcer <code>enforcer</code> 来访问这些API。</p>
 <pre><code class="hljs css language-go">roles, err := enforcer.GetRolesForUser(<span class="hljs-string">"amber"</span>)
 fmt.Println(roles) <span class="hljs-comment">// [admin]</span>
 users, err := enforcer.GetUsersForRole(<span class="hljs-string">"admin"</span>)
 fmt.Println(users) <span class="hljs-comment">// [amber abc]</span>
 </code></pre>
-<p><code>GetRolesForUser()</code> returned an array that contained all roles contained amber. In this example, amber has only one role admin, so array <code>roles</code> is <code>[admin]</code>. And similarly, you can use <code>GetUsersForRole()</code> to get users belongs to the role. The return value of this function is also an array.</p>
+<p><code>GetRolesForUser()</code>返回一个数组，其中包含所有的角色。 在这个例子中，amber只有一个管理员角色，所以数组<code>roles</code>是<code>[admin]</code>。 并且相似地，你可以用<code>GetUsersForRole()</code>，来获得所有归属于这个角色的用户。 此函数的返回值也是一个数组。</p>
 <pre><code class="hljs css language-go">enforcer.HasRoleForUser(<span class="hljs-string">"amber"</span>, <span class="hljs-string">"admin"</span>) <span class="hljs-comment">// true</span>
 </code></pre>
-<p>You can use <code>HasRoleForUser()</code> to confirm whether the user belongs to the role. In this example, amber is a member of admin, so the return value of the function is <code>true</code>.</p>
+<p>您可以使用<code>HasRoleForUser()</code>来确认用户是否属于该角色。 在这个例子中，amber是管理员的成员，所以这个函数的返回值是<code>true</code>.</p>
 <pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// true</span>
 enforcer.DeletePermission(<span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)
 fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// false</span>
 </code></pre>
-<p>You can use <code>DeletePermission()</code> to delete a permission.</p>
+<p>您可以使用 <code>DeletePermission()</code> 来删除权限。</p>
 <pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// true</span>
 enforcer.DeletePermissionForUser(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
 fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// false</span>
 </code></pre>
-<p>And use <code>DeletePermissionForUser()</code> to delete a permission for a user.</p>
-<p>Casbin have a lot of APIs like this. Their call methods and return values have the same style as the above APIs. You can find these APIs in <a href="https://casbin.org/docs/en/rbac-api">next documents</a>.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-CN/cloud-native"><span class="arrow-prev">← </span><span>Cloud Native</span></a><a class="docs-next button" href="/docs/zh-CN/management-api"><span>管理 API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#enforce-api">Enforce API</a></li><li><a href="#enforceex-api">EnforceEx API</a></li><li><a href="#管理-api">管理 API</a><ul class="toc-headings"><li><a href="#get-api">Get API</a></li><li><a href="#add-delete-update-api">Add, Delete, Update API</a></li></ul></li><li><a href="#rbac-api">RBAC API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-CN/get-started">Getting Started</a><a href="/docs/zh-CN/management-api">Management API</a><a href="/docs/zh-CN/rbac-api">RBAC API</a><a href="/docs/zh-CN/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/zh-CN/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2021 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+<p>然后使用 <code>DeletePermissionForUser()</code> 来删除用户的权限。</p>
+<p>Casbin有很多这样的API。 它们的调用方式和返回值，都与上文提到的API有同样的样式。 您可以在下一个文档里 <a href="https://casbin.org/docs/en/rbac-api">下一个文档</a> 找到这些API</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-CN/cloud-native"><span class="arrow-prev">← </span><span>Cloud Native</span></a><a class="docs-next button" href="/docs/zh-CN/management-api"><span>管理 API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#enforce-api">Enforce API</a></li><li><a href="#enforceex-api">EnforceEx API</a></li><li><a href="#管理-api">管理 API</a><ul class="toc-headings"><li><a href="#get-api">Get API</a></li><li><a href="#添加，删除，更新-api">添加，删除，更新 API</a></li></ul></li><li><a href="#基于角色的访问控制接口">基于角色的访问控制接口</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-CN/get-started">Getting Started</a><a href="/docs/zh-CN/management-api">Management API</a><a href="/docs/zh-CN/rbac-api">RBAC API</a><a href="/docs/zh-CN/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/zh-CN/users">Who&#x27;s using Casbin?</a><a href="https://forum.casbin.com/" target="_blank">Forum</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://gitter.im/casbin/Lobby" target="_blank">Project Chat</a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2021 Casbin contributors.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
                 </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
