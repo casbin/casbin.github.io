@@ -80,7 +80,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">基准测试</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-203-tab-204" class="nav-link active" data-group="group_203" data-tab="tab-group-203-content-204">Go</div><div id="tab-group-203-tab-205" class="nav-link" data-group="group_203" data-tab="tab-group-203-content-205">CPP</div><div id="tab-group-203-tab-206" class="nav-link" data-group="group_203" data-tab="tab-group-203-content-206">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-203-content-204" class="tab-pane active" data-group="group_203" tabindex="-1"><div><span><p>策略执行的负载在<a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>中进行基准测试。 测试是:</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">基准测试</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-209-tab-210" class="nav-link active" data-group="group_209" data-tab="tab-group-209-content-210">Go</div><div id="tab-group-209-tab-211" class="nav-link" data-group="group_209" data-tab="tab-group-209-content-211">CPP</div><div id="tab-group-209-tab-212" class="nav-link" data-group="group_209" data-tab="tab-group-209-content-212">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-209-content-210" class="tab-pane active" data-group="group_209" tabindex="-1"><div><span><p>策略执行的负载在<a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>中进行基准测试。 测试是:</p>
 <pre><code class="hljs">英特尔 酷睿 i7-6700HQ CPU @ 2.60GHz, 2601 Mhz, 4 核, 8 处理器<br /></code></pre>
 <p><code>go test -bench= -benchmem</code> 的测试结果如下 (op = 一次 <code>Enforce()</code> 调用, ms = 毫秒, KB = 千字节)：</p>
 <table>
@@ -101,7 +101,7 @@
 <tr><td>优先级</td><td>9条规则 (2用户，2个角色)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-203-content-205" class="tab-pane" data-group="group_203" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> 的策略执行测试是在 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> 中, 使用 <a href="https://github.com/google/benchmark">Google's benchmarking tool</a> 完成的 这些基准的测试结果是：</p>
+</span></div></div><div id="tab-group-209-content-211" class="tab-pane" data-group="group_209" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> 的策略执行测试是在 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> 中, 使用 <a href="https://github.com/google/benchmark">Google's benchmarking tool</a> 完成的 这些基准的测试结果是：</p>
 <pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 GHz, 8 核, 16 threads<br /></code></pre>
 <p>这里是在 <code>Release</code> 配置中执行 <code>casbin_facility</code> 目标的基准结果（op = 一个 <code>enforce()</code> 调用, ns =纳秒）：</p>
 <table>
@@ -122,7 +122,7 @@
 <tr><td>优先级</td><td>9条规则 (2用户，2个角色)</td><td>96.1</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-203-content-206" class="tab-pane" data-group="group_203" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin的</a> 策略执行的测试是在 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">ben.lua</a> 中进行的。 测试台是 Ubuntu VM ，CPU型号为</p>
+</span></div></div><div id="tab-group-209-content-212" class="tab-pane" data-group="group_209" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin的</a> 策略执行的测试是在 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">ben.lua</a> 中进行的。 测试台是 Ubuntu VM ，CPU型号为</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 核, 12 Threads<br /></code></pre>
 <p><code>luajit bey.lua</code> 的基准结果如下(op = 一个 <code>enforce()</code> 调用, ms = 毫秒)：</p>
 <table>
