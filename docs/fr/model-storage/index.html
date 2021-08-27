@@ -155,7 +155,7 @@ m, _ := model.NewModelFromString(text)
 
 <span class="hljs-comment">// Load the policy rules from the .CSV file adapter.</span>
 <span class="hljs-comment">// Replace it with your adapter to avoid files.</span>
-a := model.NewModelFromString(<span class="hljs-string">"examples/rbac_policy.csv"</span>)
+a := fileadapter.NewAdapter(<span class="hljs-string">"examples/rbac_policy.csv"</span>)
 
 <span class="hljs-comment">// Create the enforcer.</span>
 e := casbin.NewEnforcer(m, a)
