@@ -142,13 +142,11 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>Casbin会自动将<code>/book/1</code>和<code>/book/2</code>匹配为模式<code>/book/:id</code>。 您需要做的仅仅是向enforcer注册该方法，例如像这样：</p>
-<pre><code class="hljs css language-go">r := e.GetRoleManager()
-r.(*defaultrolemanager.RoleManager).AddMatchingFunc(<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
+<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
 </code></pre>
 <p>When Using a pattern matching function in domains/tenants, You need to register the function to enforcer and model. <strong>You also need to rebuild by calling <code>e.BuildRoleLinks()</code></strong></p>
 <p>register <code>keyMatch2</code> to enforcer and build role links again:</p>
-<pre><code class="hljs css language-go">r := e.GetRoleManager()
-r.(*defaultrolemanager.RoleManager).AddDomainMatchingFunc(<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
+<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
 e.BuildRoleLinks()
 </code></pre>
 <p>将 <code>keyMatch2</code> 向model进行注册：</p>
