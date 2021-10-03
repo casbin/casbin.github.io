@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ko" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">감시자</h1></header><article><div><span><p>We support to use distributed messaging systems like <a href="https://github.com/coreos/etcd">etcd</a> to keep consistence between multiple Casbin enforcer instances. So our users can concurrently use multiple Casbin enforcers to handle large number of permission checking requests.</p>
 <p>Similar to policy storage adapters, we don't put watcher code in the main library. Any support for a new messaging system should be implemented as a watcher. A complete list of Casbin watchers is provided as below. Any 3rd-party contribution on a new watcher is welcomed, please inform us and I will put it in this list:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3339-tab-3340" class="nav-link active" data-group="group_3339" data-tab="tab-group-3339-content-3340">Go</div><div id="tab-group-3339-tab-3341" class="nav-link" data-group="group_3339" data-tab="tab-group-3339-content-3341">Java</div><div id="tab-group-3339-tab-3342" class="nav-link" data-group="group_3339" data-tab="tab-group-3339-content-3342">Node.js</div><div id="tab-group-3339-tab-3343" class="nav-link" data-group="group_3339" data-tab="tab-group-3339-content-3343">Python</div><div id="tab-group-3339-tab-3344" class="nav-link" data-group="group_3339" data-tab="tab-group-3339-content-3344">.NET</div><div id="tab-group-3339-tab-3345" class="nav-link" data-group="group_3339" data-tab="tab-group-3339-content-3345">Ruby</div></div><div class="tab-content"><div id="tab-group-3339-content-3340" class="tab-pane active" data-group="group_3339" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3351-tab-3352" class="nav-link active" data-group="group_3351" data-tab="tab-group-3351-content-3352">Go</div><div id="tab-group-3351-tab-3353" class="nav-link" data-group="group_3351" data-tab="tab-group-3351-content-3353">Java</div><div id="tab-group-3351-tab-3354" class="nav-link" data-group="group_3351" data-tab="tab-group-3351-content-3354">Node.js</div><div id="tab-group-3351-tab-3355" class="nav-link" data-group="group_3351" data-tab="tab-group-3351-content-3355">Python</div><div id="tab-group-3351-tab-3356" class="nav-link" data-group="group_3351" data-tab="tab-group-3351-content-3356">.NET</div><div id="tab-group-3351-tab-3357" class="nav-link" data-group="group_3351" data-tab="tab-group-3351-content-3357">Ruby</div></div><div class="tab-content"><div id="tab-group-3351-content-3352" class="tab-pane active" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -98,7 +98,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Watcher for <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3339-content-3341" class="tab-pane" data-group="group_3339" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3351-content-3353" class="tab-pane" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -107,7 +107,7 @@
 <tr><td><a href="https://github.com/jcasbin/redis-watcher">Redis Watcher</a></td><td>KV store</td><td>Casbin</td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3339-content-3342" class="tab-pane" data-group="group_3339" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3351-content-3354" class="tab-pane" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -118,7 +118,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>Database</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3339-content-3343" class="tab-pane" data-group="group_3339" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3351-content-3355" class="tab-pane" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -127,7 +127,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>Database</td><td>Casbin</td><td>Watcher for <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3339-content-3344" class="tab-pane" data-group="group_3339" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3351-content-3356" class="tab-pane" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -135,7 +135,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3339-content-3345" class="tab-pane" data-group="group_3339" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3351-content-3357" class="tab-pane" data-group="group_3351" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
