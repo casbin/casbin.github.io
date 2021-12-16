@@ -91,7 +91,7 @@
 <blockquote>
 <p>Also see: <a href="https://github.com/casbin/casbin/issues/550">casbin#550</a></p>
 </blockquote>
-<p>The first element in policy must be priority, and the smaller priority value will has higher priority. If there's non-numerical character in priority, it will be in the last, rather than throw an error. Now, explicit priority only support <code>AddPolicy</code> &amp; <code>AddPolicies</code>, if <code>UpdatePolicy</code> been called, you shouldn't change the priority attribute.</p>
+<p>The priority token name in policy definition must be &quot;priority&quot;, and the smaller priority value will has higher priority. If there's non-numerical character in priority, it will be in the last, rather than throw an error. Now, explicit priority only support <code>AddPolicy</code> &amp; <code>AddPolicies</code>, if <code>UpdatePolicy</code> been called, you shouldn't change the priority attribute.</p>
 <p>model.conf:</p>
 <pre><code class="hljs css language-ini"><span class="hljs-section">[request_definition]</span>
 <span class="hljs-attr">r</span> = sub, obj, act

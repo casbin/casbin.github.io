@@ -91,7 +91,7 @@
 <blockquote>
 <p>另见: <a href="https://github.com/casbin/casbin/issues/550">casbin#550</a></p>
 </blockquote>
-<p>策略的第一个要素一定是优先级，并且优先级值较小的将具有较高的优先地位。 如果优先级有非数字字符，它将是被排在最后，而不是导致报错。 现在，明确的优先级仅支持 <code>添加策略</code> &amp; <code>添加策略</code>，如果 <code>升级策略</code> 被调用，那么您不应该改变优先级属性。</p>
+<p>The priority token name in policy definition must be &quot;priority&quot;, and the smaller priority value will has higher priority. 如果优先级有非数字字符，它将是被排在最后，而不是导致报错。 现在，明确的优先级仅支持 <code>添加策略</code> &amp; <code>添加策略</code>，如果 <code>升级策略</code> 被调用，那么您不应该改变优先级属性。</p>
 <p>model.conf：</p>
 <pre><code class="hljs css language-ini"><span class="hljs-section">[request_definition]</span>
 <span class="hljs-attr">r</span> = sub, obj, act
