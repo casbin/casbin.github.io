@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Observateurs</h1></header><article><div><span><p>Nous prenons en charge l'utilisation de systèmes de messagerie distribués comme <a href="https://github.com/coreos/etcd">etcd</a> pour garder la cohérence entre plusieurs instances de contrôle de Casbin. Ainsi, nos utilisateurs peuvent utiliser simultanément plusieurs exécuteurs Casbin pour gérer un grand nombre de demandes de vérification des permissions.</p>
 <p>Similaire aux adaptateurs de stockage stratégiques, nous ne plaçons pas de code de surveillance dans la bibliothèque principale. Tout support pour un nouveau système de messagerie devrait être mis en œuvre en tant que observateur. Une liste complète des observateurs de Casbin est fournie ci-dessous. Toute contribution de tierce partie sur un nouvel observateur est la bienvenue, s'il vous plaît nous en informer et je vais le mettre dans cette liste:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3859-tab-3860" class="nav-link active" data-group="group_3859" data-tab="tab-group-3859-content-3860">Go</div><div id="tab-group-3859-tab-3861" class="nav-link" data-group="group_3859" data-tab="tab-group-3859-content-3861">Java</div><div id="tab-group-3859-tab-3862" class="nav-link" data-group="group_3859" data-tab="tab-group-3859-content-3862">Node.js</div><div id="tab-group-3859-tab-3863" class="nav-link" data-group="group_3859" data-tab="tab-group-3859-content-3863">Python</div><div id="tab-group-3859-tab-3864" class="nav-link" data-group="group_3859" data-tab="tab-group-3859-content-3864">.NET</div><div id="tab-group-3859-tab-3865" class="nav-link" data-group="group_3859" data-tab="tab-group-3859-content-3865">Ruby</div></div><div class="tab-content"><div id="tab-group-3859-content-3860" class="tab-pane active" data-group="group_3859" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3871-tab-3872" class="nav-link active" data-group="group_3871" data-tab="tab-group-3871-content-3872">Go</div><div id="tab-group-3871-tab-3873" class="nav-link" data-group="group_3871" data-tab="tab-group-3871-content-3873">Java</div><div id="tab-group-3871-tab-3874" class="nav-link" data-group="group_3871" data-tab="tab-group-3871-content-3874">Node.js</div><div id="tab-group-3871-tab-3875" class="nav-link" data-group="group_3871" data-tab="tab-group-3871-content-3875">Python</div><div id="tab-group-3871-tab-3876" class="nav-link" data-group="group_3871" data-tab="tab-group-3871-content-3876">.NET</div><div id="tab-group-3871-tab-3877" class="nav-link" data-group="group_3871" data-tab="tab-group-3871-content-3877">Ruby</div></div><div class="tab-content"><div id="tab-group-3871-content-3872" class="tab-pane active" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -98,7 +98,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">Observateur de RocketMQ</a></td><td>Système de messagerie</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Observateur pour <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3859-content-3861" class="tab-pane" data-group="group_3859" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3871-content-3873" class="tab-pane" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -108,7 +108,7 @@
 <tr><td><a href="https://github.com/jcasbin/kafka-watcher">Guet de Kafka</a></td><td>Système de messagerie</td><td>Casbin</td><td>Observateur pour <a href="https://kafka.apache.org/">Apache Kafka</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3859-content-3862" class="tab-pane" data-group="group_3859" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3871-content-3874" class="tab-pane" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -119,7 +119,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Observateur de Postgres</a></td><td>Base de données</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Observateur pour <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3859-content-3863" class="tab-pane" data-group="group_3859" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3871-content-3875" class="tab-pane" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -128,7 +128,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">Observateur PostgreSQL</a></td><td>Base de données</td><td>Casbin</td><td>Observateur pour <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3859-content-3864" class="tab-pane" data-group="group_3859" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3871-content-3876" class="tab-pane" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -136,7 +136,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Guetteur Redis</a></td><td>Magasin KV</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Observateur pour <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-3859-content-3865" class="tab-pane" data-group="group_3859" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-3871-content-3877" class="tab-pane" data-group="group_3871" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Observateur</th><th>Type de texte</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
