@@ -82,7 +82,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/casbin/casbin-website/edit/master/docs/Watchers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Watchers</h1></header><article><div><span><p>We support to use distributed messaging systems like <a href="https://github.com/coreos/etcd">etcd</a> to keep consistence between multiple Casbin enforcer instances. So our users can concurrently use multiple Casbin enforcers to handle large number of permission checking requests.</p>
 <p>Similar to policy storage adapters, we don't put watcher code in the main library. Any support for a new messaging system should be implemented as a watcher. A complete list of Casbin watchers is provided as below. Any 3rd-party contribution on a new watcher is welcomed, please inform us and I will put it in this list:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-3843-tab-3844" class="nav-link active" data-group="group_3843" data-tab="tab-group-3843-content-3844">Go</div><div id="tab-group-3843-tab-3845" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3845">Java</div><div id="tab-group-3843-tab-3846" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3846">Node.js</div><div id="tab-group-3843-tab-3847" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3847">Python</div><div id="tab-group-3843-tab-3848" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3848">.NET</div><div id="tab-group-3843-tab-3849" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3849">Ruby</div></div><div class="tab-content"><div id="tab-group-3843-content-3844" class="tab-pane active" data-group="group_3843" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-3843-tab-3844" class="nav-link active" data-group="group_3843" data-tab="tab-group-3843-content-3844">Go</div><div id="tab-group-3843-tab-3845" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3845">Java</div><div id="tab-group-3843-tab-3846" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3846">Node.js</div><div id="tab-group-3843-tab-3847" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3847">Python</div><div id="tab-group-3843-tab-3848" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3848">.NET</div><div id="tab-group-3843-tab-3849" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3849">Ruby</div><div id="tab-group-3843-tab-3850" class="nav-link" data-group="group_3843" data-tab="tab-group-3843-content-3850">PHP</div></div><div class="tab-content"><div id="tab-group-3843-content-3844" class="tab-pane active" data-group="group_3843" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
@@ -143,6 +143,14 @@
 <tbody>
 <tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-redis-watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 <tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-rabbitmq-watcher">RabbitMQ Watcher</a></td><td>Messaging system</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>Watcher for <a href="https://www.rabbitmq.com/">RabbitMQ</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-3843-content-3850" class="tab-pane" data-group="group_3843" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/Tinywan/casbin">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Tinywan">Tinywan</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
 </span></div></div></div></div>
