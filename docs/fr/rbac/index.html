@@ -142,13 +142,14 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>Casbin fera automatiquement correspondre <code>/book/1</code> et <code>/book/2</code> dans le patron <code>/book/:id</code> pour vous. Vous devez seulement enregistrer la fonction avec le responsable comme :</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2633-tab-2634" class="nav-link active" data-group="group_2633" data-tab="tab-group-2633-content-2634">Go</div><div id="tab-group-2633-tab-2635" class="nav-link" data-group="group_2633" data-tab="tab-group-2633-content-2635">Node.js</div></div><div class="tab-content"><div id="tab-group-2633-content-2634" class="tab-pane active" data-group="group_2633" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br /></code></pre>
+</span></div></div><div id="tab-group-2633-content-2635" class="tab-pane" data-group="group_2633" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /></code></pre>
+</span></div></div></div></div>
 <p>Lorsque vous utilisez une fonction de masquage dans les domaines/locataires, vous devez enregistrer la fonction pour la faire fonctionner et la modéliser. <strong>Vous devez également reconstruire en appelant <code>e.BuildRoleLinks()</code></strong></p>
 <p>enregistrez <code>keyMatch2</code> au responsable et construisez à nouveau des liens de rôles:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-e.BuildRoleLinks()
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2636-tab-2637" class="nav-link active" data-group="group_2636" data-tab="tab-group-2636-content-2637">Go</div><div id="tab-group-2636-tab-2638" class="nav-link" data-group="group_2636" data-tab="tab-group-2636-content-2638">Node.js</div></div><div class="tab-content"><div id="tab-group-2636-content-2637" class="tab-pane active" data-group="group_2636" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br />e.BuildRoleLinks()<br /></code></pre>
+</span></div></div><div id="tab-group-2636-content-2638" class="tab-pane" data-group="group_2636" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /><span class="hljs-keyword">await</span> e.buildRoleLinks()<br /></code></pre>
+</span></div></div></div></div>
 <p>inscrire <code>keyMatch2</code> au modèle :</p>
 <pre><code class="hljs">m = g(r.sub, p.sub, r.dom) &amp;&amp; keyMatch2(r.dom, p.dom) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 </code></pre>
@@ -157,11 +158,11 @@ e.BuildRoleLinks()
 <p>Par exemple, si nous voulons <code>sous</code> pour avoir accès dans différents domaines, <code>domaine 1</code> et <code>domaine 2</code>, nous pouvons utiliser le modèle de domaine pur :</p>
 <pre><code class="hljs">p, admin, domain1, data1, read
 p, admin, domain1, data1, write
-p, admin, domain2, data2, data2 lire
-p, admin, domain2, data2, écrire
+p, admin, domain2, data2, read
+p, admin, domain2, data2, write
 
 g, alice, admin, *
-g, bob, admin, admin, domain2
+g, bob, admin, domain2
 </code></pre>
 <p>Dans cet exemple, nous voulons <code>alice</code> lire et écrire <code>données</code> dans domain1 et domaine2, masque correspondant <code>*</code> dans <code>g</code> fabrique <code>alice</code> ont accès à deux domaines.</p>
 <p>En utilisant le masque de correspondance, surtout dans les scénarios qui sont plus compliqués et il y a beaucoup de domaines ou d'objets que nous devons prendre en considération, nous pouvons mettre en œuvre le <code>définition_politique</code> plus élégante et efficace.</p>

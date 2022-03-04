@@ -142,13 +142,14 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>Casbin会自动将<code>/book/1</code>和<code>/book/2</code>匹配为模式<code>/book/:id</code>。 您需要做的仅仅是向enforcer注册该方法，例如像这样：</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2615-tab-2616" class="nav-link active" data-group="group_2615" data-tab="tab-group-2615-content-2616">Go</div><div id="tab-group-2615-tab-2617" class="nav-link" data-group="group_2615" data-tab="tab-group-2615-content-2617">Node.js</div></div><div class="tab-content"><div id="tab-group-2615-content-2616" class="tab-pane active" data-group="group_2615" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br /></code></pre>
+</span></div></div><div id="tab-group-2615-content-2617" class="tab-pane" data-group="group_2615" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /></code></pre>
+</span></div></div></div></div>
 <p>当在域/租户中使用匹配函数时，您需要注册该函数来执行和模型。 <strong>您还需要调用 <code>e.BuildRoleLinks()</code></strong> 进行重建</p>
 <p>注册 <code>keyMatch2</code> 来执行并重新构建角色链接：</p>
-<pre><code class="hljs css language-go">.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-e.RoleLinks()
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2618-tab-2619" class="nav-link active" data-group="group_2618" data-tab="tab-group-2618-content-2619">Go</div><div id="tab-group-2618-tab-2620" class="nav-link" data-group="group_2618" data-tab="tab-group-2618-content-2620">Node.js</div></div><div class="tab-content"><div id="tab-group-2618-content-2619" class="tab-pane active" data-group="group_2618" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br />e.BuildRoleLinks()<br /></code></pre>
+</span></div></div><div id="tab-group-2618-content-2620" class="tab-pane" data-group="group_2618" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /><span class="hljs-keyword">await</span> e.buildRoleLinks()<br /></code></pre>
+</span></div></div></div></div>
 <p>将 <code>keyMatch2</code> 向model进行注册：</p>
 <pre><code class="hljs">m = g(r.sub, p.sub, r.dom) &amp;&amp; keyMatch2(r.dom, p.dom) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 </code></pre>

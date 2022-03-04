@@ -142,13 +142,14 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>カスビンは自動的に <code>/book/1</code> と <code>/book/2</code> をパターン <code>/book/:id</code> にマッチします。 この関数をエンフォーサーに登録する必要があるのは以下のようなものです:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunct(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2639-tab-2640" class="nav-link active" data-group="group_2639" data-tab="tab-group-2639-content-2640">Go</div><div id="tab-group-2639-tab-2641" class="nav-link" data-group="group_2639" data-tab="tab-group-2639-content-2641">Node.js</div></div><div class="tab-content"><div id="tab-group-2639-content-2640" class="tab-pane active" data-group="group_2639" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunct(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br /></code></pre>
+</span></div></div><div id="tab-group-2639-content-2641" class="tab-pane" data-group="group_2639" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /></code></pre>
+</span></div></div></div></div>
 <p>ドメイン/テナントでパターンマッチング機能を使用する場合、エンフォーサーやモデルに登録する必要があります。 ** <code>e.BuildRoleLinks()</code>** を呼び出して再構築する必要があります。</p>
 <p><code>keyMatch2</code> をエンフォーサーに登録し、ロールリンクを再度作成します。</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunct(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-e.BuildRoleLinks()
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2642-tab-2643" class="nav-link active" data-group="group_2642" data-tab="tab-group-2642-content-2643">Go</div><div id="tab-group-2642-tab-2644" class="nav-link" data-group="group_2642" data-tab="tab-group-2642-content-2644">Node.js</div></div><div class="tab-content"><div id="tab-group-2642-content-2643" class="tab-pane active" data-group="group_2642" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br />e.BuildRoleLinks()<br /></code></pre>
+</span></div></div><div id="tab-group-2642-content-2644" class="tab-pane" data-group="group_2642" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /><span class="hljs-keyword">await</span> e.buildRoleLinks()<br /></code></pre>
+</span></div></div></div></div>
 <p><code>keyMatch2</code> をモデルに登録:</p>
 <pre><code class="hljs">m = g(r.sub, p.sub, r.dom) &amp;&amp; keyMatch2(r.dom, p.dom) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 </code></pre>

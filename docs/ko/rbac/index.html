@@ -142,13 +142,14 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>Casbin will automatically match <code>/book/1</code> and <code>/book/2</code> into pattern <code>/book/:id</code> for you. You only need to register the function with the enforcer like:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2621-tab-2622" class="nav-link active" data-group="group_2621" data-tab="tab-group-2621-content-2622">Go</div><div id="tab-group-2621-tab-2623" class="nav-link" data-group="group_2621" data-tab="tab-group-2621-content-2623">Node.js</div></div><div class="tab-content"><div id="tab-group-2621-content-2622" class="tab-pane active" data-group="group_2621" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br /></code></pre>
+</span></div></div><div id="tab-group-2621-content-2623" class="tab-pane" data-group="group_2621" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /></code></pre>
+</span></div></div></div></div>
 <p>When Using a pattern matching function in domains/tenants, You need to register the function to enforcer and model. <strong>You also need to rebuild by calling <code>e.BuildRoleLinks()</code></strong></p>
 <p>register <code>keyMatch2</code> to enforcer and build role links again:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-e.BuildRoleLinks()
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2624-tab-2625" class="nav-link active" data-group="group_2624" data-tab="tab-group-2624-content-2625">Go</div><div id="tab-group-2624-tab-2626" class="nav-link" data-group="group_2624" data-tab="tab-group-2624-content-2626">Node.js</div></div><div class="tab-content"><div id="tab-group-2624-content-2625" class="tab-pane active" data-group="group_2624" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br />e.BuildRoleLinks()<br /></code></pre>
+</span></div></div><div id="tab-group-2624-content-2626" class="tab-pane" data-group="group_2624" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /><span class="hljs-keyword">await</span> e.buildRoleLinks()<br /></code></pre>
+</span></div></div></div></div>
 <p>register <code>keyMatch2</code> to model:</p>
 <pre><code class="hljs">m = g(r.sub, p.sub, r.dom) &amp;&amp; keyMatch2(r.dom, p.dom) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 </code></pre>

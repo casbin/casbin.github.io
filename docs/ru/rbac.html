@@ -138,23 +138,24 @@ g, /book/2, book_group
 <pre><code class="hljs">g, /book/:id, book_group
 </code></pre>
 <p>Касбин будет автоматически соответствовать <code>/book/1</code> и <code>/book/2</code> в шаблоне <code>/book/:id</code> для вас. Вам нужно только зарегистрировать функцию с силом:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2627-tab-2628" class="nav-link active" data-group="group_2627" data-tab="tab-group-2627-content-2628">Go</div><div id="tab-group-2627-tab-2629" class="nav-link" data-group="group_2627" data-tab="tab-group-2627-content-2629">Node.js</div></div><div class="tab-content"><div id="tab-group-2627-content-2628" class="tab-pane active" data-group="group_2627" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br /></code></pre>
+</span></div></div><div id="tab-group-2627-content-2629" class="tab-pane" data-group="group_2627" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /></code></pre>
+</span></div></div></div></div>
 <p>При использовании функции сопоставления шаблонов в доменах/арендаторах, Вам нужно зарегистрировать функцию для усиления и модели. <strong>Вам также нужно перестроить вызвав <code>e.BuildRoleLinks()</code></strong></p>
 <p>зарегистрировать <code>keyMatch2</code> для применения и построить ссылки ролей снова:</p>
-<pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)
-e.BuildRoleLinks()
-</code></pre>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-2630-tab-2631" class="nav-link active" data-group="group_2630" data-tab="tab-group-2630-content-2631">Go</div><div id="tab-group-2630-tab-2632" class="nav-link" data-group="group_2630" data-tab="tab-group-2630-content-2632">Node.js</div></div><div class="tab-content"><div id="tab-group-2630-content-2631" class="tab-pane active" data-group="group_2630" tabindex="-1"><div><span><pre><code class="hljs css language-go">e.AddNamedDomainMatchingFunc(<span class="hljs-string">"g"</span>,<span class="hljs-string">"KeyMatch2"</span>,util.KeyMatch2)<br />e.BuildRoleLinks()<br /></code></pre>
+</span></div></div><div id="tab-group-2630-content-2632" class="tab-pane" data-group="group_2630" tabindex="-1"><div><span><pre><code class="hljs css language-typescript"><span class="hljs-keyword">await</span> e.addNamedDomainMatchingFunc(<span class="hljs-string">'g'</span>, Util.keyMatch2Func);<br /><span class="hljs-keyword">await</span> e.buildRoleLinks()<br /></code></pre>
+</span></div></div></div></div>
 <p>зарегистрировать <code>keyMatch2</code> для модели:</p>
 <pre><code class="hljs">m = g(r.sub, p.sub, r.dom) &amp;&amp; keyMatch2(r.dom, p.dom) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
 </code></pre>
 <p>Если вы не понимаете, что означает <code>g(r.sub, p.sub, r.dom)</code> , пожалуйста, прочитайте <a href="https://casbin.org/docs/en/rbac-with-domains">этот</a>. Короче говоря, <code>g(r.sub, p.sub, r.dom)</code> проверит ли пользователь <code>r. ub</code> имеет роль <code>p.sub</code> в домене <code>r.dom</code>. Так что именно так и работает. Полный пример <a href="https://github.com/casbin/casbin/blob/dbdb6cbe2e7a80863e4951f9ff36da07fef01b75/model_test.go#L278-L307">можно посмотреть здесь</a>.</p>
 <p>Кроме синтаксиса совпадения шаблона, мы также можем использовать шаблон чистого домена.</p>
 <p>Например, если мы хотим <code>суб</code> чтобы иметь доступ в разных доменах, <code>домена1</code> и <code>домена2</code>, мы можем использовать шаблон чистого домена:</p>
-<pre><code class="hljs">p, admin, domain1, data1, читать
-p, admin, domain1, data1, писать
-p, admin, domain2, data2, читать
-p, admin, domain2, data2, писать
+<pre><code class="hljs">p, admin, domain1, data1, read
+p, admin, domain1, data1, write
+p, admin, domain2, data2, read
+p, admin, domain2, data2, write
 
 g, alice, admin, *
 g, bob, admin, domain2
