@@ -96,24 +96,24 @@
 </tbody>
 </table>
 </span></div></div><div id="tab-group-217-content-219" class="tab-pane" data-group="group_217" tabindex="-1"><div><span><p>Накладные расходы на выполнение <a href="https://github.com/casbin/casbin-cpp">CPP Casbin</a> сравниваются с <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>теста/контрольные показатели</code></a> с помощью <a href="https://github.com/google/benchmark">инструмент бенчмаркинга Google</a>. Испытание для этих контрольных показателей:</p>
-<pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 ГГц, 8 ядер, 16 потоков<br /></code></pre>
-<p>Вот бенчмаркинг результат выполнения <code>casbin_benchmark</code> , построенный в конфигурации <code>Release</code> (op = <code>enforce()</code> вызов, nus = nanoseconds):</p>
+<pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
+<p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
 <thead>
-<tr><th>Испытательный регистр</th><th>Размер правила</th><th>Перекрытие времени (ns/op)</th></tr>
+<tr><th>Испытательный регистр</th><th>Размер правила</th><th>Time overhead (ms/op)</th></tr>
 </thead>
 <tbody>
-<tr><td>ACL</td><td>2 правила (2 пользователя)</td><td>95.6</td></tr>
-<tr><td>RBAC</td><td>5 правил (2 пользователя, 1 роль)</td><td>95.6</td></tr>
-<tr><td>RBAC (маленький)</td><td>1100 правил (1000 пользователей, 100 ролей)</td><td>110</td></tr>
-<tr><td>RBAC (средний)</td><td>11000 правил (10000 пользователей, 1000 ролей)</td><td>119</td></tr>
-<tr><td>RBAC (большой)</td><td>Правила 110000 (100000 пользователей, 10000 ролей)</td><td>90.3217</td></tr>
-<tr><td>RBAC с ролями ресурсов</td><td>6 правил (2 пользователя, 2 роли)</td><td>96.0</td></tr>
-<tr><td>RBAC с доменами/арендаторами</td><td>6 правил (2 пользователя, 1 роль, 2 домена)</td><td>134</td></tr>
+<tr><td>ACL</td><td>2 правила (2 пользователя)</td><td>0.0195</td></tr>
+<tr><td>RBAC</td><td>5 правил (2 пользователя, 1 роль)</td><td>0.0288</td></tr>
+<tr><td>RBAC (маленький)</td><td>1100 правил (1000 пользователей, 100 ролей)</td><td>0.300</td></tr>
+<tr><td>RBAC (средний)</td><td>11000 правил (10000 пользователей, 1000 ролей)</td><td>2.113</td></tr>
+<tr><td>RBAC (большой)</td><td>Правила 110000 (100000 пользователей, 10000 ролей)</td><td>21.450</td></tr>
+<tr><td>RBAC с ролями ресурсов</td><td>6 правил (2 пользователя, 2 роли)</td><td>0.03</td></tr>
+<tr><td>RBAC с доменами/арендаторами</td><td>6 правил (2 пользователя, 1 роль, 2 домена)</td><td>0.041</td></tr>
 <tr><td>АДАТ</td><td>0 правил (0 пользователь)</td><td>NA</td></tr>
 <tr><td>Восстановленный</td><td>5 правил (3 пользователя)</td><td>NA</td></tr>
-<tr><td>Запретить переопределение</td><td>6 правил (2 пользователя, 1 роль)</td><td>96.2</td></tr>
-<tr><td>Приоритет</td><td>9 правил (2 пользователя, 2 роли)</td><td>96.1</td></tr>
+<tr><td>Запретить переопределение</td><td>6 правил (2 пользователя, 1 роль)</td><td>0.0246</td></tr>
+<tr><td>Приоритет</td><td>9 правил (2 пользователя, 2 роли)</td><td>0.035</td></tr>
 </tbody>
 </table>
 </span></div></div><div id="tab-group-217-content-220" class="tab-pane" data-group="group_217" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> накладные расходы по обеспечению соблюдения политики сравниваются с <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>

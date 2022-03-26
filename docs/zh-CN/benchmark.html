@@ -96,24 +96,24 @@
 </tbody>
 </table>
 </span></div></div><div id="tab-group-209-content-211" class="tab-pane" data-group="group_209" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> 的策略执行测试是在 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> 中, 使用 <a href="https://github.com/google/benchmark">Google's benchmarking tool</a> 完成的 这些基准的测试结果是：</p>
-<pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 GHz, 8 核, 16 threads<br /></code></pre>
-<p>这里是在 <code>Release</code> 配置中执行 <code>casbin_facility</code> 目标的基准结果（op = 一个 <code>enforce()</code> 调用, ns =纳秒）：</p>
+<pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
+<p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
 <thead>
-<tr><th>测试用例</th><th>规则大小</th><th>时间开销 (ns/op)</th></tr>
+<tr><th>测试用例</th><th>规则大小</th><th>Time overhead (ms/op)</th></tr>
 </thead>
 <tbody>
-<tr><td>ACL</td><td>2 规则 (2用户)</td><td>95.6</td></tr>
-<tr><td>RBAC</td><td>5条规则 (2用户，1个角色)</td><td>95.6</td></tr>
-<tr><td>RBAC (小型)</td><td>1100条规则 (1000用户，100个角色)</td><td>110</td></tr>
-<tr><td>RBAC (中型)</td><td>11000条规则 (10000用户，1000个角色)</td><td>119</td></tr>
-<tr><td>RBAC (大型)</td><td>110000条规则 (100000用户，10000个角色)</td><td>90.3217</td></tr>
-<tr><td>具有资源角色的RBAC</td><td>6条规则 (2用户，2个角色)</td><td>96.0</td></tr>
-<tr><td>带有域/租户的RBAC</td><td>6 条规则 (2个用户，1个角色，2个域)</td><td>134</td></tr>
+<tr><td>ACL</td><td>2 规则 (2用户)</td><td>0.0195</td></tr>
+<tr><td>RBAC</td><td>5条规则 (2用户，1个角色)</td><td>0.0288</td></tr>
+<tr><td>RBAC (小型)</td><td>1100条规则 (1000用户，100个角色)</td><td>0.300</td></tr>
+<tr><td>RBAC (中型)</td><td>11000条规则 (10000用户，1000个角色)</td><td>2.113</td></tr>
+<tr><td>RBAC (大型)</td><td>110000条规则 (100000用户，10000个角色)</td><td>21.450</td></tr>
+<tr><td>具有资源角色的RBAC</td><td>6条规则 (2用户，2个角色)</td><td>0.03</td></tr>
+<tr><td>带有域/租户的RBAC</td><td>6 条规则 (2个用户，1个角色，2个域)</td><td>0.041</td></tr>
 <tr><td>ABAC</td><td>0 规则 (0用户)</td><td>NA</td></tr>
 <tr><td>RESTful</td><td>5 规则 (3用户)</td><td>NA</td></tr>
-<tr><td>Deny-override</td><td>6条规则 (2用户，1个角色)</td><td>96.2</td></tr>
-<tr><td>优先级</td><td>9条规则 (2用户，2个角色)</td><td>96.1</td></tr>
+<tr><td>Deny-override</td><td>6条规则 (2用户，1个角色)</td><td>0.0246</td></tr>
+<tr><td>优先级</td><td>9条规则 (2用户，2个角色)</td><td>0.035</td></tr>
 </tbody>
 </table>
 </span></div></div><div id="tab-group-209-content-212" class="tab-pane" data-group="group_209" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin的</a> 策略执行的测试是在 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">ben.lua</a> 中进行的。 测试台是 Ubuntu VM ，CPU型号为</p>

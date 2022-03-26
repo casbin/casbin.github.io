@@ -96,24 +96,24 @@
 </tbody>
 </table>
 </span></div></div><div id="tab-group-225-content-227" class="tab-pane" data-group="group_225" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> のポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> ディレクトリで <a href="https://github.com/google/benchmark">Googleのベンチマークツール</a> の助けを借りてベンチマークされています。 これらのベンチマークのテストベッドは次のとおりです:</p>
-<pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 GHz, 8 コア, 16 スレッド<br /></code></pre>
-<p><code>casbin_benchmark</code> ターゲットを <code>Release</code> の構成 (op = <code>enforce()</code> で実行したベンチマーク結果) ns = nanoseconds:</p>
+<pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
+<p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
 <thead>
-<tr><th>テストケース</th><th>ルールのサイズ</th><th>オーバーヘッド時間 (ns/op)</th></tr>
+<tr><th>テストケース</th><th>ルールのサイズ</th><th>Time overhead (ms/op)</th></tr>
 </thead>
 <tbody>
-<tr><td>ACL</td><td>2つのルール（2ユーザー）</td><td>95.6</td></tr>
-<tr><td>RBAC</td><td>5つのルール（2ユーザー、1ロール）</td><td>95.6</td></tr>
-<tr><td>RBAC (小)</td><td>1100 ルール (1000 ユーザー、100 ロール)</td><td>110</td></tr>
-<tr><td>RBAC (medium)</td><td>11000ルール（10000ユーザー、1000ロール）</td><td>119</td></tr>
-<tr><td>RBAC (大)</td><td>110000ルール（100000ユーザー、10000ロール）</td><td>90.3217</td></tr>
-<tr><td>RBAC with resource roles</td><td>6つのルール（2人のユーザー、2つのロール）</td><td>96.0</td></tr>
-<tr><td>ドメイン/テナントとRBAC</td><td>6 ルール (2 ユーザー, 1 ロール, 2 ドメイン)</td><td>134</td></tr>
+<tr><td>ACL</td><td>2つのルール（2ユーザー）</td><td>0.0195</td></tr>
+<tr><td>RBAC</td><td>5つのルール（2ユーザー、1ロール）</td><td>0.0288</td></tr>
+<tr><td>RBAC (小)</td><td>1100 ルール (1000 ユーザー、100 ロール)</td><td>0.300</td></tr>
+<tr><td>RBAC (medium)</td><td>11000ルール（10000ユーザー、1000ロール）</td><td>2.113</td></tr>
+<tr><td>RBAC (大)</td><td>110000ルール（100000ユーザー、10000ロール）</td><td>21.450</td></tr>
+<tr><td>RBAC with resource roles</td><td>6つのルール（2人のユーザー、2つのロール）</td><td>0.03</td></tr>
+<tr><td>ドメイン/テナントとRBAC</td><td>6 ルール (2 ユーザー, 1 ロール, 2 ドメイン)</td><td>0.041</td></tr>
 <tr><td>ABAC</td><td>0 ルール (0 ユーザー)</td><td>NA</td></tr>
 <tr><td>RESTful</td><td>5 ルール (3 ユーザー)</td><td>NA</td></tr>
-<tr><td>無効にする</td><td>6つのルール（2ユーザー、1ロール）</td><td>96.2</td></tr>
-<tr><td>優先度</td><td>9 ルール (2 ユーザー、2 ロール)</td><td>96.1</td></tr>
+<tr><td>無効にする</td><td>6つのルール（2ユーザー、1ロール）</td><td>0.0246</td></tr>
+<tr><td>優先度</td><td>9 ルール (2 ユーザー、2 ロール)</td><td>0.035</td></tr>
 </tbody>
 </table>
 </span></div></div><div id="tab-group-225-content-228" class="tab-pane" data-group="group_225" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbinの</a> ポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a> でベンチマークされている。 テストベッドは、CPUを備えたUbuntu VMでした。</p>

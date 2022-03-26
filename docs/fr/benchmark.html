@@ -96,24 +96,24 @@
 </tbody>
 </table>
 </span></div></div><div id="tab-group-221-content-223" class="tab-pane" data-group="group_221" tabindex="-1"><div><span><p>Les frais d'exécution de la politique de <a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> sont comparés dans le répertoire <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> à l'aide de <a href="https://github.com/google/benchmark">l'outil de benchmarking de Google</a>. Le lit de test pour ces repères est :</p>
-<pre><code class="hljs">Apple M1 (2020) SOC @ 3.2 GHz, 8 cœurs, 16 threads<br /></code></pre>
-<p>Voici le résultat du benchmarking de l'exécution de la cible <code>casbin_benchmark</code> construite dans la configuration <code>Release</code> (op = un appel <code>enforce()</code> ns = nanosecondes):</p>
+<pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
+<p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
 <thead>
-<tr><th>Cas de test</th><th>Taille de la règle</th><th>Temps au dessus (ns/op)</th></tr>
+<tr><th>Cas de test</th><th>Taille de la règle</th><th>Time overhead (ms/op)</th></tr>
 </thead>
 <tbody>
-<tr><td>ACL</td><td>2 règles (2 utilisateurs)</td><td>95.6</td></tr>
-<tr><td>RBAC</td><td>5 règles (2 utilisateurs, 1 rôle)</td><td>95.6</td></tr>
-<tr><td>RBAC (petit)</td><td>1100 règles (1000 utilisateurs, 100 rôles)</td><td>110</td></tr>
-<tr><td>RBAC (moyen)</td><td>11000 règles (10000 utilisateurs, 1000 rôles)</td><td>119</td></tr>
-<tr><td>RBAC (grand)</td><td>110000 règles (100000 utilisateurs, 10000 rôles)</td><td>90.3217</td></tr>
-<tr><td>RBAC avec les rôles de ressource</td><td>6 règles (2 utilisateurs, 2 rôles)</td><td>96.0</td></tr>
-<tr><td>RBAC avec domaines/locataires</td><td>6 règles (2 utilisateurs, 1 rôle, 2 domaines)</td><td>134</td></tr>
+<tr><td>ACL</td><td>2 règles (2 utilisateurs)</td><td>0.0195</td></tr>
+<tr><td>RBAC</td><td>5 règles (2 utilisateurs, 1 rôle)</td><td>0.0288</td></tr>
+<tr><td>RBAC (petit)</td><td>1100 règles (1000 utilisateurs, 100 rôles)</td><td>0.300</td></tr>
+<tr><td>RBAC (moyen)</td><td>11000 règles (10000 utilisateurs, 1000 rôles)</td><td>2.113</td></tr>
+<tr><td>RBAC (grand)</td><td>110000 règles (100000 utilisateurs, 10000 rôles)</td><td>21.450</td></tr>
+<tr><td>RBAC avec les rôles de ressource</td><td>6 règles (2 utilisateurs, 2 rôles)</td><td>0.03</td></tr>
+<tr><td>RBAC avec domaines/locataires</td><td>6 règles (2 utilisateurs, 1 rôle, 2 domaines)</td><td>0.041</td></tr>
 <tr><td>ABAC</td><td>0 règle (0 utilisateur)</td><td>NA</td></tr>
 <tr><td>RESTANT</td><td>5 règles (3 utilisateurs)</td><td>NA</td></tr>
-<tr><td>Refuser la substitution</td><td>6 règles (2 utilisateurs, 1 rôle)</td><td>96.2</td></tr>
-<tr><td>Priorité</td><td>9 règles (2 utilisateurs, 2 rôles)</td><td>96.1</td></tr>
+<tr><td>Refuser la substitution</td><td>6 règles (2 utilisateurs, 1 rôle)</td><td>0.0246</td></tr>
+<tr><td>Priorité</td><td>9 règles (2 utilisateurs, 2 rôles)</td><td>0.035</td></tr>
 </tbody>
 </table>
 </span></div></div><div id="tab-group-221-content-224" class="tab-pane" data-group="group_221" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement est comparé dans <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. Le lit testé était une VM Ubuntu avec le CPU:</p>
