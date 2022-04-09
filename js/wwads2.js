@@ -17,7 +17,6 @@ docReady(function () {
 function _PlaceholderadsInit() {
   //获取用户浏览器设置的语言，优先获取本地缓存的内容，如果没有获取到则默认为中文
   var broLang =
-    localStorage.getItem("locale") ||
     window.navigator.language.toLowerCase() ||
     "zh-cn";
 
@@ -32,9 +31,6 @@ function _PlaceholderadsInit() {
   //此处输入你的国外广告网络的代码（包括 Javascript 和 Div 代码），不可换行。以下以 Adsense 广告单元代码为例（需要先在 Adsense 创建一个网站广告单元并复制其代码）
   let thirdPartyDiv =
     '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3509678918753247" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
-
-  //把用户的语言写入缓存，供下次获取使用
-  localStorage.setItem("locale", broLang);
 
   //判断用户的语言
   if (broLang.startsWith("zh")) {
