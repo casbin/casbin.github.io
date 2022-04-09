@@ -23,7 +23,7 @@ function _PlaceholderadsInit() {
 
   //此处需改 data-id 为你的万维广告的广告单元ID，可自定义 style
   let wwadsDiv =
-    '<div class="wwads-cn wwads-horizontal" data-id="116" style="max-width:300px;background-color:#fff;margin-top:0px;box-shadow:0 1px 3px rgb(26 26 26 / 10%)"></div>';
+    '<div class="wwads-cn wwads-horizontal" data-id="116" style="z-index: 10;position: fixed;top: 100px;right: 10px;max-width: 200px;padding: 10px;border-radius: 5px;"></div>';
 
   //此处输入你的国外广告网络的代码（包括 Javascript 和 Div 代码），不可换行。以下以 Adsense 广告单元代码为例（需要先在 Adsense 创建一个网站广告单元并复制其代码）
   let thirdPartyDiv =
