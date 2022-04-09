@@ -33,7 +33,7 @@ function _PlaceholderadsInit() {
   localStorage.setItem("locale", broLang);
 
   //判断用户的语言
-  if (broLang.startsWith("zh") || true) {
+  if (broLang.startsWith("zh")) {
     //针对中文访客展示万维广告
     $(".placeholderads").replaceWith(wwadsDiv);
     var _sr = document.createElement("script");
