@@ -21,6 +21,10 @@ function _PlaceholderadsInit() {
     window.navigator.language.toLowerCase() ||
     "zh-cn";
 
+  if (location.href.includes("/zh-CN")) {
+    broLang = "zh-cn";
+  }
+
   //此处需改 data-id 为你的万维广告的广告单元ID，可自定义 style
   let wwadsDiv =
     '<div class="wwads-cn wwads-horizontal" data-id="116" style="z-index: 10;position: fixed;top: 130px;right: 10px;max-width: 200px;padding: 10px;border-radius: 5px;"></div>';
