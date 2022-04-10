@@ -20,7 +20,7 @@ function _PlaceholderadsInit() {
     window.navigator.language.toLowerCase() ||
     "zh-cn";
 
-  if (location.href.includes("/zh-CN")) {
+  if (location.href.includes("/zh") || true) {
     broLang = "zh-cn";
   }
 
