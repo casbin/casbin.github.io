@@ -7,7 +7,7 @@
     <link rel="alternate" href="https://casbin.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Casbin news and events.</subtitle>
     <logo>https://casbin.org/img/casbin.svg</logo>
-    <rights>Copyright © 2022 Casbin Inc.</rights>
+    <rights>Copyright © 2022 Casbin Organization</rights>
     <entry>
         <title type="html"><![CDATA[Authorization in APISIX using Casbin]]></title>
         <id>https://casbin.org/blog/2021/08/19/apisix-casbin-authorization.html</id>

@@ -12,7 +12,7 @@
             <url>https://casbin.org/img/casbin.svg</url>
             <link>https://casbin.org/blog</link>
         </image>
-        <copyright>Copyright © 2022 Casbin Inc.</copyright>
+        <copyright>Copyright © 2022 Casbin Organization</copyright>
         <item>
             <title><![CDATA[Authorization in APISIX using Casbin]]></title>
             <link>https://casbin.org/blog/2021/08/19/apisix-casbin-authorization.html</link>
