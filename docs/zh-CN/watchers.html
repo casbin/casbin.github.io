@@ -76,7 +76,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">观察者</h1></header><article><div><span><p>我们支持使用分布式消息系统，例如 <a href="https://github.com/coreos/etcd">etcd</a> 来保持多个Casbin执行器实例之间的一致性。 因此，我们的用户可以同时使用多个Casbin 执行器来处理大量的权限检查请求。</p>
 <p>与策略存储 adapters类似，我们没有把watcher的代码放在主库中。 任何对新消息系统的支持都应该作为watcher程序来实现。 完整的Casbin watchers列表如下所示。 欢迎任何第三方对 watcher 进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-4409-tab-4410" class="nav-link active" data-group="group_4409" data-tab="tab-group-4409-content-4410">Go</div><div id="tab-group-4409-tab-4411" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4411">Java</div><div id="tab-group-4409-tab-4412" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4412">Node.js</div><div id="tab-group-4409-tab-4413" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4413">Python</div><div id="tab-group-4409-tab-4414" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4414">.NET</div><div id="tab-group-4409-tab-4415" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4415">Ruby</div><div id="tab-group-4409-tab-4416" class="nav-link" data-group="group_4409" data-tab="tab-group-4409-content-4416">PHP</div></div><div class="tab-content"><div id="tab-group-4409-content-4410" class="tab-pane active" data-group="group_4409" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-4415-tab-4416" class="nav-link active" data-group="group_4415" data-tab="tab-group-4415-content-4416">Go</div><div id="tab-group-4415-tab-4417" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4417">Java</div><div id="tab-group-4415-tab-4418" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4418">Node.js</div><div id="tab-group-4415-tab-4419" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4419">Python</div><div id="tab-group-4415-tab-4420" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4420">.NET</div><div id="tab-group-4415-tab-4421" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4421">Ruby</div><div id="tab-group-4415-tab-4422" class="nav-link" data-group="group_4415" data-tab="tab-group-4415-content-4422">PHP</div></div><div class="tab-content"><div id="tab-group-4415-content-4416" class="tab-pane active" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -92,7 +92,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ 观察器</a></td><td>消息传递系统。</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td><a href="https://rocketmq.apache.org/">Apache RocketMQ的监视器</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4411" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4417" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -102,7 +102,7 @@
 <tr><td><a href="https://github.com/jcasbin/kafka-watcher">卡夫卡观察者</a></td><td>消息系统</td><td>Casbin</td><td><a href="https://kafka.apache.org/">Apache Kafka的关注者</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4412" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4418" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -113,7 +113,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>数据库</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4413" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4419" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -122,7 +122,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>数据库</td><td>Casbin</td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4414" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4420" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -130,7 +130,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td><a href="http://redis.io/">Redis</a>的Watcher</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4415" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4421" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>描述</th></tr>
 </thead>
@@ -139,7 +139,7 @@
 <tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-rabbitmq-watcher">RabbitMQ 监视器</a></td><td>消息传递系统。</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td><a href="https://www.rabbitmq.com/">RabbitMQ 的监视器</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-4409-content-4416" class="tab-pane" data-group="group_4409" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4415-content-4422" class="tab-pane" data-group="group_4415" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>描述</th></tr>
 </thead>
