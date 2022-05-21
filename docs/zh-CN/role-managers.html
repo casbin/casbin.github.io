@@ -75,7 +75,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">角色管理器</h1></header><article><div><span><p>角色管理器用于管理Casbin中的RBAC角色层次结构(用户角色映射)。 角色管理器可以从Casbin策略规则或外部源(如LDAP、Okta、Auth0、Azure AD等) 检索角色数据。 我们支持角色管理器的不同实现。 为了保持代码轻量级，我们没有把角色管理器代码放在主库中(默认的角色管理器除外)。 下面提供了Casbin角色管理器的完整列表。 欢迎任何第三方对角色管理器进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-4283-tab-4284" class="nav-link active" data-group="group_4283" data-tab="tab-group-4283-content-4284">Go</div><div id="tab-group-4283-tab-4285" class="nav-link" data-group="group_4283" data-tab="tab-group-4283-content-4285">Java</div><div id="tab-group-4283-tab-4286" class="nav-link" data-group="group_4283" data-tab="tab-group-4283-content-4286">Node.js</div><div id="tab-group-4283-tab-4287" class="nav-link" data-group="group_4283" data-tab="tab-group-4283-content-4287">PHP</div><div id="tab-group-4283-tab-4288" class="nav-link" data-group="group_4283" data-tab="tab-group-4283-content-4288">Python</div></div><div class="tab-content"><div id="tab-group-4283-content-4284" class="tab-pane active" data-group="group_4283" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-4289-tab-4290" class="nav-link active" data-group="group_4289" data-tab="tab-group-4289-content-4290">Go</div><div id="tab-group-4289-tab-4291" class="nav-link" data-group="group_4289" data-tab="tab-group-4289-content-4291">Java</div><div id="tab-group-4289-tab-4292" class="nav-link" data-group="group_4289" data-tab="tab-group-4289-content-4292">Node.js</div><div id="tab-group-4289-tab-4293" class="nav-link" data-group="group_4289" data-tab="tab-group-4289-content-4293">PHP</div><div id="tab-group-4289-tab-4294" class="nav-link" data-group="group_4289" data-tab="tab-group-4289-content-4294">Python</div></div><div class="tab-content"><div id="tab-group-4289-content-4290" class="tab-pane active" data-group="group_4289" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>角色管理器</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -87,7 +87,7 @@
 </tbody>
 </table>
 <p>对于开发人员：所有角色管理器都必须实现<a href="https://github.com/casbin/casbin/blob/master/rbac/role_manager.go"> RoleManager </a>接口。 <a href="https://github.com/casbin/session-role-manager">会话角色管理器</a> 可以用作参考实现。</p>
-</span></div></div><div id="tab-group-4283-content-4285" class="tab-pane" data-group="group_4283" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4289-content-4291" class="tab-pane" data-group="group_4289" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>角色管理器</th><th>作者</th><th>描述</th></tr>
 </thead>
@@ -96,7 +96,7 @@
 </tbody>
 </table>
 <p>对于开发人员：所有角色管理器都必须实现<a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/RoleManager.java"> RoleManager </a>接口。 <a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/DefaultRoleManager.java">默认角色管理器</a> 可以用作参考实现。</p>
-</span></div></div><div id="tab-group-4283-content-4286" class="tab-pane" data-group="group_4283" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4289-content-4292" class="tab-pane" data-group="group_4289" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>角色管理器</th><th>作者</th><th>描述</th></tr>
 </thead>
@@ -106,7 +106,7 @@
 </tbody>
 </table>
 <p>对于开发人员：所有角色管理器都必须实现<a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/roleManager.ts"> RoleManager </a>接口。 <a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/defaultRoleManager.ts">默认角色管理器</a> 可以用作参考实现。</p>
-</span></div></div><div id="tab-group-4283-content-4287" class="tab-pane" data-group="group_4283" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4289-content-4293" class="tab-pane" data-group="group_4289" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>角色管理器</th><th>作者</th><th>描述</th></tr>
 </thead>
@@ -115,7 +115,7 @@
 </tbody>
 </table>
 <p>对于开发人员：所有角色管理器都必须实现<a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/RoleManager.php"> RoleManager </a>接口。 <a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/DefaultRoleManager/RoleManager.php">默认角色管理器</a> 可以用作参考实现。</p>
-</span></div></div><div id="tab-group-4283-content-4288" class="tab-pane" data-group="group_4283" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4289-content-4294" class="tab-pane" data-group="group_4289" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>角色管理器</th><th>作者</th><th>描述</th></tr>
 </thead>
