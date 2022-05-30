@@ -75,7 +75,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Responsables des rôles</h1></header><article><div><span><p>Le gestionnaire de rôle est utilisé pour gérer la hiérarchie des rôles RBAC (cartographie des rôles utilisateurs) dans Casbin. Un gestionnaire de rôle peut récupérer les données du rôle à partir des règles de politique de Casbin ou de sources externes telles que LDAP, Okta, Auth0, Azure AD, etc. Nous supportons différentes implémentations d'un gestionnaire de rôles. Pour rester léger, nous ne plaçons pas le code du gestionnaire de rôle dans la bibliothèque principale (à l'exception du gestionnaire de rôle par défaut). Une liste complète des gestionnaires de rôle de Casbin est fournie ci-dessous. Toute contribution de tierce partie sur un nouveau gestionnaire de rôle est la bienvenue, merci de nous en informer et je la mettrai dans cette liste:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-4319-tab-4320" class="nav-link active" data-group="group_4319" data-tab="tab-group-4319-content-4320">Go</div><div id="tab-group-4319-tab-4321" class="nav-link" data-group="group_4319" data-tab="tab-group-4319-content-4321">Java</div><div id="tab-group-4319-tab-4322" class="nav-link" data-group="group_4319" data-tab="tab-group-4319-content-4322">Node.js</div><div id="tab-group-4319-tab-4323" class="nav-link" data-group="group_4319" data-tab="tab-group-4319-content-4323">PHP</div><div id="tab-group-4319-tab-4324" class="nav-link" data-group="group_4319" data-tab="tab-group-4319-content-4324">Python</div></div><div class="tab-content"><div id="tab-group-4319-content-4320" class="tab-pane active" data-group="group_4319" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-4337-tab-4338" class="nav-link active" data-group="group_4337" data-tab="tab-group-4337-content-4338">Go</div><div id="tab-group-4337-tab-4339" class="nav-link" data-group="group_4337" data-tab="tab-group-4337-content-4339">Java</div><div id="tab-group-4337-tab-4340" class="nav-link" data-group="group_4337" data-tab="tab-group-4337-content-4340">Node.js</div><div id="tab-group-4337-tab-4341" class="nav-link" data-group="group_4337" data-tab="tab-group-4337-content-4341">PHP</div><div id="tab-group-4337-tab-4342" class="nav-link" data-group="group_4337" data-tab="tab-group-4337-content-4342">Python</div></div><div class="tab-content"><div id="tab-group-4337-content-4338" class="tab-pane active" data-group="group_4337" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Responsable du rôle</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -87,7 +87,7 @@
 </tbody>
 </table>
 <p>Pour les développeurs : tous les gestionnaires de rôles doivent implémenter l'interface <a href="https://github.com/casbin/casbin/blob/master/rbac/role_manager.go">RoleManager</a>. <a href="https://github.com/casbin/session-role-manager">Gestionnaire de rôle de session</a> peut être utilisé comme une implémentation de référence.</p>
-</span></div></div><div id="tab-group-4319-content-4321" class="tab-pane" data-group="group_4319" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4337-content-4339" class="tab-pane" data-group="group_4337" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Responsable du rôle</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -96,7 +96,7 @@
 </tbody>
 </table>
 <p>Pour les développeurs : tous les gestionnaires de rôles doivent implémenter l'interface <a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/RoleManager.java">RoleManager</a>. <a href="https://github.com/casbin/jcasbin/blob/master/src/main/java/org/casbin/jcasbin/rbac/DefaultRoleManager.java">Le gestionnaire de rôle par défaut</a> peut être utilisé comme une implémentation de référence.</p>
-</span></div></div><div id="tab-group-4319-content-4322" class="tab-pane" data-group="group_4319" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4337-content-4340" class="tab-pane" data-group="group_4337" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Responsable du rôle</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -106,7 +106,7 @@
 </tbody>
 </table>
 <p>Pour les développeurs : tous les gestionnaires de rôles doivent implémenter l'interface <a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/roleManager.ts">RoleManager</a>. <a href="https://github.com/casbin/node-casbin/blob/master/src/rbac/defaultRoleManager.ts">Le gestionnaire de rôle par défaut</a> peut être utilisé comme une implémentation de référence.</p>
-</span></div></div><div id="tab-group-4319-content-4323" class="tab-pane" data-group="group_4319" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4337-content-4341" class="tab-pane" data-group="group_4337" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Responsable du rôle</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
@@ -115,7 +115,7 @@
 </tbody>
 </table>
 <p>Pour les développeurs : tous les gestionnaires de rôles doivent implémenter l'interface <a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/RoleManager.php">RoleManager</a>. <a href="https://github.com/php-casbin/php-casbin/blob/master/src/Rbac/DefaultRoleManager/RoleManager.php">Le gestionnaire de rôle par défaut</a> peut être utilisé comme une implémentation de référence.</p>
-</span></div></div><div id="tab-group-4319-content-4324" class="tab-pane" data-group="group_4319" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-4337-content-4342" class="tab-pane" data-group="group_4337" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Responsable du rôle</th><th>Auteur</th><th>Libellé</th></tr>
 </thead>
