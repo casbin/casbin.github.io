@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Beobachter · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Wir unterstützen verteilte Messaging-Systeme wie [etcd](https://github.com/coreos/etcd) um die Konsistenz zwischen mehreren Casbin-Vollstreckungsinstanzen zu gewährleisten. So können unsere Benutzer gleichzeitig mehrere Casbin-Durchsetzer verwenden, um eine große Anzahl von Berechtigungsprüfungen zu bearbeiten."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="Beobachter · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="Wir unterstützen verteilte Messaging-Systeme wie [etcd](https://github.com/coreos/etcd) um die Konsistenz zwischen mehreren Casbin-Vollstreckungsinstanzen zu gewährleisten. So können unsere Benutzer gleichzeitig mehrere Casbin-Durchsetzer verwenden, um eine große Anzahl von Berechtigungsprüfungen zu bearbeiten."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/zh-CN/watchers">中文</a></li><li><a href="/docs/ko/watchers">한국어</a></li><li><a href="/docs/ru/watchers">Русский</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Erweiterungen</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Beobachter</h1></header><article><div><span><p>Wir unterstützen verteilte Messaging-Systeme wie <a href="https://github.com/coreos/etcd">etcd</a> um die Konsistenz zwischen mehreren Casbin-Vollstreckungsinstanzen zu gewährleisten. So können unsere Benutzer gleichzeitig mehrere Casbin-Durchsetzer verwenden, um eine große Anzahl von Berechtigungsprüfungen zu bearbeiten.</p>
+<p>Ähnlich wie bei Richtlinien-Speicheradaptern legen wir Watcher-Code nicht in die Hauptbibliothek. Jede Unterstützung für ein neues Messaging-System sollte als Beobachter implementiert werden. Eine vollständige Liste der Casbin-Beobachter finden Sie wie unten. Jeder Beitrag von Drittanbietern zu einem neuen Beobachter ist willkommen, bitte informieren Sie uns und ich werde ihn in diese Liste setzen:)</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-5258-tab-5259" class="nav-link active" data-group="group_5258" data-tab="tab-group-5258-content-5259">Go</div><div id="tab-group-5258-tab-5260" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5260">Java</div><div id="tab-group-5258-tab-5261" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5261">Node.js</div><div id="tab-group-5258-tab-5262" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5262">Python</div><div id="tab-group-5258-tab-5263" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5263">.NET</div><div id="tab-group-5258-tab-5264" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5264">Ruby</div><div id="tab-group-5258-tab-5265" class="nav-link" data-group="group_5258" data-tab="tab-group-5258-content-5265">PHP</div></div><div class="tab-content"><div id="tab-group-5258-content-5259" class="tab-pane active" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/casbin/etcd-watcher">Etcd-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
+<tr><td><a href="https://github.com/casbin/redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/billcobbler/casbin-redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td><a href="https://github.com/billcobbler">@billcobbler</a></td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/casbin/tikv-watcher">TiKV-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="https://github.com/tikv/tikv">TiKV</a></td></tr>
+<tr><td><a href="https://github.com/wgarunap/casbin-kafka-watcher">Kafka-Beobachter</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/wgarunap">@wgarunap</a></td><td>Beobachter für <a href="https://kafka.apache.org/">Apache Kafka</a></td></tr>
+<tr><td><a href="https://github.com/Soluto/casbin-nats-watcher">NATS-Beobachter</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/Soluto">Lösung</a></td><td>Beobachter für <a href="https://nats.io/">NATS</a></td></tr>
+<tr><td><a href="https://github.com/grepsr/casbin-zk-watcher">ZooKeeper Beobachter</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/grepsr">Grepsr</a></td><td>Beobachter für <a href="https://zookeeper.apache.org/">Apache ZooKeeper</a></td></tr>
+<tr><td><a href="https://github.com/rusenask/casbin-go-cloud-watcher">NATS, RabbitMQ, GCP Pub/Sub, AWS SNS &amp; SQS, Kafka, InMemory</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/rusenask/">@rusenask</a></td><td>Watcher basierend auf <a href="https://gocloud.dev/">Go Cloud Dev Kit</a> das mit führenden Cloud-Anbietern und selbst gehosteter Infrastruktur arbeitet</td></tr>
+<tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">Raketenbeobachter</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Beobachter für <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5260" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Etcd-Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td>Beobachter für <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
+<tr><td><a href="https://github.com/jcasbin/redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/jcasbin/kafka-watcher">Kafka-Beobachter</a></td><td>Nachrichtensystem</td><td>Casbin</td><td>Beobachter für <a href="https://kafka.apache.org/">Apache Kafka</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5261" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/node-casbin/etcd-watcher">Etcd-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
+<tr><td><a href="https://github.com/node-casbin/redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td>Casbin</td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/node-casbin/pubsub-watcher">Öffentlich/Sub-Beobachter</a></td><td>Nachrichtensystem</td><td>Casbin</td><td>Beobachter für <a href="https://cloud.google.com/pubsub/docs">Google Cloud Pub/Sub</a></td></tr>
+<tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgre-Beobachter</a></td><td>Datenbank</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Beobachter für <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5262" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/ScienceLogic/flask-casbin-redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td><a href="https://github.com/ScienceLogic">Wissenschaftslogik</a></td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL-Beobachter</a></td><td>Datenbank</td><td>Casbin</td><td>Beobachter für <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5263" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis-Beobachter</a></td><td>KV Shop</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5264" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Beobachter</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-redis-watcher">Redis-Beobachter</a></td><td>KV Shop</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>Beobachter für <a href="http://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-rabbitmq-watcher">RabbitMQ-Beobachter</a></td><td>Nachrichtensystem</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>Beobachter für <a href="https://www.rabbitmq.com/">RabbitMQ</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-5258-content-5265" class="tab-pane" data-group="group_5258" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/Tinywan/casbin">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Tinywan">Tinywan</a></td><td>Watcher for <a href="http://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div></div></div>
+<h2><a class="anchor" aria-hidden="true" id="watcherex"></a><a href="#watcherex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WatcherEx</h2>
+<p>In order to support incremental synchronization between multiple instances, we provide the <code>WatcherEx</code> interface. We hope it can notify other instances when the policy changes, but there is currently no implementation of <code>WatcherEx</code>. We recommend that you use dispatcher to achieve this.</p>
+<p>Compared with <code>Watcher</code> interface, <code>WatcherEx</code> can distinguish what type of update action is received, e.g., <code>AddPolicy</code> and <code>RemovePolicy</code>.</p>
+<p>WatcherEx Apis:</p>
+<table>
+<thead>
+<tr><th>api</th><th>description</th></tr>
+</thead>
+<tbody>
+<tr><td>SetUpdateCallback(func(string)) error</td><td>SetUpdateCallback sets the callback function that the watcher will call, when the policy in DB has been changed by other instances. A classic callback is Enforcer.LoadPolicy().</td></tr>
+<tr><td>Update() error</td><td>Update calls the update callback of other instances to synchronize their policy. It is usually called after changing the policy in DB, like Enforcer.SavePolicy(), Enforcer.AddPolicy(), Enforcer.RemovePolicy(), etc.</td></tr>
+<tr><td>Close()</td><td>Close stops and releases the watcher, the callback function will not be called any more.</td></tr>
+<tr><td>UpdateForAddPolicy(sec, ptype string, params ...string) error</td><td>UpdateForAddPolicy calls the update callback of other instances to synchronize their policy. It is called after a policy is added via Enforcer.AddPolicy(), Enforcer.AddNamedPolicy(), Enforcer.AddGroupingPolicy() and Enforcer.AddNamedGroupingPolicy().</td></tr>
+<tr><td>UpdateForRemovePolicy(sec, ptype string, params ...string) error</td><td>UPdateForRemovePolicy calls the update callback of other instances to synchronize their policy. It is called after a policy is removed by Enforcer.RemovePolicy(), Enforcer.RemoveNamedPolicy(), Enforcer.RemoveGroupingPolicy() and Enforcer.RemoveNamedGroupingPolicy().</td></tr>
+<tr><td>UpdateForRemoveFilteredPolicy(sec, ptype string, fieldIndex int, fieldValues ...string) error</td><td>UpdateForRemoveFilteredPolicy calls the update callback of other instances to synchronize their policy. It is called after Enforcer.RemoveFilteredPolicy(), Enforcer.RemoveFilteredNamedPolicy(), Enforcer.RemoveFilteredGroupingPolicy() and Enforcer.RemoveFilteredNamedGroupingPolicy().</td></tr>
+<tr><td>UpdateForSavePolicy(model model.Model) error</td><td>UpdateForSavePolicy calls the update callback of other instances to synchronize their policy. It is called after Enforcer.SavePolicy()</td></tr>
+<tr><td>UpdateForAddPolicies(sec string, ptype string, rules ...[]string) error</td><td>UpdateForAddPolicies calls the update callback of other instances to synchronize their policy. It is called after Enforcer.AddPolicies(), Enforcer.AddNamedPolicies(), Enforcer.AddGroupingPolicies() and Enforcer.AddNamedGroupingPolicies().</td></tr>
+<tr><td>UpdateForRemovePolicies(sec string, ptype string, rules ...[]string) error</td><td>UpdateForRemovePolicies calls the update callback of other instances to synchronize their policy. It is called after Enforcer.RemovePolicies(), Enforcer.RemoveNamedPolicies(), Enforcer.RemoveGroupingPolicies() and Enforcer.RemoveNamedGroupingPolicies().</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/adapters"><span class="arrow-prev">← </span><span>Adapter</span></a><a class="docs-next button" href="/docs/de/dispatchers"><span>Dispatcher</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#watcherex">WatcherEx</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

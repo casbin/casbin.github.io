@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ru" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-217-tab-218" class="nav-link active" data-group="group_217" data-tab="tab-group-217-content-218">Go</div><div id="tab-group-217-tab-219" class="nav-link" data-group="group_217" data-tab="tab-group-217-content-219">CPP</div><div id="tab-group-217-tab-220" class="nav-link" data-group="group_217" data-tab="tab-group-217-content-220">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-217-content-218" class="tab-pane active" data-group="group_217" tabindex="-1"><div><span><p>Накладные расходы по исполнению политики сравниваются с <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. Испытание:</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ru" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-251-tab-252" class="nav-link active" data-group="group_251" data-tab="tab-group-251-content-252">Go</div><div id="tab-group-251-tab-253" class="nav-link" data-group="group_251" data-tab="tab-group-251-content-253">CPP</div><div id="tab-group-251-tab-254" class="nav-link" data-group="group_251" data-tab="tab-group-251-content-254">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-251-content-252" class="tab-pane active" data-group="group_251" tabindex="-1"><div><span><p>Накладные расходы по исполнению политики сравниваются с <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. Испытание:</p>
 <pre><code class="hljs">Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 2601 Mhz, 4 Core(s), 8 Logical Processor(s)<br /></code></pre>
 <p>бенчмаркинг результат <code>идет тест -bench=. -бенчм</code> является следующим (op = an <code>Enforce()</code> вызов, ms = millisecond, KB = килобайт):</p>
 <table>
@@ -95,7 +95,7 @@
 <tr><td>Приоритет</td><td>9 правил (2 пользователя, 2 роли)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-217-content-219" class="tab-pane" data-group="group_217" tabindex="-1"><div><span><p>Накладные расходы на выполнение <a href="https://github.com/casbin/casbin-cpp">CPP Casbin</a> сравниваются с <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>теста/контрольные показатели</code></a> с помощью <a href="https://github.com/google/benchmark">инструмент бенчмаркинга Google</a>. Испытание для этих контрольных показателей:</p>
+</span></div></div><div id="tab-group-251-content-253" class="tab-pane" data-group="group_251" tabindex="-1"><div><span><p>Накладные расходы на выполнение <a href="https://github.com/casbin/casbin-cpp">CPP Casbin</a> сравниваются с <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>теста/контрольные показатели</code></a> с помощью <a href="https://github.com/google/benchmark">инструмент бенчмаркинга Google</a>. Испытание для этих контрольных показателей:</p>
 <pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
 <p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
@@ -116,7 +116,7 @@
 <tr><td>Приоритет</td><td>9 правил (2 пользователя, 2 роли)</td><td>0.035</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-217-content-220" class="tab-pane" data-group="group_217" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> накладные расходы по обеспечению соблюдения политики сравниваются с <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
+</span></div></div><div id="tab-group-251-content-254" class="tab-pane" data-group="group_251" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> накладные расходы по обеспечению соблюдения политики сравниваются с <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. The testbed was a Ubuntu VM with the CPU:</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 Cores, 12 потоков<br /></code></pre>
 <p>Результаты бенчмаркинга <code>luajit bench.lua</code> следуют следующим образом (op = <code>enforce()</code> вызов, ms = millisecond):</p>
 <table>

@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Syntax für Modelle · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="- Ein Modell CONF sollte mindestens vier Bereiche haben: `[request_definition], [policy_definition], [policy_effect], [matchers]`."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="Syntax für Modelle · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="- Ein Modell CONF sollte mindestens vier Bereiche haben: `[request_definition], [policy_definition], [policy_effect], [matchers]`."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/syntax-for-models">English</a></li><li><a href="/docs/zh-CN/syntax-for-models">中文</a></li><li><a href="/docs/ko/syntax-for-models">한국어</a></li><li><a href="/docs/ru/syntax-for-models">Русский</a></li><li><a href="/docs/fr/syntax-for-models">Français</a></li><li><a href="/docs/ja/syntax-for-models">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Modell</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Syntax für Modelle</h1></header><article><div><span><ul>
+<li><p>Ein Modell CONF sollte mindestens vier Bereiche haben: <code>[request_definition], [policy_definition], [policy_effect], [matchers]</code>.</p></li>
+<li><p>Wenn ein Modell RBAC verwendet, sollte es auch den <code>[role_definition]</code> Bereich hinzufügen.</p></li>
+<li><p>Ein Modell CONF kann Kommentare enthalten. Die Kommentare beginnen mit <code>#</code>, und <code>#</code> wird den Rest der Zeile kommentieren.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="anforderungsdefinition"></a><a href="#anforderungsdefinition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Anforderungsdefinition</h2>
+<p><code>[request_definition]</code> ist die Definition für die Zugriffsanfrage. Sie definiert die Argumente in <code>e.Enforce(...)</code> Funktion.</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[request_definition]</span>
+<span class="hljs-attr">r</span> = sub, obj, handeln
+</code></pre>
+<p><code>sub, obj, act</code> repräsentiert das klassische Dreieck: Zugriff auf Entität (Betreff), auf Ressource (Objekt) und Zugriffsmethode (Aktion). Sie können jedoch Ihr eigenes Anfrageformular anpassen, wie zum Beispiel <code>sub, handeln</code> wenn Sie keine bestimmte Ressource angeben müssen, oder <code>sub, sub2, obj, handeln Sie</code> , wenn Sie irgendwie zwei Zugriffseinheiten haben.</p>
+<h2><a class="anchor" aria-hidden="true" id="richtlinien-definition"></a><a href="#richtlinien-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Richtlinien-Definition</h2>
+<p><code>[policy_definition]</code> ist die Definition der Richtlinie. Sie definiert die Bedeutung der Richtlinie. Zum Beispiel haben wir folgendes Modell:</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_definition]</span>
+<span class="hljs-attr">p</span> = sub, obj, act
+<span class="hljs-attr">p2</span> = sub, handeln
+</code></pre>
+<p>Und wir haben folgende Richtlinien (falls in einer Richtlinien-Datei)</p>
+<pre><code class="hljs">p, alice, data1, read
+p2, bob, write-all-objects
+</code></pre>
+<p>Jede Zeile in einer Politik wird als politische Regel bezeichnet. Jede Richtlinien-Regel beginnt mit einem <code>Richtlinientyp</code>, z. B. <code>p</code>, <code>p2</code>. Es wird verwendet, um der Richtlinien-Definition zu entsprechen, wenn es mehrere Definitionen gibt. Die obige Richtlinie zeigt die folgende Verbindung. Die Bindung kann im Matcher verwendet werden.</p>
+<pre><code class="hljs">(alice, data1, read) -&gt; (p.sub, p.obj, p.act)
+(bob, write-all-objects) -&gt; (p2.sub, p2.act)
+</code></pre>
+
+    <div class="admonition admonition-tip">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"/></svg></div> tip</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Die Elemente in einer Regelregel werden immer als<code>String</code>betrachtet. Wenn Sie dazu Fragen haben, lesen Sie bitte die Diskussion unter: <a href="https://github.com/casbin/casbin/issues/113">https://github.com/casbin/casbin/issues/113</a></p>
+</div></div><h2><a class="anchor" aria-hidden="true" id="richtlinien-effekt"></a><a href="#richtlinien-effekt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Richtlinien-Effekt</h2>
+<p><code>[policy_effect]</code> ist die Definition für den Policy-Effekt. Es legt fest, ob die Zugriffsanfrage genehmigt werden soll, wenn mehrere Richtlinien-Regeln mit der Anfrage übereinstimmen. Zum Beispiel erlaubt eine Regel und die andere verweigert.</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = irgendwe(wo (p.eft == erlaubt))
+</code></pre>
+<p>Der obige Richtlinien-Effekt bedeutet, wenn es eine übereinstimmende Richtlinien-Regel von <code>allow</code>gibt, der endgültige Effekt ist <code>allow</code> (aka allow-override). <code>p.eft</code> ist der Effekt für eine Richtlinie, es kann <code>erlauben</code> oder <code>verweigern</code>. Es ist optional und der Standardwert <code>erlaubt</code>. Da wir es nicht oben angegeben haben, verwendet es den Standardwert.</p>
+<p>Ein weiteres Beispiel für die politische Wirkung ist:</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = !some(where (p.eft == deny))
+</code></pre>
+<p>Es bedeutet, wenn es keine übereinstimmenden Regeln für<code>leugnen</code>gibt, der endgültige Effekt ist <code>allow</code> (aka deny-override). <code>einige</code> bedeutet: wenn es eine übereinstimmende Regel gibt. <code>irgendein</code> bedeutet: alle übereinstimmenden Richtlinien-Regeln (nicht hier verwendet). Der politische Effekt kann sogar mit logischen Ausdrücken verbunden werden:</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = irgendwe(wo (p.eft == allow)) &amp;&amp; !some(where (p.eft == deny))
+</code></pre>
+<p>Es bedeutet mindestens eine übereinstimmende Richtlinien-Regel von<code>allow</code>, und es gibt keine übereinstimmende Richtlinien-Regel von<code>deny</code>. Auf diese Weise werden sowohl die Genehmigungen als auch die Verweigerung von Genehmigungen unterstützt, und das Leugnen überschreibt.</p>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>, obwohl wir die Syntax des Policy-Effekts wie oben beschrieben gestaltet haben, die aktuellen Implementierungen nur mit hartkodiertem Policy-Effekt, da wir für diese Art von Flexibilität keine große Notwendigkeit gefunden haben. Daher müssen Sie vorerst einen der integrierten Policy-Effekte verwenden, anstatt Ihren eigenen zu personalisieren.</p>
+</div></div><p>Die unterstützten Richtlinien-Effekte sind:</p>
+<table>
+<thead>
+<tr><th>Richtlinien-Effekt</th><th>Bedeutung</th><th>Beispiel</th></tr>
+</thead>
+<tbody>
+<tr><td>irgend (wo (p.eft == erlaubt))</td><td>zulassen</td><td><a href="/docs/en/supported-models#examples">ACL, RBAC, etc.</a></td></tr>
+<tr><td>!some(where (p.eft == deny))</td><td>verweigeren-überschreiben</td><td><a href="/docs/en/supported-models#examples">Verweigerung überschreiben</a></td></tr>
+<tr><td>irgendwo (p.eft == allow)) &amp;&amp; !some(where (p.eft == deny))</td><td>zulassen und ablehnen</td><td><a href="/docs/en/supported-models#examples">Zulassen und verweigern</a></td></tr>
+<tr><td>priority(p.eft) || verweigern</td><td>priorität</td><td><a href="/docs/en/supported-models#examples">Priorität</a></td></tr>
+<tr><td>themtpriority(p.eft)</td><td>prioritäre Basis für Rolle</td><td><a href="/docs/en/supported-models#examples">Betreff-Priorität</a></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="matcher"></a><a href="#matcher" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Matcher</h2>
+<p><code>[matchers]</code> ist die Definition für Policy-Matcher. Die Matcher sind Ausdrücke. Sie legt fest, wie die Richtlinien-Regeln mit der Anforderung bewertet werden.</p>
+<pre><code class="hljs css language-ini"><span class="hljs-section">[matchers]</span>
+<span class="hljs-attr">m</span> = r.sub == p.sub &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
+</code></pre>
+<p>Der obige Matcher ist der einfachste, es bedeutet, dass Subjekt, Objekt und Aktion in einer Anfrage die in einer Regel der Richtlinie entsprechen sollten.</p>
+<p>Sie können die Arithmetik wie <code>+, -, *, /</code> und logische Operatoren wie <code>&amp;&amp;, |, |, verwenden!</code> in Übereinstimmungen.</p>
+<h2><a class="anchor" aria-hidden="true" id="typ-mehrerer-abschnitte"></a><a href="#typ-mehrerer-abschnitte" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Typ mehrerer Abschnitte</h2>
+<p>Wenn Sie mehrere Richtlinien-Definitionen oder mehrere Übereinstimmungen benötigen, können Sie wie <code>p2</code>, <code>m2</code> verwenden. Tatsächlich können alle oben genannten vier Abschnitte mehrere Typen verwenden und die Syntax ist <code>r</code>+number, wie <code>r2</code>, <code>e2</code>. Standardmäßig sollten diese vier Abschnitte einem entsprechen. So wie Ihr <code>r2</code> verwendet nur einen Matcher <code>m2</code> , um Richtlinien <code>p2</code> abzugleichen.</p>
+<p>Sie können <code>EnforceContext</code> als ersten Parameter von <code>enforce</code> Methode durchführen, um die Typen anzugeben, der <code>Vollstreckungskontext</code> ist wie folgt</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-5147-tab-5148" class="nav-link active" data-group="group_5147" data-tab="tab-group-5147-content-5148">go</div><div id="tab-group-5147-tab-5149" class="nav-link" data-group="group_5147" data-tab="tab-group-5147-content-5149">Node.js</div><div id="tab-group-5147-tab-5150" class="nav-link" data-group="group_5147" data-tab="tab-group-5147-content-5150">Java</div></div><div class="tab-content"><div id="tab-group-5147-content-5148" class="tab-pane active" data-group="group_5147" tabindex="-1"><div><span><pre><code class="hljs css language-go">EnforceContext{<span class="hljs-string">"r2"</span>,<span class="hljs-string">"p2"</span>,<span class="hljs-string">"e2"</span>,<span class="hljs-string">"m2"</span>}<br />EnforceContext <span class="hljs-keyword">struct</span> {<br />    RType <span class="hljs-keyword">string</span><br />    PType String<br />    EType String<br />    MType String<br />}<br /></code></pre>
+</span></div></div><div id="tab-group-5147-content-5149" class="tab-pane" data-group="group_5147" tabindex="-1"><div><span><pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> enforceContext = <span class="hljs-keyword">new</span> EnforceContext(<span class="hljs-string">'r2'</span>, <span class="hljs-string">'p2'</span>, <span class="hljs-string">'e2'</span>, <span class="hljs-string">'m2'</span>);<br />Klasse EnforceContext {<br />  <span class="hljs-keyword">constructor</span>(rType, pType, eType, mType) {<br />    dies. Typ = pType;<br />    <span class="hljs-keyword">this</span>.eType = eType;<br />    dies. Typ = mType;<br />    <span class="hljs-keyword">this</span>.rType = rType;<br />  }<br />}<br /></code></pre>
+</span></div></div><div id="tab-group-5147-content-5150" class="tab-pane" data-group="group_5147" tabindex="-1"><div><span><pre><code class="hljs css language-java">EnforceContext enforceContext = <span class="hljs-keyword">new</span> EnforceContext(<span class="hljs-string">"2"</span>);<br /><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnforceContext</span> </span>{<br />    <span class="hljs-keyword">private</span> String pType;<br />    <span class="hljs-keyword">private</span> String eType;<br />    <span class="hljs-keyword">private</span> String mType;<br />    <span class="hljs-keyword">private</span> String rType;<br />    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnforceContext</span><span class="hljs-params">(String suffix)</span> </span>{<br />      dies. Typ = <span class="hljs-string">"p"</span> + Suffix;<br />      <span class="hljs-keyword">this</span>.eType = <span class="hljs-string">"e"</span> + Suffix;<br />      . Typ = <span class="hljs-string">"m"</span> + Suffix;<br />      <span class="hljs-keyword">this</span>.rType = <span class="hljs-string">"r"</span> + Suffix;<br />    }<br />}<br /></code></pre>
+</span></div></div></div></div>
+<p>Beispiel Verwendung, siehe <a href="https://github.com/casbin/casbin/blob/master/examples/multiple_policy_definitions_model.conf">Modell</a> und <a href="https://github.com/casbin/casbin/blob/master/examples/multiple_policy_definitions_policy.csv">Richtlinie</a>, die Anfrage ist wie folgt</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-5151-tab-5152" class="nav-link active" data-group="group_5151" data-tab="tab-group-5151-content-5152">go</div><div id="tab-group-5151-tab-5153" class="nav-link" data-group="group_5151" data-tab="tab-group-5151-content-5153">Node.js</div></div><div class="tab-content"><div id="tab-group-5151-content-5152" class="tab-pane active" data-group="group_5151" tabindex="-1"><div><span><pre><code class="hljs css language-go"><span class="hljs-comment">// Pass in einem Suffix als Parameter an NewEnforceContext,wie 2 oder 3 und es wird r2,p2,etc..</span><br />enforceContext := NewEnforceContext(<span class="hljs-string">"2"</span>)<br /><span class="hljs-comment">// Sie können auch einen bestimmten Typ individuell</span><br />enforceContext angeben. Typ = <span class="hljs-string">"e"</span><br /><span class="hljs-comment">// Nicht in EnforceContext,die Standardeinstellung ist r,p,e,m</span><br />e. nforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">// true</span><br /><span class="hljs-comment">// durchlaufen in EnforceContext</span><br />e. nforce(enforceContext, <span class="hljs-keyword">struct</span>{ Age <span class="hljs-keyword">int</span> }{Age: <span class="hljs-number">70</span>}, <span class="hljs-string">"/data1"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">//false</span><br />e. nforce(enforceContext, <span class="hljs-keyword">struct</span>{ Age <span class="hljs-keyword">int</span> }{Age: <span class="hljs-number">30</span>}, <span class="hljs-string">"/data1"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">//true</span><br /></code></pre>
+</span></div></div><div id="tab-group-5151-content-5153" class="tab-pane" data-group="group_5151" tabindex="-1"><div><span><pre><code class="hljs css language-javascript"><span class="hljs-comment">// Pass in einem Suffix als Parameter an NewEnforceContext,wie 2 oder 3 und es wird r2,p2,etc..</span><br /><span class="hljs-keyword">const</span> enforceContext = <span class="hljs-keyword">new</span> NewEnforceContext(<span class="hljs-string">'2'</span>);<br /><span class="hljs-comment">// Sie können auch einen bestimmten Typ individuell</span><br />enforceContext angeben. Typ = <span class="hljs-string">"e"</span><br /><span class="hljs-comment">// Nicht in EnforceContext,die Standardeinstellung ist r,p,e,m</span><br />e. nforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">// true</span><br /><span class="hljs-comment">// durchlaufen in EnforceContext</span><br />e. nforce(enforceContext, {<span class="hljs-attr">Age</span>: <span class="hljs-number">70</span>}, <span class="hljs-string">"/data1"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">//false</span><br />e. nforce(enforceContext, {<span class="hljs-attr">Age</span>: <span class="hljs-number">30</span>}, <span class="hljs-string">"/data1"</span>, <span class="hljs-string">"read"</span>) <span class="hljs-comment">//true</span><br /></code></pre>
+<! -Java-->
+```java
+// In einem Suffix als Parameter an NewEnforceContext übergeben uch as 2 oder 3 und es wird r2, p2, etc..
+EnforceContext enforceContext = new EnforceContext("2");
+// Sie können auch einen bestimmten Typ individuell
+enforceContext angeben. eteType("e");
+// EnforceContext nicht übergeben, Standard ist r, p, e, m
+e. nforce("alice", "data2", "read"); // true
+// EnforceContext übergeben
+// TestEvalRule befindet sich in https://github. om/casbin/jcasbin/blob/master/src/test/java/org/casbin/jcasbin/main/AbacAPIUnitTest.java#L56
+e.enforce(enforceContext, new AbacAPIUnitTest.TestEvalRule("alice", 70), "/data1", "read"); // false
+e.enforce(enforceContext, new AbacAPIUnitTest.TestEvalRule("alice", 30), "/data1", "read"); // true true 
+ e.enforce(enforceContext, new AbacAPIUnitTestEval.TestEvalRule("alice", 30), "/data1", "read"); // true true true true
+```
+</span></div></div></div></div>
+<h3><a class="anchor" aria-hidden="true" id="special-grammer"></a><a href="#special-grammer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Special Grammer</h3>
+<p>Sie können auch <code>in</code>verwenden, der einzige Operator mit einem Textnamen. Dieser Operator prüft das Array auf der rechten Seite, um zu sehen, ob es einen Wert enthält, der gleich dem linken Wert ist. Die Gleichberechtigung wird durch den Operator == bestimmt und diese Bibliothek prüft nicht die Typen zwischen den Werten. Alle zwei Werte, wenn sie an die Schnittstelle gewirkt werden {}, und immer noch auf die Gleichberechtigung mit == überprüft werden können, werden wie erwartet funktionieren. Beachten Sie, dass Sie einen Parameter für das Array verwenden können, aber es muss eine <code>[]Schnittstelle sein{}</code> sein.</p>
+<p>Verweisen Sie auch auf <a href="https://github.com/casbin/casbin/blob/277c1a2b85698272f764d71a94d2595a8d425915/examples/rbac_model_matcher_using_in_op.conf">rbac_model_matcher_using_in_op</a>, <a href="https://github.com/casbin/casbin/blob/277c1a2b85698272f764d71a94d2595a8d425915/examples/keyget2_model.conf">keyget2_model</a> und <a href="https://github.com/casbin/casbin/blob/277c1a2b85698272f764d71a94d2595a8d425915/examples/keyget_model.conf">keyget_model</a></p>
+<p>Beispiel:</p>
+<pre><code class="hljs css language-ini">[request_definition]
+r = sub, obj
+...
+[matchers]
+m = r.sub.Name in (r.obj.Admins)
+</code></pre>
+<pre><code class="hljs css language-go">e.Enforce(Unter{Name: <span class="hljs-string">"alice"</span>}, Obj{Name: <span class="hljs-string">"a book"</span>, Admins: []<span class="hljs-keyword">interface</span>{}{<span class="hljs-string">"alice"</span>, <span class="hljs-string">"bob"</span>}})
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ausdruck-auswerter"></a><a href="#ausdruck-auswerter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ausdruck-Auswerter</h3>
+<p>Die Matcher-Auswertung in Casbin wird von Auswertern in jeder Sprache implementiert. Casbin integriert ihre Kompetenzen zur Bereitstellung der einheitlichen PERM-Sprache. Abgesehen von all der hier zur Verfügung gestellten Modellsyntax können diese Auswerter zusätzliche Funktionalität bieten, die möglicherweise nicht von einer anderen Sprache oder Implementierung unterstützt wird. Die Nutzung erfolgt auf eigene Gefahr.</p>
+<p>Die Auswerter für jede Casbin-Implementierung sind:</p>
+<table>
+<thead>
+<tr><th>Implementierung</th><th>Sprache</th><th>Ausdruck-Auswerter</th></tr>
+</thead>
+<tbody>
+<tr><td>Casbin</td><td>Golang</td><td><a href="https://github.com/Knetic/govaluate">https://github.com/Knetic/govaluate</a></td></tr>
+<tr><td>jCasbin</td><td>Jalta</td><td><a href="https://github.com/killme2008/aviator">https://github.com/killme2008/aviator</a></td></tr>
+<tr><td>Node-Casbin</td><td>Node.js</td><td><a href="https://de.github.com/donmccurdy/expression-eval">https://de.github.com/donmccurdy/expression-eval</a></td></tr>
+<tr><td>PHP-Casbin</td><td>PHP</td><td><a href="https://github.com/symfony/expression-language">https://github.com/symfony/expression-language</a></td></tr>
+<tr><td>PyCasbin</td><td>Python</td><td><a href="https://github.com/danthedeckie/simpleeval">https://github.com/danthedeckie/simpleeval</a></td></tr>
+<tr><td>Casbin.NET</td><td>C#</td><td><a href="https://github.com/davideicardi/DynamicExpresso">https://github.com/davideicardi/DynamicExpresso</a></td></tr>
+<tr><td>Casbin4D</td><td>Jennifer</td><td><a href="https://github.com/casbin4d/Casbin4D/tree/master/SourceCode/Common/Third%20Party/TExpressionParser">https://github.com/casbin4d/Casbin4D/tree/master/SourceCode/Common/Third%20Party/TExpressionParser</a></td></tr>
+<tr><td>casbin-rs</td><td>Rost</td><td><a href="https://de.github.com/jonathandturner/rhai">https://de.github.com/jonathandturner/rhai</a></td></tr>
+<tr><td>casbin-cpp</td><td>C++</td><td><a href="https://github.com/ArashPartow/exprtk">https://github.com/ArashPartow/exprtk</a></td></tr>
+</tbody>
+</table>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Wenn Sie Performance-Probleme mit Kasbin haben, wird dies wahrscheinlich durch die geringe Effizienz des Ausdrucks Auswertungs-Auswerter verursacht. Sie können sowohl Probleme an Kasbin oder den Ausdruck-Auswerter direkt senden um Ratschläge zu beschleunigen. Siehe <a href="/docs/en/benchmark">Benchmarks</a> Abschnitt für Details.</p>
+</div></div></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/supported-models"><span class="arrow-prev">← </span><span>Unterstützte Modelle</span></a><a class="docs-next button" href="/docs/de/effector"><span>Effektor</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#anforderungsdefinition">Anforderungsdefinition</a></li><li><a href="#richtlinien-definition">Richtlinien-Definition</a></li><li><a href="#richtlinien-effekt">Richtlinien-Effekt</a></li><li><a href="#matcher">Matcher</a></li><li><a href="#typ-mehrerer-abschnitte">Typ mehrerer Abschnitte</a><ul class="toc-headings"><li><a href="#special-grammer">Special Grammer</a></li><li><a href="#ausdruck-auswerter">Ausdruck-Auswerter</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

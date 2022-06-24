@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Adapter · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="In Casbin wird die Speicherung der Richtlinien als Adapter implementiert (auch Middleware für Casbin). Ein Casbin-Benutzer kann einen Adapter verwenden, um Regeln von einem Speicher zu laden (aka `LoadPolicy()`), oder speichern Sie Richtlinien-Regeln (aka `SavePolicy()`). Um das Gewicht gering zu halten, legen wir den Adaptercode nicht in die Hauptbibliothek ein."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="Adapter · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="In Casbin wird die Speicherung der Richtlinien als Adapter implementiert (auch Middleware für Casbin). Ein Casbin-Benutzer kann einen Adapter verwenden, um Regeln von einem Speicher zu laden (aka `LoadPolicy()`), oder speichern Sie Richtlinien-Regeln (aka `SavePolicy()`). Um das Gewicht gering zu halten, legen wir den Adaptercode nicht in die Hauptbibliothek ein."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/adapters">English</a></li><li><a href="/docs/zh-CN/adapters">中文</a></li><li><a href="/docs/ko/adapters">한국어</a></li><li><a href="/docs/ru/adapters">Русский</a></li><li><a href="/docs/fr/adapters">Français</a></li><li><a href="/docs/ja/adapters">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Erweiterungen</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Adapter</h1></header><article><div><span><p>In Casbin wird die Speicherung der Richtlinien als Adapter implementiert (auch Middleware für Casbin). Ein Casbin-Benutzer kann einen Adapter verwenden, um Regeln von einem Speicher zu laden (aka <code>LoadPolicy()</code>), oder speichern Sie Richtlinien-Regeln (aka <code>SavePolicy()</code>). Um das Gewicht gering zu halten, legen wir den Adaptercode nicht in die Hauptbibliothek ein.</p>
+<h2><a class="anchor" aria-hidden="true" id="unterstützte-adapter"></a><a href="#unterstützte-adapter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unterstützte Adapter</h2>
+<p>Eine vollständige Liste der Casbin-Adapter finden Sie wie unten. Jeder Beitrag von Drittanbietern an einem neuen Adapter ist willkommen, bitte informieren Sie uns und wir werden ihn in diese Liste setzen:)</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-116-tab-117" class="nav-link active" data-group="group_116" data-tab="tab-group-116-content-117">Go</div><div id="tab-group-116-tab-118" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-118">Java</div><div id="tab-group-116-tab-119" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-119">Node.js</div><div id="tab-group-116-tab-120" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-120">PHP</div><div id="tab-group-116-tab-121" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-121">Python</div><div id="tab-group-116-tab-122" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-122">.NET</div><div id="tab-group-116-tab-123" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-123">Rust</div><div id="tab-group-116-tab-124" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-124">Ruby</div><div id="tab-group-116-tab-125" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-125">Swift</div><div id="tab-group-116-tab-126" class="nav-link" data-group="group_116" data-tab="tab-group-116-content-126">Lua</div></div><div class="tab-content"><div id="tab-group-116-content-117" class="tab-pane active" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://casbin.org/docs/en/policy-subset-loading">Gefilterter Datei-Adapter (eingebaut)</a></td><td>Datei</td><td><a href="https://github.com/faceless-saint">@gesichts-Heiliger</a></td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien mit Richtlinien-Untermengenunterstützung</td></tr>
+<tr><td><a href="https://github.com/Blank-Xu/sql-adapter">SQL-Adapter</a></td><td>SQL</td><td><a href="https://github.com/Blank-Xu">@Blank-Xu</a></td><td>✅</td><td>MySQL, PostgreSQL, SQL Server, SQLite3 werden in <code>Master</code> Branch unterstützt und Oracle wird in <code>Orakel</code> Branch von <code>Datenbank/sql</code> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin/xorm-adapter">Xorm-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, TiDB, SQLite, SQL Server, Oracle werden von <a href="https://github.com/go-xorm/xorm/">Xorm</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin/gorm-adapter">Gorm-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, Sqlite3, SQL Server werden von <a href="https://github.com/jinzhu/gorm/">Gorm</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin/ent-adapter">Ent-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, MariaDB, PostgreSQL, SQLite, Gremlin-basierte Graphdatenbanken werden von <a href="https://entgo.io/">ent ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin/beego-orm-adapter">Beego ORM Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, Sqlite3 werden von <a href="https://beego.me/docs/mvc/model/overview.md">Beego ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/memwey/casbin-sqlx-adapter">SQLX-Adapter</a></td><td>RM</td><td><a href="https://github.com/memwey">@memwey</a></td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Oracle werden von <a href="https://github.com/jmoiron/sqlx">SQLX</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/Blank-Xu/sqlx-adapter">Sqlx-Adapter</a></td><td>SQL</td><td><a href="https://github.com/Blank-Xu">@Blank-Xu</a></td><td>✅</td><td>MySQL, PostgreSQL, SQL Server, SQLite3 werden in <code>Master</code> Branch unterstützt und Oracle wird in <code>Orakel</code> Branch von <a href="https://github.com/jmoiron/sqlx">sqlx</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/vance-liu/gdb-adapter">GF ORM Adapter</a></td><td>RM</td><td><a href="https://github.com/vance-liu">@vance-liu</a></td><td>✅</td><td>MySQL, SQLite, PostgreSQL, Oracle, SQL Server werden von <a href="https://goframe.org/pages/viewpage.action?pageId=1114686">GoFrame ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/kotlin2018/adapter">GoFrame ORM Adapter</a></td><td>RM</td><td><a href="https://github.com/kotlin2018">@kotlin2018</a></td><td>✅</td><td>MySQL, SQLite, PostgreSQL, Oracle, SQL Server werden von <a href="https://goframe.org/pages/viewpage.action?pageId=1114686">GoFrame ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin/casbin-pg-adapter">Gefilterter PostgreSQL-Adapter</a></td><td>SQL</td><td>Casbin</td><td>✅</td><td>Für <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
+<tr><td><a href="https://github.com/pckhoi/casbin-pgx-adapter">Gefilterter pgx-Adapter</a></td><td>SQL</td><td><a href="https://github.com/pckhoi">@pckhoi</a></td><td>✅</td><td>PostgreSQL wird von <a href="https://github.com/jackc/pgx">pgx</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/cychiuae/casbin-pg-adapter">PostgreSQL-Adapter</a></td><td>SQL</td><td><a href="https://github.com/cychiuae">@cychiuae</a></td><td>✅</td><td>Für <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
+<tr><td><a href="https://github.com/edomosystems/rqlite-adapter">RQLite-Adapter</a></td><td>SQL</td><td><a href="https://github.com/edomosystems">EDOMO-Systeme</a></td><td>✅</td><td>Für <a href="https://github.com/rqlite/rqlite/">RQLite</a></td></tr>
+<tr><td><a href="https://github.com/casbin/mongodb-adapter">MongoDB Adapter</a></td><td>NoSQL</td><td>Casbin</td><td>✅</td><td>Für <a href="https://www.mongodb.com">MongoDB</a> basierend auf <a href="https://github.com/mongodb/mongo-go-driver">MongoDB Go Treiber</a></td></tr>
+<tr><td><a href="https://github.com/adityapandey9/rethinkdb-adapter">RethinkDB Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/adityapandey9">@adityapandey9</a></td><td>✅</td><td>Für <a href="https://rethinkdb.com/">RethinkDB</a></td></tr>
+<tr><td><a href="https://github.com/casbin/cassandra-adapter">Kassandra-Adapter</a></td><td>NoSQL</td><td>Casbin</td><td>❌</td><td>Für <a href="http://cassandra.apache.org">Apache Cassandra DB</a></td></tr>
+<tr><td><a href="https://github.com/HOOQTV/dynacasbin">DynamoDB Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/HOOQTV">HOOQ</a></td><td>❌</td><td>Für <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a></td></tr>
+<tr><td><a href="https://github.com/NewbMiao/dynacasbin">Dynacasbin</a></td><td>NoSQL</td><td><a href="https://github.com/NewbMiao">NewbMiao</a></td><td>✅</td><td>Für <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a></td></tr>
+<tr><td><a href="https://github.com/adamwasila/arangodb-adapter">ArangoDB Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/adamwasila">@adamwasila</a></td><td>✅</td><td>Für <a href="https://www.arangodb.com/">ArangoDB</a></td></tr>
+<tr><td><a href="https://github.com/Soluto/casbin-minio-adapter">Amazon S3 Adapter</a></td><td>Wolke</td><td><a href="https://github.com/Soluto">Lösung</a></td><td>❌</td><td>Für <a href="https://github.com/minio/minio">Minio</a> und <a href="https://aws.amazon.com/s3/">Amazon S3</a></td></tr>
+<tr><td><a href="https://github.com/spacycoder/cosmos-casbin-adapter">Azure Kosmos DB Adapter</a></td><td>Wolke</td><td><a href="https://github.com/spacycoder">@Spacycodierer</a></td><td>✅</td><td>Für <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">Microsoft Azure Cosmos DB</a></td></tr>
+<tr><td><a href="https://github.com/reedom/casbin-firestore-adapter">GCP Firestore Adapter</a></td><td>Wolke</td><td><a href="https://github.com/reedom">@reedom</a></td><td>❌</td><td>Für <a href="https://cloud.google.com/firestore/">Google Cloud Plattform-Firestore</a></td></tr>
+<tr><td><a href="https://github.com/qurami/casbin-cloud-storage-adapter">GCP Cloud-Speicheradapter</a></td><td>Wolke</td><td><a href="https://github.com/qurami">qurami</a></td><td>❌</td><td>Für <a href="https://cloud.google.com/storage/">Google Cloud Platform Cloud Storage</a></td></tr>
+<tr><td><a href="https://github.com/flowerinthenight/casbin-spanner-adapter">GCP Cloud Spanner Adapter</a></td><td>Wolke</td><td><a href="https://github.com/flowerinthenight">@blumenight</a></td><td>✅</td><td>Für <a href="https://cloud.google.com/spanner/">Google Cloud Plattform Cloud Spanner</a></td></tr>
+<tr><td><a href="https://github.com/ankitm123/consul-adapter">Konsumadapter</a></td><td>KV Shop</td><td><a href="https://github.com/ankitm123">@ankitm123</a></td><td>❌</td><td>Für <a href="https://www.consul.io/">HashiCorp Verbrauch</a></td></tr>
+<tr><td><a href="https://github.com/casbin/redis-adapter">Redis-Adapter (Redigo)</a></td><td>KV Shop</td><td>Casbin</td><td>✅</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/mlsen/casbin-redis-adapter">Redis Adapter (go-redis)</a></td><td>KV Shop</td><td><a href="https://github.com/mlsen">@mlsen</a></td><td>✅</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/sebastianliu/etcd-adapter">Etcd-Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/sebastianliu">@sebastianliu</a></td><td>❌</td><td>Für <a href="https://github.com/coreos/etcd">etcd</a></td></tr>
+<tr><td><a href="https://github.com/speza/casbin-bolt-adapter">BoltDB Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/speza">@speza</a></td><td>✅</td><td>Für <a href="https://github.com/boltdb/bolt">Bolt</a></td></tr>
+<tr><td><a href="https://github.com/wirepair/bolt-adapter">Bolt Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/wirepair">@wirepair</a></td><td>❌</td><td>Für <a href="https://github.com/boltdb/bolt">Bolt</a></td></tr>
+<tr><td><a href="https://github.com/inits/casbin-badgerdb-adapter">BadgerDB Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/inits">@inits</a></td><td>✅</td><td>Für <a href="https://github.com/dgraph-io/badger">BadgerDB</a></td></tr>
+<tr><td><a href="https://github.com/casbin/protobuf-adapter">Protobuf Adapter</a></td><td>Stream</td><td>Casbin</td><td>❌</td><td>Für <a href="https://developers.google.com/protocol-buffers/">Google-Protokoll-Puffer</a></td></tr>
+<tr><td><a href="https://github.com/casbin/json-adapter">JSON-Adapter</a></td><td>String</td><td>Casbin</td><td>❌</td><td>Für <a href="https://www.json.org/">JSON</a></td></tr>
+<tr><td><a href="https://github.com/qiangmzsx/string-adapter">String-Adapter</a></td><td>String</td><td><a href="https://github.com/qiangmzsx">@qiangmzsx</a></td><td>❌</td><td>Für Zeichenkette</td></tr>
+<tr><td><a href="https://github.com/h4ckedneko/casbin-httpfs">HTTP-Datei-Adapter</a></td><td>HTTP</td><td><a href="https://github.com/h4ckedneko">@h4ckedneko</a></td><td>❌</td><td>Für <a href="https://golang.org/src/net/http/fs.go">http.FileSystem</a></td></tr>
+<tr><td><a href="https://github.com/naucon/casbin-fs-adapter">FileSystem Adapter</a></td><td>Datei</td><td><a href="https://github.com/naucon">@naucon</a></td><td>❌</td><td>Für <a href="https://pkg.go.dev/io/fs">fs.FS</a> und <a href="https://pkg.go.dev/embed">embed.FS</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-118" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/jcasbin/jdbc-adapter">JDBC-Adapter</a></td><td>JDBC</td><td>Casbin</td><td>✅</td><td>MySQL, Oracle, PostgreSQL, DB2, Sybase, SQL Server werden von <a href="https://docs.oracle.com/cd/E19226-01/820-7688/gawms/index.html">JDBC</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/jcasbin/hibernate-adapter">Ruhezustand Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>Oracle, DB2, SQL Server, Sybase, MySQL, PostgreSQL werden von <a href="http://www.hibernate.org/">Hibernate</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/jcasbin/mybatis-adapter">MyBatis Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, Oracle, PostgreSQL, DB2, Sybase, SQL Server (das gleiche wie JDBC) werden von <a href="https://mybatis.org/mybatis-3/">MyBatis 3</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/mapleafgo/jcasbin-extra">Hutool Adapter</a></td><td>RM</td><td><a href="https://github.com/mapleafgo">@mapleafgo</a></td><td>✅</td><td>MySQL, Oracle, PostgreSQL, SQLite werden von <a href="https://github.com/looly/hutool">Hutool</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/zzl221000/jcasbin-mongo-adapter">MongoDB Adapter</a></td><td>NoSQL</td><td>Casbin</td><td>✅</td><td>MongoDB wird unterstützt von <a href="https://mongodb.github.io/mongo-java-driver/">mongodb-driver-sync</a></td></tr>
+<tr><td><a href="https://github.com/jcasbin/dynamodb-adapter">DynamoDB Adapter</a></td><td>NoSQL</td><td>Casbin</td><td>❌</td><td>Für <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a></td></tr>
+<tr><td><a href="https://github.com/jcasbin/redis-adapter">Redis-Adapter</a></td><td>KV Shop</td><td>Casbin</td><td>✅</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-119" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://casbin.org/docs/en/policy-subset-loading">Gefilterter Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien mit Richtlinien-Untermengenunterstützung</td></tr>
+<tr><td><a href="https://github.com/casbin/node-casbin/blob/master/src/persist/stringAdapter.ts">String-Adapter (eingebaut)</a></td><td>String</td><td><a href="https://github.com/calebfaruki">@calebfaruki</a></td><td>❌</td><td>Für Zeichenkette</td></tr>
+<tr><td><a href="https://github.com/node-casbin/basic-adapter">Einfacher Adapter</a></td><td>Natives ORM</td><td>Casbin</td><td>✅</td><td>pg, mysql, mysql2, sqlite3, oracledb, mssql werden vom Adapter selbst unterstützt</td></tr>
+<tr><td><a href="https://github.com/node-casbin/sequelize-adapter">Sequelize-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Microsoft SQL Server werden von <a href="https://github.com/sequelize/sequelize">Sequelize</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/node-casbin/typeorm-adapter">Typ-ORM-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, Oracle, WebSQL, MongoDB werden von <a href="https://github.com/typeorm/typeorm">TypeORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/node-casbin/prisma-adapter">Prisma-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, AWS Aurora, Azure SQL wird von <a href="https://www.prisma.io/">Prisma</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/knex/casbin-knex-adapter">Knex Adapter</a></td><td>RM</td><td><a href="https://github.com/sarneeh">@sarneeh</a> und <a href="https://github.com/knex">knex</a></td><td>✅</td><td>MSSQL, MySQL, PostgreSQL, SQLite3, Oracle werden von <a href="https://knexjs.org/">Knex.js</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/willsoto/casbin-objection-adapter">Beanstandung.js Adapter</a></td><td>RM</td><td><a href="https://github.com/willsoto">@willsoto</a></td><td>✅</td><td>MSSQL, MySQL, PostgreSQL, SQLite3, Oracle werden von <a href="https://vincit.github.io/objection.js/">Objection.js</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/touchifyapp/casbin-pg-adapter">PostgreSQL Native Adapter</a></td><td>SQL</td><td><a href="https://github.com/touchifyapp">@touchifyapp</a></td><td>✅</td><td>PostgreSQL-Adapter mit Unterstützung für erweiterte Teilmengen-Subsets und verbesserten Leistungen, die mit <a href="https://node-postgres.com/">KnotenpostgreSQL</a> erstellt wurden.</td></tr>
+<tr><td><a href="https://github.com/node-casbin/mongoose-adapter">Mongoose Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/elasticio">elastisch.io</a> und Kasbin</td><td>✅</td><td>MongoDB wird von <a href="https://mongoosejs.com/">Mongoose</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/minhducck/casbin-mongoose-adapter">Mongoose Adapter (No-Transaction)</a></td><td>NoSQL</td><td><a href="https://github.com/minhducck">minhducck</a></td><td>✅</td><td>MongoDB wird von <a href="https://mongoosejs.com/">Mongoose</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/juicycleff/casbin-mongodb-adapter">Knoten MongoDB Nativer Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/juicycleff">@juicycleff</a></td><td>✅</td><td>Für <a href="https://mongodb.github.io/node-mongodb-native/">Knoten MongoDB Native</a></td></tr>
+<tr><td><a href="https://github.com/fospitia/casbin-dynamodb-adapter">DynamoDB Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/fospitia">@fospitia</a></td><td>✅</td><td>Für <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a></td></tr>
+<tr><td><a href="https://github.com/MarkMYoung/casbin-couchbase-adapter">Couchbase-Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/MarkMYoung">@MarkMYoung</a></td><td>✅</td><td>Für <a href="https://www.couchbase.com/">Couchbase</a></td></tr>
+<tr><td><a href="https://github.com/node-casbin/redis-adapter">Redis-Adapter</a></td><td>KV Shop</td><td>Casbin</td><td>❌</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+<tr><td><a href="https://github.com/NandaKishorJeripothula/node-casbin-redis-adapter">Redis-Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/NandaKishorJeripothula">@NandaKishorJeripothula</a></td><td>❌</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-120" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/php-casbin/database-adapter">Datenbank-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Microsoft SQL Server werden von <a href="https://github.com/techoner/database">Techone/Datenbank</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/php-casbin/zend-db-adapter">Zend Db Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Oracle, IBM DB2, Microsoft SQL Server, andere PDO-Treiber werden von <a href="https://docs.zendframework.com/zend-db/">zend-db</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/php-casbin/dbal-adapter">Doktrin DBAL-Adapter (Empfehlung)</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>Leistungsstarke Abstraktionsschicht für PHP-Datenbanken (<a href="https://github.com/doctrine/dbal">DBAL</a>) mit vielen Funktionen für Datenbankschema-Introspektion und -Management.</td></tr>
+<tr><td><a href="https://github.com/php-casbin/medoo-adapter">Medoo-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td><a href="https://github.com/catfan/Medoo">Medoo</a> ist ein leichtes PHP Datenbank Framework zur Beschleunigung der Entwicklung unterstützt alle SQL-Datenbanken, einschließlich <code>MySQL</code>, <code>MSSQL</code>, <code>SQLite</code>, <code>MariaDB</code>, <code>PostgreSQL</code>, <code>Sybase</code>, <code>Oracle</code> und mehr.</td></tr>
+<tr><td><a href="https://github.com/php-casbin/laminas-db-adapter">Laminas-db Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, Oracle, IBM DB2, Microsoft Sql Server, PDO, etc. werden unterstützt von <a href="https://github.com/laminas/laminas-db">laminas-db</a></td></tr>
+<tr><td><a href="https://github.com/php-casbin/zend-db-adapter">Zend-db Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, Oracle, IBM DB2, Microsoft Sql Server, PDO, etc. werden unterstützt von <a href="https://github.com/zendframework/zend-db">zend-db</a></td></tr>
+<tr><td><a href="https://github.com/nsnake/CasbinAdapter-Redis-Adapter">Redis-Adapter</a></td><td>KV Shop</td><td><a href="https://github.com/nsnake">@nsnake</a></td><td>❌</td><td>Für <a href="https://redis.io/">Redis</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-121" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/pycasbin/sqlalchemy-adapter">SQLAlchemy Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>PostgreSQL, MySQL, SQLite, Oracle, Microsoft SQL Server, Firebird, Sybase werden von <a href="https://www.sqlalchemy.org/">SQLAlchemy</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/sampingantech/databases-casbin-adapter">Async-Datenbank-Adapter</a></td><td>RM</td><td><a href="https://github.com/sampingantech">sampingantech</a></td><td>✅</td><td>PostgreSQL, MySQL, SQLite, Oracle, Microsoft SQL Server, Firebird, Sybase werden von <a href="https://www.encode.io/databases/">Datenbanken</a></td></tr>
+<tr><td><a href="https://github.com/shblhy/peewee-adapter">Peewee-Adapter</a></td><td>RM</td><td><a href="https://github.com/shblhy">@shblhy</a></td><td>✅</td><td>PostgreSQL, MySQL, SQLite werden von <a href="http://docs.peewee-orm.com/">Peewee</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/zhangbailong945/mongoengine_adapter">MongoEngine-Adapter</a></td><td>RM</td><td><a href="https://github.com/zhangbailong945">@zhangbailong945</a></td><td>❌</td><td>MongoDB wird von <a href="http://mongoengine.org/">MongoEngine</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/drorvinkler/pycasbin-pony-adapter">Pony ORM Adapter</a></td><td>RM</td><td><a href="https://github.com/drorvinkler">@drorvinkler</a></td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Oracle, CockroachDB werden von <a href="https://ponyorm.org/">Pony ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/thearchitector/casbin-tortoise-adapter">Tortoise ORM Adapter</a></td><td>RM</td><td><a href="https://github.com/thearchitector">@thearchitector</a></td><td>✅</td><td>PostgreSQL (&gt;=9.4), MySQL, MariaDB und SQLite werden von <a href="https://tortoise.github.io/databases.html">Tortoise ORM</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/ScienceLogic/casbin-couchbase-adapter">Couchbase-Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/ScienceLogic">Wissenschaftslogik</a></td><td>✅ (ohne <code>remove_filtered_policy()</code>)</td><td>Für <a href="https://www.couchbase.com/">Couchbase</a></td></tr>
+<tr><td><a href="https://github.com/abqadeer/python-dycasbin">DynamoDB Adapter</a></td><td>NoSQL</td><td><a href="https://github.com/abqadeer/">@abqadeer</a></td><td>✅</td><td>Für <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a></td></tr>
+<tr><td><a href="https://github.com/pycasbin/pymongo-adapter">Pymongo-Adapter</a></td><td>NoSQL</td><td>Casbin</td><td>❌</td><td>MongoDB wird von <a href="https://pypi.org/project/pymongo/">Pymongo</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/devrushi41/pycasbin-firebase-adapter">GCP Firebase-Adapter</a></td><td>Wolke</td><td><a href="https://github.com/devrushi41">@devrushi41</a></td><td>✅</td><td>Für <a href="https://firebase.google.com/">Google Cloud Plattform Firebase</a></td></tr>
+<tr><td><a href="https://github.com/shepilov-vladislav/ormar-casbin-adapte">Async ormar Adapter</a></td><td>ORM</td><td><a href="https://github.com/shepilov-vladislav">sampingantech</a></td><td>✅</td><td>PostgreSQL, MySQL, SQLite, Oracle, Microsoft SQL Server, Firebird, Sybase are supported by <a href="https://github.com/collerek/ormar/">ormar</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-122" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/casbin-net/EF-Adapter">EF-Adapter</a></td><td>RM</td><td>Casbin</td><td>❌</td><td>MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Oracle, DB2, etc. werden unterstützt von <a href="https://docs.microsoft.com/en-us/ef/ef6/">Entity Framework 6</a></td></tr>
+<tr><td><a href="https://github.com/casbin-net/EFCore-Adapter">EFCore-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Oracle, DB2, etc. werden vom <a href="https://docs.microsoft.com/en-us/ef/core/">Entity Framework Core</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/g4dvali/CasbinRBACAdapter">EFCore Adapter (.NET Core 5)</a></td><td>RM</td><td><a href="https://github.com/g4dvali">@g4dvali</a></td><td>✅</td><td>MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Oracle, DB2, etc. werden vom <a href="https://docs.microsoft.com/en-us/ef/core/">Entity Framework Core</a> unterstützt</td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-123" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/casbin-rs/diesel-adapter">Diesel-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td><a href="https://github.com/diesel-rs/diesel/blob/master/guide_drafts/backend_installation.md">SQLite, PostgreSQL, MySQL</a> werden von <a href="http://diesel.rs/">Diesel</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin-rs/sqlx-adapter">Sqlx-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>PostgreSQL, MySQL wird von <a href="https://github.com/launchbadge/sqlx">Sqlx</a> mit vollständig asynchroner Operation unterstützt</td></tr>
+<tr><td><a href="https://github.com/lingdu1234/sea_orm_casbin_adapter">SeaORM-Adapter</a></td><td>RM</td><td><a href="https://github.com/lingdu1234">lingdu1234</a></td><td>✅</td><td>PostgreSQL, MySQL wird vom <a href="https://github.com/SeaQL/sea-orm">SeaORM</a> mit vollständig asynchroner Operation unterstützt</td></tr>
+<tr><td><a href="http://github.com/casbin-rs/json-adapter">JSON-Adapter</a></td><td>String</td><td>Casbin</td><td>✅</td><td>Für <a href="https://json.org/">JSON</a></td></tr>
+<tr><td><a href="https://github.com/casbin-rs/yaml-adapter">YAML-Adapter</a></td><td>String</td><td>Casbin</td><td>✅</td><td>Für <a href="https://yaml.org/">YAML</a></td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-124" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-sql-adapter">Sequel-Adapter</a></td><td>RM</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>✅</td><td><a href="http://sequel.jeremyevans.net/">ADO, Amalgalite, IBM_DB, JDBC, MySQL, Mysql2, ODBC, Oracle, PostgreSQL, SQLAnywhere, SQLite3 und TinyTDS</a> werden von <a href="http://sequel.jeremyevans.net/">Sequel</a> unterstützt</td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-125" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://github.com/casbin/SwiftCasbin/blob/master/Sources/Casbin/Adapter/MemoryAdapter.swift">Speicheradapter (eingebaut)</a></td><td>Speicher</td><td>Casbin</td><td>❌</td><td>Für Speicher</td></tr>
+<tr><td><a href="https://github.com/SwiftCasbin/fluent-adapter">Flüssiger Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td><a href="https://docs.vapor.codes/4.0/fluent/overview/#drivers">PostgreSQL, SQLite, MySQL, MongoDB</a> werden von <a href="https://github.com/vapor/fluent">fließend</a> unterstützt</td></tr>
+</tbody>
+</table>
+</span></div></div><div id="tab-group-116-content-126" class="tab-pane" data-group="group_116" tabindex="-1"><div><span><table>
+<thead>
+<tr><th>Adapter</th><th>Typ</th><th>Autor</th><th>AutoSave</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://casbin.org/docs/en/adapters#file-adapter-built-in">Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien</td></tr>
+<tr><td><a href="https://casbin.org/docs/en/policy-subset-loading">Gefilterter Datei-Adapter (eingebaut)</a></td><td>Datei</td><td>Casbin</td><td>❌</td><td>Für <a href="https://en.wikipedia.org/wiki/Comma-separated_values">.CSV (Comma-Separated Values)</a> Dateien mit Richtlinien-Untermengenunterstützung</td></tr>
+<tr><td><a href="https://github.com/casbin-lua/luasql-adapter">LuaSQL-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, PostgreSQL, SQLite3 werden von <a href="https://keplerproject.github.io/luasql/">LuaSQL</a> unterstützt</td></tr>
+<tr><td><a href="https://github.com/casbin-lua/4daysorm-adapter">4DaysORM-Adapter</a></td><td>RM</td><td>Casbin</td><td>✅</td><td>MySQL, SQLite3 werden von <a href="https://github.com/itdxer/4DaysORM">4DaysORM</a> unterstützt</td></tr>
+</tbody>
+</table>
+</span></div></div></div></div>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <ol>
+<li>Wenn <code>casbin.NewEnforcer()</code> mit einem expliziten oder impliziten Adapter aufgerufen wird, wird die Richtlinie automatisch geladen.</li>
+<li>Sie können <code>e.LoadPolicy()</code> aufrufen, um die Richtlinien-Regeln aus dem Speicher neu zu laden.</li>
+<li>Wenn der Adapter die <code>Auto-Speichern</code> Funktion nicht unterstützt, Die Richtlinien-Regeln können beim Hinzufügen oder Entfernen von Richtlinien nicht automatisch wieder in den Speicher gespeichert werden. Sie müssen <code>SavePolicy()</code> manuell aufrufen, um alle Regeln zu speichern.</li>
+</ol>
+</div></div><h2><a class="anchor" aria-hidden="true" id="beispiele"></a><a href="#beispiele" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Beispiele</h2>
+<p>Hier finden Sie einige Beispiele:</p>
+<h3><a class="anchor" aria-hidden="true" id="datei-adapter-eingebaut"></a><a href="#datei-adapter-eingebaut" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Datei-Adapter (eingebaut)</h3>
+<p>Unten wird gezeigt, wie man einen Erzwinger aus dem eingebauten Datei-Adapter initialisiert:</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-127-tab-128" class="nav-link active" data-group="group_127" data-tab="tab-group-127-content-128">Go</div><div id="tab-group-127-tab-129" class="nav-link" data-group="group_127" data-tab="tab-group-127-content-129">PHP</div><div id="tab-group-127-tab-130" class="nav-link" data-group="group_127" data-tab="tab-group-127-content-130">Rust</div></div><div class="tab-content"><div id="tab-group-127-content-128" class="tab-pane active" data-group="group_127" tabindex="-1"><div><span><pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> <span class="hljs-string">"github.com/casbin/casbin"</span><br /><br />e := casbin.NewEnforcer(<span class="hljs-string">"examples/basic_model.conf"</span>, <span class="hljs-string">"examples/basic_policy.csv"</span>)<br /></code></pre>
+</span></div></div><div id="tab-group-127-content-129" class="tab-pane" data-group="group_127" tabindex="-1"><div><span><pre><code class="hljs css language-php">Casbin\Enforcer;<br /><br />$e = <span class="hljs-keyword">new</span> Enforcer(<span class="hljs-string">'examples/basic_model.conf'</span>, <span class="hljs-string">'examples/basic_policy.csv'</span>);<br /></code></pre>
+</span></div></div><div id="tab-group-127-content-130" class="tab-pane" data-group="group_127" tabindex="-1"><div><span><pre><code class="hljs css language-rust">verwenden Sie casbin::prelude::*;<br /><br /><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> e = Enforcer::new(<span class="hljs-string">"examples/basic_model.conf"</span>, <span class="hljs-string">"examples/basic_policy.csv"</span>).<span class="hljs-keyword">await</span>?;<br /></code></pre>
+</span></div></div></div></div>
+<p>Dies ist das gleiche mit:</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-131-tab-132" class="nav-link active" data-group="group_131" data-tab="tab-group-131-content-132">Go</div><div id="tab-group-131-tab-133" class="nav-link" data-group="group_131" data-tab="tab-group-131-content-133">PHP</div><div id="tab-group-131-tab-134" class="nav-link" data-group="group_131" data-tab="tab-group-131-content-134">Rust</div></div><div class="tab-content"><div id="tab-group-131-content-132" class="tab-pane active" data-group="group_131" tabindex="-1"><div><span><pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (<br />    <span class="hljs-string">"github.com/casbin/casbin"</span><br />    <span class="hljs-string">"github.com/casbin/casbin/file-adapter"</span><br /><br /> )<br /><br />a := fileadapter.NewAdapter(<span class="hljs-string">"examples/basic_policy.csv"</span>)<br />e := casbin.NewEnforcer(<span class="hljs-string">"examples/basic_model.conf"</span>, a)<br /></code></pre>
+</span></div></div><div id="tab-group-131-content-133" class="tab-pane" data-group="group_131" tabindex="-1"><div><span><pre><code class="hljs css language-php">Casbin\Enforcer;<br />Casbin\Persist\Adapters\FileAdapter;<br /><br />$a = <span class="hljs-keyword">new</span> FileAdapter(<span class="hljs-string">'examples/basic_policy.csv'</span>);<br />$e = <span class="hljs-keyword">new</span> Enforcer(<span class="hljs-string">'examples/basic_model.conf'</span>, $a);<br /></code></pre>
+</span></div></div><div id="tab-group-131-content-134" class="tab-pane" data-group="group_131" tabindex="-1"><div><span><pre><code class="hljs css language-rust">verwenden Sie casbin::prelude::*;<br /><br />lassen Sie einen = FileAdapter::new(<span class="hljs-string">"examples/basic_policy.csv"</span>);<br /><span class="hljs-keyword">let</span> e = Enforcer::new(<span class="hljs-string">"examples/basic_model.conf"</span>, a).<span class="hljs-keyword">await</span>?;<br /></code></pre>
+</span></div></div></div></div>
+<h3><a class="anchor" aria-hidden="true" id="mysql-adapterhttpsgithubcomcasbinmysql-adapter"></a><a href="#mysql-adapterhttpsgithubcomcasbinmysql-adapter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="https://github.com/casbin/mysql-adapter">MySQL adapter</a></h3>
+<p>Im Folgenden wird gezeigt, wie ein Durchsetzer aus der MySQL-Datenbank initialisiert wird. es verbindet sich mit einer MySQL DB auf 127.0.0.1:3306 mit einem root-und einem leeren Passwort.</p>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-135-tab-136" class="nav-link active" data-group="group_135" data-tab="tab-group-135-content-136">Go</div><div id="tab-group-135-tab-137" class="nav-link" data-group="group_135" data-tab="tab-group-135-content-137">Rust</div><div id="tab-group-135-tab-138" class="nav-link" data-group="group_135" data-tab="tab-group-135-content-138">PHP</div></div><div class="tab-content"><div id="tab-group-135-content-136" class="tab-pane active" data-group="group_135" tabindex="-1"><div><span><pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (<br />    <span class="hljs-string">"github.com/casbin/casbin"</span><br />    <span class="hljs-string">"github.com/casbin/mysql-adapter"</span><br />)<br /><br />a := mysqladapter.NewAdapter(<span class="hljs-string">"mysql"</span>, <span class="hljs-string">"root:@tcp(127.0.0.1:3306)/"</span>)<br />e := casbin.NewEnforcer(<span class="hljs-string">"examples/basic_model.conf"</span>, a)<br /></code></pre>
+</span></div></div><div id="tab-group-135-content-137" class="tab-pane" data-group="group_135" tabindex="-1"><div><span><pre><code class="hljs css language-rust"><span class="hljs-comment">// https://github. om/casbin-rs/diesel-adapter</span><br /><span class="hljs-comment">// Stellen Sie sicher, dass Sie die Funktion `mysql`</span><br /><br />aktivieren::prelude::*;<br />verwenden Sie diesel_adapter::{ConnOptions, DieselAdapter};<br /><br />lassen Sie <span class="hljs-keyword">mut</span> conn_opts = ConnOptions::default();<br />conn_opts<br />    . et_hostname(<span class="hljs-string">"127.0.0.1"</span>)<br />    . et_port(<span class="hljs-number">3306</span>)<br />    .set_host(<span class="hljs-string">"127.0.0.1:3306"</span>) <span class="hljs-comment">// Hostname, Port config</span><br />    .set_database(<span class="hljs-string">"casbin"</span>)<br />    überschreiben. et_auth(<span class="hljs-string">"casbin_rs"</span>, <span class="hljs-string">"casbin_rs"</span>);<br /><br /><span class="hljs-keyword">let</span> a = DieselAdapter::new(conn_opts)?;<br /><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> e = Enforcer::new(<span class="hljs-string">"examples/basic_model.conf"</span>, a).<span class="hljs-keyword">await</span>?;<br /></code></pre>
+</span></div></div><div id="tab-group-135-content-138" class="tab-pane" data-group="group_135" tabindex="-1"><div><span><pre><code class="hljs css language-php"><span class="hljs-comment">// https://github.com/php-casbin/dbal-adapter</span><br /><br /><span class="hljs-keyword">use</span> <span class="hljs-title">Casbin</span>\<span class="hljs-title">Enforcer</span>;<br /><span class="hljs-keyword">use</span> <span class="hljs-title">CasbinAdapter</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Adapter</span> <span class="hljs-title">as</span> <span class="hljs-title">DatabaseAdapter</span>;<br /><br />$config = [<br />    <span class="hljs-comment">// Either 'driver' with one of the following values:</span><br />    <span class="hljs-comment">// pdo_mysql,pdo_sqlite,pdo_pgsql,pdo_oci (unstable),pdo_sqlsrv,pdo_sqlsrv,</span><br />    <span class="hljs-comment">// mysqli,sqlanywhere,sqlsrv,ibm_db2 (unstable),drizzle_pdo_mysql</span><br />    <span class="hljs-string">'driver'</span>     =&gt; <span class="hljs-string">'pdo_mysql'</span>,<br />    <span class="hljs-string">'host'</span> =&gt; <span class="hljs-string">'127.0.0.1'</span>,<br />    <span class="hljs-string">'dbname'</span> =&gt; <span class="hljs-string">'test'</span>,<br />    <span class="hljs-string">'user'</span> =&gt; <span class="hljs-string">'root'</span>,<br />    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">''</span>,<br />    <span class="hljs-string">'port'</span> =&gt; <span class="hljs-string">'3306'</span>,<br />];<br /><br />$a = DatabaseAdapter::newAdapter($config);<br />$e = <span class="hljs-keyword">new</span> Enforcer(<span class="hljs-string">'examples/basic_model.conf'</span>, $a);<br /></code></pre>
+</span></div></div></div></div>
+<h2><a class="anchor" aria-hidden="true" id="verwende-deinen-eigenen-speicheradapter"></a><a href="#verwende-deinen-eigenen-speicheradapter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Verwende deinen eigenen Speicheradapter</h2>
+<p>Du kannst deinen eigenen Adapter verwenden wie unten:</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"github.com/casbin/casbin"</span>
+    <span class="hljs-string">"github.com/your-username/your-repo"</span>
+
+ )
+
+a := yourpackage.NewAdapter(params)
+e := casbin.NewEnforcer(<span class="hljs-string">"examples/basic_model.conf"</span>, a)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="zwischen-verschiedenen-adaptern-migrierenkonvertieren"></a><a href="#zwischen-verschiedenen-adaptern-migrierenkonvertieren" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Zwischen verschiedenen Adaptern migrieren/konvertieren</h2>
+<p>If you want to convert adapter from <code>A</code> to <code>B</code>, you can do like this:</p>
+<ol>
+<li>Richtlinien von A in den Speicher laden</li>
+</ol>
+<pre><code class="hljs css language-go">   e, _ := NewEnforcer(m, A)
+</code></pre>
+<p>oder</p>
+<pre><code class="hljs css language-go">e.SetAdapter(A)
+e.LoadPolicy()
+</code></pre>
+<ol start="2">
+<li><p>konvertieren Sie Ihren Adapter von A nach B</p>
+<pre><code class="hljs"><span class="hljs-symbol">e.SetAdapter</span>(<span class="hljs-keyword">B)
+</span></code></pre></li>
+<li><p>Speichere Richtlinie aus dem Speicher in B</p>
+<pre><code class="hljs">e. oadPolicy<span class="hljs-comment">()</span>
+</code></pre></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="ladespeichern-zur-laufzeit"></a><a href="#ladespeichern-zur-laufzeit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lade/Speichern zur Laufzeit</h2>
+<p>Sie können auch das Modell neu laden die Richtlinie neu laden oder die Richtlinie nach der Initialisierung speichern:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Das Modell aus der CONF-Datei neu laden.</span>
+e.LoadModel()
+
+<span class="hljs-comment">// Richtlinien aus der Datei/Datenbank neu laden.</span>
+e.LoadPolicy()
+
+<span class="hljs-comment">// Speichere die aktuelle Richtlinie (in der Regel nach der Änderung mit der Casbin API) zurück in die Datei/Datenbank.</span>
+e.SavePolicy()
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="autosave"></a><a href="#autosave" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AutoSave</h2>
+<p>Es gibt eine Funktion namens <code>Auto-Speichern</code> für Adapter. Wenn ein Adapter <code>Auto-Speichern unterstützt</code>, es bedeutet, dass es unterstützen kann, dem Speicher eine einzige Richtlinien-Regel hinzuzufügen oder eine einzige Richtlinien-Regel aus dem Speicher zu entfernen. Dies ist anders als <code>SavePolicy()</code>, da letztere alle Richtlinien-Regeln im Speicher löschen und alle Richtlinien-Regeln von Casbin erzwungen in die Speicherung speichern. Es könnte also zu Problemen bei der Leistung kommen, wenn die Anzahl der politischen Regeln groß ist.</p>
+<p>Wenn der Adapter <code>Auto-Speichern</code>unterstützt, können Sie diese Option über <code>Enforcer.EnableAutoSave()</code> ändern. Die Option ist standardmäßig aktiviert (wenn der Adapter es unterstützt).</p>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <ol>
+<li>Die Funktion <code>Auto-Speichern</code> ist optional. Ein Adapter kann wählen, ob er implementiert wird oder nicht.</li>
+<li><code>Auto-Speichern</code> funktioniert nur für einen Casbin-Durchsetzer wenn der Adapter, den der Durchsetzer verwendet, dies unterstützt.</li>
+<li>Sehen Sie sich die Spalte <code>AutoSave</code> in der oben genannten Adapterliste an, um zu sehen, ob <code>Auto-Speichern</code> von einem Adapter unterstützt wird.</li>
+</ol>
+</div></div><p>Hier ist ein Beispiel für die Verwendung von <code>Auto-Speichern</code>:</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"github.com/casbin/casbin"</span>
+    <span class="hljs-string">"github.com/casbin/xorm-adapter"</span>
+    _ <span class="hljs-string">"github.com/go-sql-driver/mysql"</span>
+)
+
+<span class="hljs-comment">// Standardmäßig ist die Option AutoSave für einen Enforcer aktiviert.</span>
+a := xormadapter.NewAdapter(<span class="hljs-string">"mysql"</span>, <span class="hljs-string">"mysql_username:mysql_password@tcp(127.0.0.1:3306)/"</span>)
+e := casbin.NewEnforcer(<span class="hljs-string">"examples/basic_model.conf"</span>, a)
+
+<span class="hljs-comment">// AutoSave Option deaktivieren.</span>
+e.EnableAutoSave(<span class="hljs-literal">false</span>)
+
+<span class="hljs-comment">// Weil AutoSave deaktiviert ist, die Änderung der Richtlinien wirkt sich nur auf die Richtlinie in Casbin durchsetzer,</span>
+<span class="hljs-comment">// sie wirkt sich nicht auf die Richtlinien im Speicher.</span>
+e.AddPolicy(...)
+e.RemovePolicy(...)
+
+<span class="hljs-comment">// Automatische Speicherung aktivieren.</span>
+e.EnableAutoSave(<span class="hljs-literal">true</span>)
+
+<span class="hljs-comment">// Weil AutoSave aktiviert ist, die Änderung der Richtlinien betrifft nicht nur die Richtlinien in Casbin Durchsetzer,</span>
+<span class="hljs-comment">// sondern auch die Richtlinien im Speicher.</span>
+e.AddPolicy(...)
+e.RemovePolicy(...)
+</code></pre>
+<p>Weitere Beispiele finden Sie hier: <a href="https://github.com/casbin/xorm-adapter/blob/master/adapter_test.go">https://github.com/casbin/xorm-adapter/blob/master/adapter_test.go</a></p>
+<h3><a class="anchor" aria-hidden="true" id="wie-man-einen-adapter-schreibt"></a><a href="#wie-man-einen-adapter-schreibt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wie man einen Adapter schreibt</h3>
+<p>Alle Adapter sollten die <a href="https://github.com/casbin/casbin/blob/master/persist/adapter.go">Adapter</a> Schnittstelle implementieren, indem mindestens zwei obligatorische Methoden angegeben werden:<code>LoadPolicy(Modellmodell). odel) Fehler</code> und <code>SavePolicy(model model.Model)</code>.</p>
+<p>Die anderen drei Funktionen sind optional. Sie sollten implementiert werden, wenn der Adapter die <code>Auto-Save</code> Funktion unterstützt.</p>
+<table>
+<thead>
+<tr><th>Methode</th><th>Typ</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td>LoadPolicy()</td><td>mandatory</td><td>Lade alle Regeln aus dem Speicher</td></tr>
+<tr><td>SavePolicy()</td><td>mandatory</td><td>Alle Richtlinien-Regeln im Speicher speichern</td></tr>
+<tr><td>AddPolicy()</td><td>optional</td><td>Richtlinien-Regel zum Speicher hinzufügen</td></tr>
+<tr><td>RemovePolicy()</td><td>optional</td><td>Eine Richtlinien-Regel vom Speicher entfernen</td></tr>
+<tr><td>FilteredPolicy() entfernen</td><td>optional</td><td>Regeln, die dem Filter entsprechen, vom Speicher entfernen</td></tr>
+</tbody>
+</table>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Wenn ein Adapter <code>Auto-Speichern</code>nicht unterstützt, sollte er eine leere Implementierung für die drei optionalen Funktionen bereitstellen. Hier ist ein Beispiel für Golang:</p>
+</div></div><pre><code class="hljs css language-go"><span class="hljs-comment">// AddPolicy fügt dem Speicher eine Richtlinien-Regel hinzu.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *Adapter)</span> <span class="hljs-title">AddPolicy</span><span class="hljs-params">(sec <span class="hljs-keyword">string</span>, ptype <span class="hljs-keyword">string</span>, rule []<span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> {
+    <span class="hljs-keyword">return</span> errors. ew(<span class="hljs-string">"nicht implementiert"</span>)
+}
+
+
+
+ <span class="hljs-comment">// Entfernt eine Richtlinien-Regel vom Speicher.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *Adapter)</span> <span class="hljs-title">removePolicy</span><span class="hljs-params">(sec <span class="hljs-keyword">string</span>, ptype <span class="hljs-keyword">string</span>, rule []<span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> {
+    <span class="hljs-keyword">return</span> errors. ew(<span class="hljs-string">"nicht implementiert"</span>)
+}
+
+
+
+ <span class="hljs-comment">// Entfernt Richtlinien-Regeln, die mit dem Filter übereinstimmen, vom Speicher entfernt.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *Adapter)</span> <span class="hljs-title">removeFilteredPolicy</span><span class="hljs-params">(sec <span class="hljs-keyword">string</span>, ptype <span class="hljs-keyword">string</span>, fieldIndex <span class="hljs-keyword">int</span>, fieldValues ...<span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> {
+    <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">"not implemented"</span>)
+}
+</code></pre>
+<p>Beim Aufruf dieser drei optionalen Funktionen wird der <code>nicht implementierte</code> Fehler ignoriert.</p>
+<p>Es gibt Details, wie man einen Adapter schreibt.</p>
+<ul>
+<li>Datenstruktur. Adapter should support reading at <strong><em>least</em></strong> six columns.</li>
+<li>Datenbank-Name. Der Standard-Datenbankname sollte <code>casbin</code> sein.</li>
+<li>Tabellenname. Der Standard-Tabellenname sollte <code>casbin_rule</code> sein.</li>
+<li>Ptype Spalte. Name dieser Spalte sollte <code>ptype</code> anstelle von <code>p_type</code> oder <code>Ptype</code> sein.</li>
+<li>Tabellendefinition sollte <code>(id int primary keyy, ptype varchar, v0 varchar, v1 varchar, v2 varchar, v3 varchar, v4 varchar, v5 varchar)</code> sein.</li>
+<li>Der eindeutige Schlüsselindex sollte auf Spalten <code>ptype,v0,v1,v2,v3,v4,v5</code> gebaut werden.</li>
+<li><code>LoadFilteredPolicy</code> benötigt einen <code>Filter</code> als Parameter. Der Filter sollte so etwas sein.
+json
+{
+&quot;p&quot;:[ [ &quot;alice&quot; ], [ &quot;bob&quot; ] ],
+&quot;g&quot;:[ &quot;&quot;, &quot;book_group&quot; ], [ &quot;&quot;, &quot;pen_group&quot; ] ],
+&quot;g2&quot;:[ [ &quot;alice&quot; ] ]
+}</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="wer-ist-für-die-erstellung-der-datenbank-verantwortlich"></a><a href="#wer-ist-für-die-erstellung-der-datenbank-verantwortlich" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wer ist für die Erstellung der Datenbank verantwortlich?</h3>
+<p>Als Konvent der Adapter sollte in der Lage sein, automatisch eine Datenbank mit dem Namen <code>casbin</code> zu erstellen, falls sie nicht vorhanden ist und sie für die Speicherung von Richtlinien verwenden. Bitte verwenden Sie den Xorm-Adapter als Referenzimplementierung: <a href="https://github.com/casbin/xorm-adapter">https://github.com/casbin/xorm-adapter</a></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/enforcers"><span class="arrow-prev">← </span><span>Enforcers</span></a><a class="docs-next button" href="/docs/de/watchers"><span>Beobachter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#unterstützte-adapter">Unterstützte Adapter</a></li><li><a href="#beispiele">Beispiele</a><ul class="toc-headings"><li><a href="#datei-adapter-eingebaut">Datei-Adapter (eingebaut)</a></li><li><a href="#mysql-adapterhttpsgithubcomcasbinmysql-adapter"><a href="https://github.com/casbin/mysql-adapter">MySQL adapter</a></a></li></ul></li><li><a href="#verwende-deinen-eigenen-speicheradapter">Verwende deinen eigenen Speicheradapter</a></li><li><a href="#zwischen-verschiedenen-adaptern-migrierenkonvertieren">Zwischen verschiedenen Adaptern migrieren/konvertieren</a></li><li><a href="#ladespeichern-zur-laufzeit">Lade/Speichern zur Laufzeit</a></li><li><a href="#autosave">AutoSave</a><ul class="toc-headings"><li><a href="#wie-man-einen-adapter-schreibt">Wie man einen Adapter schreibt</a></li><li><a href="#wer-ist-für-die-erstellung-der-datenbank-verantwortlich">Wer ist für die Erstellung der Datenbank verantwortlich?</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Frontend-Nutzung · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="[Casbin.js](https://github.com/casbin/casbin.js) ist ein Casbin-Addon, das Ihr Zugriffskontrollmanagement in der Frontend-Anwendung erleichtert."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="Frontend-Nutzung · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="[Casbin.js](https://github.com/casbin/casbin.js) ist ein Casbin-Addon, das Ihr Zugriffskontrollmanagement in der Frontend-Anwendung erleichtert."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/frontend">English</a></li><li><a href="/docs/zh-CN/frontend">中文</a></li><li><a href="/docs/ko/frontend">한국어</a></li><li><a href="/docs/ru/frontend">Русский</a></li><li><a href="/docs/fr/frontend">Français</a></li><li><a href="/docs/ja/frontend">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Management</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Frontend-Nutzung</h1></header><article><div><span><p><a href="https://github.com/casbin/casbin.js">Casbin.js</a> ist ein Casbin-Addon, das Ihr Zugriffskontrollmanagement in der Frontend-Anwendung erleichtert.</p>
+<h2><a class="anchor" aria-hidden="true" id="installation"></a><a href="#installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
+<pre><code class="hljs">npm <span class="hljs-keyword">install </span>casbin.<span class="hljs-keyword">js
+</span>npm <span class="hljs-keyword">install </span>casbin
+</code></pre>
+<p>oder</p>
+<pre><code class="hljs">yarn <span class="hljs-keyword">add</span><span class="bash"> casbin.js</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="frontend-middlewares"></a><a href="#frontend-middlewares" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Frontend Middlewares</h2>
+<table>
+<thead>
+<tr><th>Middleware</th><th>Typ</th><th>Autor</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/casbin-js/react-authz">reakt-authz</a></td><td>Reagieren</td><td>Casbin</td><td>Reagiere Wrapper für Casbin.js</td></tr>
+<tr><td><a href="https://github.com/daobeng/rbac-react">rbac-Reaktion</a></td><td>Reagieren</td><td><a href="https://github.com/daobeng">@daobeng</a></td><td>Rollenbasierte Zugriffskontrolle in React mit HOCs, CASL und Casbin.js</td></tr>
+<tr><td><a href="https://github.com/casbin-js/vue-authz">vue-authz</a></td><td>Vue</td><td>Casbin</td><td>Vue wrapper für Casbin.js</td></tr>
+<tr><td><a href="https://github.com/casbin-js/angular-authz">angular-authz</a></td><td>Winkel</td><td>Casbin</td><td>Winkelwickeln für Casbin.js</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="schnellstart"></a><a href="#schnellstart" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Schnellstart</h2>
+<p>Du kannst den <code>manuellen</code> Modus in deiner Frontend-Anwendung verwenden und die Berechtigung festlegen, wann immer du möchtest.</p>
+<pre><code class="hljs css language-Javascript"><span class="hljs-keyword">const</span> casbinjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"casbin. s"</span>);
+<span class="hljs-comment">// Benutzerberechtigung:</span>
+<span class="hljs-comment">// Er/Sie kann `data1` und `data2` Objekte lesen und `data1` Objekt schreiben</span>
+<span class="hljs-keyword">const</span> permission = {
+    <span class="hljs-string">"read"</span>: [<span class="hljs-string">"data1"</span>, <span class="hljs-string">"data2"</span>],
+    <span class="hljs-string">"write"</span>: [<span class="hljs-string">"data1"</span>]
+}
+
+<span class="hljs-comment">// Casbin ausführen. s im manuellen Modus, was erfordert, dass Sie die Berechtigung manuell festlegen.</span>
+<span class="hljs-keyword">const</span> authorizer = <span class="hljs-keyword">new</span> casbinjs.Authorizer(<span class="hljs-string">"manual"</span>);
+</code></pre>
+<p>jetzt haben wir einen Autorisierer <code>Autorisierer</code> bekommen. Wir können die Berechtigungsregeln über die API <code>authorizer.can()</code> und <code>authorizer.cannot()</code> erhalten. Die Rückgabewerte dieser 2 APIs sind JavaScript-Versprechen (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Details hier</a>), also sollten wir die <code>then()</code> Methode des Rückgabewertes wie folgt verwenden:</p>
+<pre><code class="hljs css language-javascript">result = authorizer.can(<span class="hljs-string">"write"</span>, <span class="hljs-string">"data1"</span>);
+Ergebnis. hen(Erfolg, fehlgeschlagen) =&gt; {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-built_in">console</span>. og(<span class="hljs-string">"Sie können data1"</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>. og(<span class="hljs-string">"Sie können Daten nicht schreiben1"</span>);
+    }
+});
+<span class="hljs-comment">// Ausgabe: Sie können Daten 1 schreiben</span>
+</code></pre>
+<p>und <code>cannot()</code> wird auf die gleiche Weise verwendet:</p>
+<pre><code class="hljs css language-javascript">result = authorizer.cannot(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data2"</span>);
+Ergebnis. hen(Erfolg, fehlgeschlagen) =&gt; {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-built_in">console</span>. og(<span class="hljs-string">"Sie können nicht data2"</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>. og(<span class="hljs-string">"Sie können data2"</span>);
+    }
+});
+<span class="hljs-comment">// Ausgabe: Sie können data2 lesen</span>
+</code></pre>
+<p>im obigen Code, Variable <code>Erfolg</code> in Parametern bedeutet, dass die Anfrage das Ergebnis erhält, ohne einen Fehler zu werfen, und bedeutet nicht, dass die Berechtigungsregel <code>wahr ist</code>. <code>fehlgeschlagen</code> steht auch nicht mit den Berechtigungsregeln in Verbindung. Das macht nur Sinn, wenn im Antragsprozess etwas schief läuft.</p>
+<p>Sie können auf unser <a href="https://github.com/casbin-js/examples">Reaktionsbeispiel</a> verweisen, um eine praktische Nutzung von Casbin.js zu sehen</p>
+<!-- #### Permission Object
+Casbin.js will accept a JSON object to manipulate the correspoding permission of a visitor. For example:
+```
+{
+    "read": ["data1", "data2"],
+    "write": ["data1"]
+}
+```
+The permission object above shows the visitor can `read` `data1` and `data2` objects, while can only `write` `data1` objects. -->
+<h2><a class="anchor" aria-hidden="true" id="erweiterte-nutzung"></a><a href="#erweiterte-nutzung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Erweiterte Nutzung</h2>
+<p>Casbin.js bietet eine perfekte Lösung zur Integration Ihres Frontend Access-Control-Managements in Ihren Backend Casbin Service.</p>
+<p>Verwenden Sie den <code>Auto-</code> Modus und geben Sie Ihren Endpunkt bei der Initialisierung des Kasbins an. s <code>Authorizer</code>wird automatisch die Berechtigung synchronisieren und den Frontend-Status manipulieren.</p>
+<pre><code class="hljs css language-Javascript"><span class="hljs-keyword">const</span> casbinjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'casbin.js'</span>);
+
+<span class="hljs-comment">// Setzen Sie Ihre Backend casbin Service url</span>
+<span class="hljs-keyword">const</span> authorizer = <span class="hljs-keyword">new</span> casbinjs. uthorizer(
+    <span class="hljs-string">'auto'</span>, <span class="hljs-comment">// Modus</span>
+    {<span class="hljs-attr">endpoint</span>: <span class="hljs-string">'http://your_endpoint/api/casbin'</span>}
+);
+
+<span class="hljs-comment">// Besucher einstellen. </span>
+<span class="hljs-comment">// Casbin.js wird die Berechtigung automatisch mit Ihrem Backend Casbin Service synchronisieren.</span>
+authorizer.setUser(<span class="hljs-string">"Tom"</span>);
+
+<span class="hljs-comment">// Berechtigung auswerten</span>
+result = authorizer.can(<span class="hljs-string">"read"</span>, <span class="hljs-string">"data1"</span>);
+Ergebnis. Sie(Erfolgreich fehlgeschlagen) =&gt; {
+    <span class="hljs-keyword">if</span> (success) {
+        <span class="hljs-comment">// Einige Frontend-Prozeduren ...</span>
+    }
+});
+</code></pre>
+<p>Entsprechend müssen Sie eine Schnittstelle (z.B. eine RestAPI), um das Berechtigungsobjekt zu generieren und an das Frontend zu übergeben. Rufen Sie in Ihrem API-Controller <code>CasbinJsGetUserPermission</code> auf, um das Berechtigungsobjekt zu erstellen. Hier ist ein Beispiel in Beego:</p>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Dein Endpunkt-Server sollte etwas wie folgt zurückgeben</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"other"</span>:<span class="hljs-string">"other"</span>,
+    <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Was Sie von `CasbinJsGetPermissionForUser`"</span> erhalten
+}
+</code></pre>
+</div></div><pre><code class="hljs css language-Go"><span class="hljs-comment">// Router</span>
+beego.Router(<span class="hljs-string">"api/casbin"</span>, &amp;controllers.APIController{}, <span class="hljs-string">"GET:GetFrontendPermission"</span>)
+
+<span class="hljs-comment">// Controller</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(c *APIController)</span> <span class="hljs-title">GetFrontendPermission</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// Besucher von den GET-Parametern holen. (Der Schlüssel ist "casbin_subject")</span>
+    Besucher := c.Input(). et(<span class="hljs-string">"casbin_subject"</span>)
+    <span class="hljs-comment">// `e` ist eine initialisierte Instanz von Casbin Enforcer</span>
+    c. ata[<span class="hljs-string">"perm"</span>] = casbin.CasbinJsGetPermissionForUser(e, Besucher) 
+    <span class="hljs-comment">// Daten an das Frontend übergeben.</span>
+    c.ServeJSON()
+}
+</code></pre>
+
+    <div class="admonition admonition-note">
+      <div class="admonition-heading">
+        <h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"/></svg></div> note</h5>
+      </div>
+      <div class="admonition-content">
+    <p>Momentan wird <code>CasbinJsGetPermissionForUser</code> api nur in Go Casbin und Node-Kasbin unterstützt. Wenn Sie möchten, dass diese Api in anderen Sprachen unterstützt wird, rufen Sie bitte <a href="https://github.com/casbin/casbin.js/issues">ein Problem an</a> oder hinterlassen Sie einen Kommentar unten.</p>
+</div></div><h2><a class="anchor" aria-hidden="true" id="api-liste"></a><a href="#api-liste" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API-Liste</h2>
+<h4><a class="anchor" aria-hidden="true" id="setpermissionberechtigung-zeichenkette"></a><a href="#setpermissionberechtigung-zeichenkette" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setPermission(Berechtigung: Zeichenkette)</code></h4>
+<p>Berechtigungsobjekt festlegen. Immer im <code>manuellen</code> Modus verwendet.</p>
+<h4><a class="anchor" aria-hidden="true" id="setuseruser-string"></a><a href="#setuseruser-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setUser(user: string)</code></h4>
+<p>Legen Sie die Besucheridentität fest und aktualisieren Sie die Berechtigung. Immer im <code>Auto-</code> Modus verwendet.</p>
+<h4><a class="anchor" aria-hidden="true" id="canaction-string-object-string"></a><a href="#canaction-string-object-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>can(action: string, object: string)</code></h4>
+<p>Prüfen Sie, ob der Benutzer <code>Aktion</code> auf <code>Objekt</code> ausführen kann.</p>
+<h4><a class="anchor" aria-hidden="true" id="cannotaction-string-object-string"></a><a href="#cannotaction-string-object-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>cannot(action: string, object: string)</code></h4>
+<p>Check if the user <strong>cannot</strong> perform <code>action</code> on <code>object</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="canallaktion-zeichenkette-objekte-arrayobject"></a><a href="#canallaktion-zeichenkette-objekte-arrayobject" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>canAll(Aktion: Zeichenkette, Objekte: Array&lt;object&gt;)</code></h4>
+<p>Prüfen Sie, ob der Benutzer <code>Aktion</code> auf <strong>allen</strong> Objekten in <code>Objekten</code> ausführen kann.</p>
+<h4><a class="anchor" aria-hidden="true" id="cananyaktion-zeichenkette-objekte-arrayobject"></a><a href="#cananyaktion-zeichenkette-objekte-arrayobject" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>canAny(Aktion: Zeichenkette, Objekte: Array&lt;object&gt;)</code></h4>
+<p>Prüfen Sie, ob der Benutzer <code>Aktion</code> auf <strong>eines</strong> der <code>Objekte</code> ausführen kann.</p>
+<h2><a class="anchor" aria-hidden="true" id="warum-casbinjs"></a><a href="#warum-casbinjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Warum Casbin.js</h2>
+<p>Die Leute fragen sich vielleicht, was zwischen Node-Casbin und Casbin.js liegt. Mit einem Wort: Node-Casbin ist der Kern von Casbin in NodeJS-Umgebung implementiert und wird normalerweise als Access-Control-Management-Toolkit am Serverende verwendet. Casbin.js ist eine Frontend-Bibliothek, die Ihnen hilft, Casbin zu nutzen, um Ihren Website-Benutzer auf der Client-Seite zu autorisieren.</p>
+<p>Normalerweise es ist nicht angemessen, direkt einen Casbin-Dienst aufzubauen und die Autorisierung/Vollstreckungsaufgaben an einer Web-Frontend-Anwendung zu erledigen, da folgende Probleme auftreten:</p>
+<ol>
+<li>Wenn jemand den Client aktiviert, wird der Vollstrecker initialisiert und er wird alle Richtlinien aus dem Backend persistente Ebenen ziehen. Eine hohe Koncurrenz könnte die Datenbanken stark unter Druck setzen und einen hohen Netzwerkdurchsatz kosten.</li>
+<li>Das Laden aller Richtlinien auf die Kundenseite könnte sichere Risiken mit sich bringen.</li>
+<li>Schwierig für die Trennung zwischen Client und Server sowie die agile Entwicklung.</li>
+</ol>
+<p>Wir wünschen Ihnen ein Werkzeug, das die Verwendung von Casbin im Frontend erleichtert. Tatsächlich ist der Kern von Casbin.js die Manipulation der aktuellen Benutzerberechtigung auf der Client-Seite. Wie Sie bereits erwähnt haben, holt Casbin.js einen bestimmten Endpunkt. Diese Prozedur wird die Berechtigung des Benutzers mit dem Backend Casbin Service synchronisieren. Nachdem die Berechtigungsdaten vorliegen, können Entwickler Casbin.js Schnittstellen verwenden, um das Verhalten des Benutzers auf der Frontend-Seite zu verwalten.</p>
+<p>Kasbin s vermeiden die beiden oben genannten Probleme: Der Casbin-Service wird nicht mehr wiederholt in Anspruch genommen, und die Größe der Übertragung von Nachrichten zwischen dem Client und dem Server wird reduziert. Wir vermeiden auch, alle Politiken an der Front zu speichern. Der Benutzer kann nur auf seine eigene Berechtigung zugreifen, hat aber keine Ahnung von Dingen wie dem Zugriffskontrollmodell und den Berechtigungen anderer Benutzer. Außerdem kann Casbin.js auch den Client und den Server im Autorisierungsmanagement effizient entkoppeln.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/log-error"><span class="arrow-prev">← </span><span>Log- &amp; Fehlerbehandlung</span></a><a class="docs-next button" href="/docs/de/online-editor"><span>Online-Editor</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#installation">Installation</a></li><li><a href="#frontend-middlewares">Frontend Middlewares</a></li><li><a href="#schnellstart">Schnellstart</a></li><li><a href="#erweiterte-nutzung">Erweiterte Nutzung</a></li><li><a href="#api-liste">API-Liste</a></li><li><a href="#warum-casbinjs">Warum Casbin.js</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

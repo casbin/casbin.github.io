@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>API-Übersicht · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Diese Übersicht zeigt Ihnen nur, wie Sie Casbin APIs verwenden und erklärt nicht, wie Casbin installiert wird und wie es funktioniert. Diese Tutorials finden Sie hier: [Installation von Casbin](https://casbin.org/docs/en/get-started) und [wie Casbin funktioniert](https://casbin.org/docs/en/how-it-works). Wenn Sie also anfangen, dieses Tutorial zu lesen, gehen wir davon aus, dass Sie Casbin vollständig installiert und in Ihren Code importiert haben."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="API-Übersicht · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="Diese Übersicht zeigt Ihnen nur, wie Sie Casbin APIs verwenden und erklärt nicht, wie Casbin installiert wird und wie es funktioniert. Diese Tutorials finden Sie hier: [Installation von Casbin](https://casbin.org/docs/en/get-started) und [wie Casbin funktioniert](https://casbin.org/docs/en/how-it-works). Wenn Sie also anfangen, dieses Tutorial zu lesen, gehen wir davon aus, dass Sie Casbin vollständig installiert und in Ihren Code importiert haben."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/api-overview">English</a></li><li><a href="/docs/zh-CN/api-overview">中文</a></li><li><a href="/docs/ko/api-overview">한국어</a></li><li><a href="/docs/ru/api-overview">Русский</a></li><li><a href="/docs/fr/api-overview">Français</a></li><li><a href="/docs/ja/api-overview">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">API-Übersicht</h1></header><article><div><span><p>Diese Übersicht zeigt Ihnen nur, wie Sie Casbin APIs verwenden und erklärt nicht, wie Casbin installiert wird und wie es funktioniert. Diese Tutorials finden Sie hier: <a href="https://casbin.org/docs/en/get-started">Installation von Casbin</a> und <a href="https://casbin.org/docs/en/how-it-works">wie Casbin funktioniert</a>. Wenn Sie also anfangen, dieses Tutorial zu lesen, gehen wir davon aus, dass Sie Casbin vollständig installiert und in Ihren Code importiert haben.</p>
+<h2><a class="anchor" aria-hidden="true" id="api-erzwingen"></a><a href="#api-erzwingen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API erzwingen</h2>
+<p>Beginnen wir mit den erzwungenen APIs von Casbin. Wir laden ein RBAC-Modell von <code>model.conf</code>und laden Richtlinien von <code>policy.csv</code>. You can learn the Model syntax <a href="https://casbin.org/docs/en/syntax-for-models">here</a>, and we won't talk about it in this tutorial. Wir gehen davon aus, dass Sie die folgenden Konfigurationsdateien verstehen können:</p>
+<p><code>model.conf</code></p>
+<pre><code class="hljs"><span class="hljs-section">[request_definition]</span>
+<span class="hljs-attr">r</span> = sub, obj, act
+
+<span class="hljs-section">[policy_definition]</span>
+<span class="hljs-attr">p</span> = sub, obj, handeln
+
+<span class="hljs-section">[role_definition]</span>
+<span class="hljs-attr">g</span> = _, _
+
+<span class="hljs-section">[policy_effect]</span>
+<span class="hljs-attr">e</span> = irgendwo (p. ft == allow))
+
+<span class="hljs-section">[matchers]</span>
+<span class="hljs-attr">m</span> = g(r.sub, p. ub) &amp;&amp; r.obj == p.obj &amp;&amp; r.act == p.act
+</code></pre>
+<p><code>policy.csv</code></p>
+<pre><code class="hljs">p, <span class="hljs-keyword">admin</span>, data1, <span class="hljs-keyword">read</span>
+p, <span class="hljs-keyword">admin</span>, data1, <span class="hljs-keyword">write</span>
+p, <span class="hljs-keyword">admin</span>, data2, <span class="hljs-keyword">read</span>
+p, <span class="hljs-keyword">admin</span>, data2, schreibe
+p, alice, data1, lese
+p, bob, data2, schreibe
+g, amber, <span class="hljs-keyword">admin</span>
+g, abc, <span class="hljs-keyword">admin</span>
+</code></pre>
+<p>Nachdem Sie die Konfigurationsdateien gelesen haben, lesen Sie bitte den folgenden Code.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Lade Informationen aus Dateien</span>
+enforcer, err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy. sv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    log. atalf(<span class="hljs-string">"error, detail: %s"</span>, err)
+}
+ok, err := enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+</code></pre>
+<p>Dieser Code lädt das Zugriffskontrollmodell und die Richtlinien aus lokalen Dateien. Funktion <code>casbin.NewEnforcer()</code> gibt einen Vollstrecker zurück. Es erkennt seine 2 Parameter als Dateipfade und lädt die Dateien von dort. Fehler im Prozess wurden in <code>err</code> gespeichert. Dieser Code benutzt den Standard-Adapter, um Modell und Richtlinien zu laden. Und natürlich können Sie das gleiche Ergebnis mit Hilfe eines Drittanbieter-Adapters erzielen.</p>
+<p>Code <code>ok, err := enforcer.Enforce(&quot;alice&quot;, &quot;data1&quot;, &quot;read&quot;)</code>  soll Zugriffsberechtigungen bestätigen. Wenn der Alice auf die Daten 1 mit gelesener Operation zugreifen kann, der zurückgegebene Wert <code>ok</code> wird <code>true</code>sein, andernfalls ist er <code>false</code>. In diesem Beispiel ist der Wert von <code>ok</code> <code>true</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="enforceex-api"></a><a href="#enforceex-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EnforceEx API</h2>
+<p>Manchmal kann man sich fragen, welche Politik die Anfrage erlaubt hat, deshalb haben wir die Funktion <code>EnforceEx()</code> vorbereitet. Sie können es so verwenden:</p>
+<pre><code class="hljs css language-go">ok, reason, err := enforcer.EnforceEx(<span class="hljs-string">"amber"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(ok, Grund) <span class="hljs-comment">// true [admin data1 read]</span>
+</code></pre>
+<p>Funktion <code>EnforceEx()</code> gibt den exakten Richtlinienstring im Rückgabewert <code>Grund</code> zurück. In diesem Beispiel ist <code>Bernstein</code> eine Rolle von <code>admin</code>, so Policy <code>p, admin, data1, lesen Sie</code> hat diese Anfrage <code>true</code>. Das Output dieses Codes ist in dem Kommentar.</p>
+<p>Casbin bereitete eine Menge solcher APIs vor. Diese APIs haben einige zusätzliche Funktionen auf der Basis hinzugefügt. Sie sind:</p>
+<ul>
+<li><p><code>ok, err := enforcer.EnforceWithMatcher(Matcher, Anfrage)</code></p>
+<p>Mit einem Matcher.</p></li>
+<li><p><code>ok, Grund, err := enforcer.EnforceExWithMatcher(Matcher, Anfrage)</code></p>
+<p>Eine Kombination von <code>EnforceWithMatcher()</code> und <code>EnforceEx()</code>.</p></li>
+<li><p><code>boolArray, err := enforcer.BatchEnforce(requests)</code></p>
+<p>Führe einen Listenauftrag aus, gibt ein Array zurück.</p></li>
+</ul>
+<p>Dies ist eine einfache Verwendung von Casbin. Sie können Casbin benutzen, um einen Autorisierungsserver über diese API zu starten. Wir zeigen Ihnen einige andere APIs in den nächsten Absätzen.</p>
+<h2><a class="anchor" aria-hidden="true" id="management-api"></a><a href="#management-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Management-API</h2>
+<h3><a class="anchor" aria-hidden="true" id="get-api"></a><a href="#get-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get API</h3>
+<p>Diese APIs werden verwendet, um exakte Objekte in Richtlinien zu erhalten. Dieses Mal haben wir einen Vollstrecker wie das letzte Beispiel geladen und bekommen etwas davon.</p>
+<p>Bitte lesen Sie den folgenden Code:</p>
+<pre><code class="hljs css language-go">enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+allSubjects := enforcer.GetAllSubjects()
+fmt.Println(allsubjects)
+</code></pre>
+<p>Wie das letzte Beispiel haben auch die ersten 4 Zeilen einige notwendige Informationen aus lokalen Dateien geladen. Darüber werden wir hier nicht mehr reden.</p>
+<p>Code <code>allSubjects := enforcer.GetAllSubjects()</code> hat alle Subjekte in der Richtlinien-Datei erhalten und sie als Array zurückgegeben. Dann haben wir dieses Array gedruckt.</p>
+<p>Normalerweise sollte die Ausgabe des Codes sein:</p>
+<pre><code class="hljs">[Adminalice Bob]
+</code></pre>
+<p>Sie können auch die Funktion <code>GetAllSubjects()</code> zu <code>GetAllNamedSubjects()</code> ändern, o holt die Liste der Themen, die in den aktuell benannten Richtlinien erscheinen.</p>
+<p>Ebenso haben wir <code>GetAll-</code> Funktionen für <code>Objekte, Aktionen, Rollen</code> vorbereitet. Das einzige, was Sie tun müssen, ist, das Wort <code>Betreff</code> im Funktionsnamen in das zu ändern, was Sie wollen, wenn Sie auf diese Funktionen zugreifen möchten.</p>
+<p>Außerdem haben wir mehr Entscheidungsträger für die Politik. Die Rufmethode und der Rückgabewert ähneln denen oben.</p>
+<ul>
+<li><code>policy = e.GetPolicy()</code> erhält alle Berechtigungsregeln in der Richtlinie.</li>
+<li><code>filteredPolicy := e.GetFilteredPolicy(0, &quot;alice&quot;)</code> holt alle Autorisierungsregeln in der Richtlinie, Feldfilter können angegeben werden.</li>
+<li><code>namedPolicy := e.GetNamedPolicy(&quot;p&quot;)</code> erhält alle Autorisierungsregeln in der angegebenen Richtlinie.</li>
+<li><code>filteredNamedPolicy = e.GetFilteredNamedPolicy(&quot;p&quot;, 0, &quot;bob&quot;)</code> holt alle Autorisierungsregeln in den genannten Richtlinien, Feldfilter können angegeben werden.</li>
+<li><code>groupingPolicy := e.GetGroupingPolicy()</code> holt alle Rollenvererbungsregeln in der Richtlinie.</li>
+<li><code>filteredGroupingPolicy := e.GetFilteredGroupingPolicy(0, &quot;alice&quot;)</code> erhält alle Rollenvererbungsregeln in der Richtlinie, Feldfilter können angegeben werden.</li>
+<li><code>namedGroupingPolicy := e.GetNamedGroupingPolicy(&quot;g&quot;)</code> holt alle Rollenvererbungsregeln in der Richtlinie.</li>
+<li><code>namedGroupingPolicy := e.GetFilteredNamedGroupingPolicy(&quot;g&quot;, 0, &quot;alice&quot;)</code> erhält alle Rollenvererbungsregeln in der Richtlinie.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="api-hinzufügen-löschen-update-api"></a><a href="#api-hinzufügen-löschen-update-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API hinzufügen, löschen, Update API</h3>
+<p>Casbin bereitete eine Menge APIs für Richtlinien vor. Mit diesen APIs können Sie Richtlinien zur Laufzeit dynamisch hinzufügen, löschen oder bearbeiten.</p>
+<p>Dieser Code zeigt Ihnen, wie Sie Ihre Richtlinien hinzufügen, entfernen und aktualisieren und wie Sie bestätigen können, dass eine Richtlinie existiert:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Lade Informationen aus Dateien</span>
+enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+   fmt. rintf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+
+<span class="hljs-comment">// Richtlinien hinzufügen, dann HasPolicy() verwenden, um zu bestätigen, dass</span>
+Vollstreckung durchgesetzt wird. ddPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+hasPolicy := enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt. rintln(hasPolicy) <span class="hljs-comment">// true haben wir hinzugefügt, dass die Richtlinie erfolgreich</span>
+
+<span class="hljs-comment">// eine Richtlinie entfernen und dann HasPolicy() verwenden, um zu bestätigen, dass</span>
+durchgesetzt wird. emovePolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt. rintln(hasPolicy) <span class="hljs-comment">// falsch, wir haben diese Richtlinie erfolgreich gelöscht</span>
+
+<span class="hljs-comment">// Richtlinien aktualisieren und dann HasPolicy() verwenden, um zu bestätigen, dass</span>
+Durchsetzer ist. pdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>})
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt. rintln(hasPolicy) <span class="hljs-comment">// falsch, die Ursprungsrichtlinie ist abgelaufen</span>
+hasPolicy = enforcer.HasPolicy(<span class="hljs-string">"added_user"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"write"</span>)
+fmt.Println(hasPolicy) <span class="hljs-comment">// true the new policy is in use</span>
+</code></pre>
+<p>Mit diesen vier Arten von APIs können Sie Ihre Richtlinien bearbeiten. Wie diese haben wir die gleichen Arten von APIs für <code>FilteredPolicy, NamedPolicy, FilteredNamedPolicy, GroupingPolicy, NamedGroupingPolicy, FilteredGroupingPolicy, FilteredNamedGroupingPolicy</code> vorbereitet. Um sie zu verwenden, müssen Sie nur das Wort <code>Richtlinie</code> im Funktionsnamen zu den obigen Wörtern ersetzen.</p>
+<p>Wenn Sie außerdem Parameter in Arrays ändern, können Sie Ihre Richtlinien Batch bearbeiten.</p>
+<p>Zum Beispiel für Funktionen wie diese:</p>
+<pre><code class="hljs css language-go">enforcer.UpdatePolicy([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, []<span class="hljs-keyword">string</span>{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>})
+</code></pre>
+<p>wenn wir <code>Richtlinien</code> zu <code>Richtlinien</code>ändern und den Parameter bearbeiten:</p>
+<pre><code class="hljs css language-go">enforcer.UpdatePolicies([][][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"read"</span>}}, [][]<span class="hljs-keyword">string</span>{{<span class="hljs-string">"eve"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}, {<span class="hljs-string">"jack"</span>, <span class="hljs-string">"data3"</span>, <span class="hljs-string">"write"</span>}})
+</code></pre>
+<p>dann können wir diese Richtlinien Batch bearbeiten.</p>
+<p>Gleiche Operationen sind auch nützlich für <code>GroupingPolicy, NamedGroupingPolicy</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="rbac-api"></a><a href="#rbac-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC API</h2>
+<p>Casbin stellt Ihnen APIs zur Verfügung, um das RBAC-Modell und -Richtlinien zu ändern. Wenn Sie mit RBAC vertraut sind, können Sie diese APIs einfach verwenden.</p>
+<p>Hier zeigen wir Ihnen nur wie Sie die RBAC APIs von Casbin verwenden und sprechen nicht über RBAC selbst. Weitere Details erhalten Sie <a href="https://casbin.org/docs/en/rbac">hier</a>.</p>
+<p>Wir verwenden diesen Code, um Modell und Richtlinien wie zuvor zu laden.</p>
+<pre><code class="hljs css language-go">enforcer,err := casbin.NewEnforcer(<span class="hljs-string">"./example/model.conf"</span>, <span class="hljs-string">"./example/policy.csv"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    fmt.Printf(<span class="hljs-string">"Error, details: %s\n"</span>, err)
+}
+</code></pre>
+<p>dann verwenden Sie eine Instanz des Vollstreckenden <code>Enforcer</code> um auf diese APIs zuzugreifen.</p>
+<pre><code class="hljs css language-go">roles, err := enforcer.GetRolesForUser(<span class="hljs-string">"amber"</span>)
+fmt.Println(roles) <span class="hljs-comment">// [admin]</span>
+Benutzer, err := enforcer.GetUsersForRole(<span class="hljs-string">"admin"</span>)
+fmt.Println(users) <span class="hljs-comment">// [amber abc]</span>
+</code></pre>
+<p><code>GetRolesForUser()</code> hat ein Array zurückgegeben, das alle Rollen enthielt, die Amber enthalten. In diesem Beispiel hat Bernstein nur einen Rollen-Admin, also sind <code>Rollen</code> <code>[admin]</code>. Und ähnlich können Sie <code>GetUsersForRole()</code> verwenden, um Benutzer zur Rolle zu bringen. Der Rückgabewert dieser Funktion ist auch ein Array.</p>
+<pre><code class="hljs css language-go">enforcer.HasRoleForUser(<span class="hljs-string">"amber"</span>, <span class="hljs-string">"admin"</span>) <span class="hljs-comment">// true</span>
+</code></pre>
+<p>Sie können <code>HasRoleForUser()</code> verwenden, um zu bestätigen, ob der Benutzer zur Rolle gehört. In diesem Beispiel ist Bernstein Mitglied des Admins, also ist der Rückgabewert der Funktion <code>true</code>.</p>
+<pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// true</span>
+enforcer.DeletePermission(<span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)
+fmt.Println(enforcer.Enforce(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"data2"</span>, <span class="hljs-string">"write"</span>)) <span class="hljs-comment">// false</span>
+</code></pre>
+<p>Sie können <code>DeletePermission()</code> verwenden, um eine Berechtigung zu löschen.</p>
+<pre><code class="hljs css language-go">fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// true</span>
+enforcer.DeletePermissionForUser(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)
+fmt.Println(enforcer.Enforce(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"data1"</span>, <span class="hljs-string">"read"</span>)) <span class="hljs-comment">// false false</span>
+</code></pre>
+<p>Und verwenden Sie <code>DeletePermissionForUser()</code> um eine Berechtigung für einen Benutzer zu löschen.</p>
+<p>Casbin hat viele APIs wie diese. Ihre Rufmethoden und Rückgabewerte haben den gleichen Stil wie die oben genannten APIs. Diese APIs finden Sie in <a href="https://casbin.org/docs/en/rbac-api">nächsten Dokumenten</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/cloud-native"><span class="arrow-prev">← </span><span>Cloud Native Middlewares</span></a><a class="docs-next button" href="/docs/de/management-api"><span>Management-API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-erzwingen">API erzwingen</a></li><li><a href="#enforceex-api">EnforceEx API</a></li><li><a href="#management-api">Management-API</a><ul class="toc-headings"><li><a href="#get-api">Get API</a></li><li><a href="#api-hinzufügen-löschen-update-api">API hinzufügen, löschen, Update API</a></li></ul></li><li><a href="#rbac-api">RBAC API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

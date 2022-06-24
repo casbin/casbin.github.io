@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Mitwirken · Casbin</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Casbin ist eine mächtige Autorisierungsbibliothek unterstützt Zugriffskontrollmodelle mit vielen Sprachimplementierungen, so lange Sie gut in einer Sprache sind, können Sie an der Entwicklung von Casbin teilnehmen. Neue Beitragszahler sind immer willkommen."/><meta name="docsearch:language" content="de"/><meta property="og:title" content="Mitwirken · Casbin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://casbin.org/"/><meta property="og:description" content="Casbin ist eine mächtige Autorisierungsbibliothek unterstützt Zugriffskontrollmodelle mit vielen Sprachimplementierungen, so lange Sie gut in einer Sprache sind, können Sie an der Entwicklung von Casbin teilnehmen. Neue Beitragszahler sind immer willkommen."/><meta property="og:image" content="https://casbin.org/img/casbin.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://casbin.org/img/casbin.svg"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="https://cdn.casbin.org/casbin-website/css/monokai-sublime.min.css"/><link rel="alternate" type="application/atom+xml" href="https://casbin.org/blog/atom.xml" title="Casbin Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://casbin.org/blog/feed.xml" title="Casbin Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-119750650-1', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/wwads.js"></script><script type="text/javascript" src="/js/wwads2.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/de"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/de/overview" target="_self">Texte</a></li><li class="siteNavGroupActive"><a href="/docs/de/management-api" target="_self">API</a></li><li class=""><a href="/de/editor" target="_self">Redakteur</a></li><li class="siteNavGroupActive"><a href="/docs/de/ide-plugins" target="_self">IDE-Plugins</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Forum</a></li><li class=""><a href="/de/help" target="_self">Hilfe</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Deutsch</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/contributing">English</a></li><li><a href="/docs/zh-CN/contributing">中文</a></li><li><a href="/docs/ko/contributing">한국어</a></li><li><a href="/docs/ru/contributing">Русский</a></li><li><a href="/docs/fr/contributing">Français</a></li><li><a href="/docs/ja/contributing">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Helfen Sie zu übersetzen</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/casbin" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Mehr</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Die Grundlagen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/overview">Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/get-started">Los geht&#x27;s</a></li><li class="navListItem"><a class="navItem" href="/docs/de/how-it-works">So funktioniert es</a></li><li class="navListItem"><a class="navItem" href="/docs/de/tutorials">Anleitungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modell</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/supported-models">Unterstützte Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/syntax-for-models">Syntax für Modelle</a></li><li class="navListItem"><a class="navItem" href="/docs/de/effector">Effektor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/function">Funktion</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac">RBAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-pattern">RBAC with Pattern</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains">RBAC mit Domänen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-96">Casbin RBAC v.s. RBAC96</a></li><li class="navListItem"><a class="navItem" href="/docs/de/abac">ABAC</a></li><li class="navListItem"><a class="navItem" href="/docs/de/priority-model">Prioritätsmodell</a></li><li class="navListItem"><a class="navItem" href="/docs/de/superadmin">Super-Admin</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Speicher</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/model-storage">Modellspeicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-storage">Richtlinien-Speicher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/policy-subset-loading">Richtlinien-Untermengenladen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterungen</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/enforcers">Enforcers</a></li><li class="navListItem"><a class="navItem" href="/docs/de/adapters">Adapter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/watchers">Beobachter</a></li><li class="navListItem"><a class="navItem" href="/docs/de/dispatchers">Dispatcher</a></li><li class="navListItem"><a class="navItem" href="/docs/de/role-managers">Rollen-Manager</a></li><li class="navListItem"><a class="navItem" href="/docs/de/middlewares">Middleware</a></li><li class="navListItem"><a class="navItem" href="/docs/de/graphql-middlewares">GraphQL Middlewares</a></li><li class="navListItem"><a class="navItem" href="/docs/de/cloud-native">Cloud Native Middlewares</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/api-overview">API-Übersicht</a></li><li class="navListItem"><a class="navItem" href="/docs/de/management-api">Management-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-api">RBAC API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rbac-with-domains-api">RBAC mit Domains API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/rolemanager-api">Rollen-Manager-API</a></li><li class="navListItem"><a class="navItem" href="/docs/de/data-permissions">Datenberechtigungen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Erweiterte Nutzung</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/multi-threading">Mehrfachfachen</a></li><li class="navListItem"><a class="navItem" href="/docs/de/benchmark">Benchmarks</a></li><li class="navListItem"><a class="navItem" href="/docs/de/performance">Leistungsoptimierung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/k8s">Autorisierung von Kubernetes</a></li><li class="navListItem"><a class="navItem" href="/docs/de/envoy">Genehmigung des Service-Mesh durch den Gesandten</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Management</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/admin-portal">Admin-Portal</a></li><li class="navListItem"><a class="navItem" href="/docs/de/service">Kasbin-Dienst</a></li><li class="navListItem"><a class="navItem" href="/docs/de/log-error">Log- &amp; Fehlerbehandlung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/frontend">Frontend-Nutzung</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Redakteur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/online-editor">Online-Editor</a></li><li class="navListItem"><a class="navItem" href="/docs/de/ide-plugins">IDE-Plugins</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Mehr</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/de/adopters">Unsere Adopter</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/de/contributing">Mitwirken</a></li><li class="navListItem"><a class="navItem" href="/docs/de/privacy-policy">Datenschutzerklärung</a></li><li class="navListItem"><a class="navItem" href="/docs/de/terms-of-service">Nutzungsbedingungen</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/de" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Mitwirken</h1></header><article><div><span><p>Casbin ist eine mächtige Autorisierungsbibliothek unterstützt Zugriffskontrollmodelle mit vielen Sprachimplementierungen, so lange Sie gut in einer Sprache sind, können Sie an der Entwicklung von Casbin teilnehmen. Neue Beitragszahler sind immer willkommen.</p>
+<p>Derzeit gibt es hauptsächlich zwei Arten von Projekten.</p>
+<ul>
+<li><strong>Algorithmen orientiert</strong>———Erste Art von Projekten sind Algorithmen verwandte Projekte für verschiedene Sprachimplementierungen, enthalten die meisten Mainstream-Programmiersprachen von Golang, Java, C++ über Elixir, Dart und Rust bis hin zu deren Peripherieprodukten.</li>
+</ul>
+<table>
+<thead>
+<tr><th><a href="https://github.com/casbin/casbin"><img src="https://casbin.org/img/langs/golang.png" alt="golang"></a></th><th><a href="https://github.com/casbin/jcasbin"><img src="https://casbin.org/img/langs/java.png" alt="java"></a></th><th><a href="https://github.com/casbin/node-casbin"><img src="https://casbin.org/img/langs/nodejs.png" alt="nodejs"></a></th><th><a href="https://github.com/php-casbin/php-casbin"><img src="https://casbin.org/img/langs/php.png" alt="php"></a></th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/casbin/casbin">Casbin</a></td><td><a href="https://github.com/casbin/jcasbin">jCasbin</a></td><td><a href="https://github.com/casbin/node-casbin">node-Casbin</a></td><td><a href="https://github.com/php-casbin/php-casbin">PHP-Casbin</a></td></tr>
+<tr><td>produktionsbereit</td><td>produktionsbereit</td><td>produktionsbereit</td><td>produktionsbereit</td></tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr><th><a href="https://github.com/casbin/pycasbin"><img src="https://casbin.org/img/langs/python.png" alt="python"></a></th><th><a href="https://github.com/casbin/Casbin.NET"><img src="https://casbin.org/img/langs/dotnet.png" alt="dotnet"></a></th><th><a href="https://github.com/casbin/casbin-cpp"><img src="https://casbin.org/img/langs/cpp.png" alt="c++"></a></th><th><a href="https://github.com/casbin/casbin-rs"><img src="https://casbin.org/img/langs/rust.png" alt="rosten"></a></th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/casbin/pycasbin">PyCasbin</a></td><td><a href="https://github.com/casbin/Casbin.NET">Casbin.NET</a></td><td><a href="https://github.com/casbin/casbin-cpp">Casbin-CPP</a></td><td><a href="https://github.com/casbin/casbin-rs">Casbin-RS</a></td></tr>
+<tr><td>produktionsbereit</td><td>produktionsbereit</td><td>produktionsbereit</td><td>produktionsbereit</td></tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Bewerbungsorientierte</strong>———Zweite Art von Projekten sind anwendungsbezogene Projekte.</li>
+</ul>
+<table>
+<thead>
+<tr><th>Projekt</th><th>Demo</th><th>Details</th><th>Skill-Stapel</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/casdoor/casdoor">Kasse</a></td><td><a href="https://door.casdoor.com/">Kasse</a></td><td>Casdoor ist UI-erste zentrale Authentifizierung / Single-Sign-On (SSO) Plattform basierend auf OAuth 2.0 / OIDC</td><td>JavaScript + Reagieren und Golang + Beego + SQL</td></tr>
+<tr><td><a href="https://github.com/casbin/casnode">Casnode</a></td><td><a href="https://forum.casbin.com">Casbin-Forum</a></td><td>Casnode ist die Forum-Software der nächsten Generation</td><td>JavaScript + Reagieren und Golang + Beego + SQL</td></tr>
+<tr><td><a href="https://github.com/casbin/casbin-oa">Casbin OA</a></td><td><a href="https://oa.casbin.com">OA system</a></td><td>Casbin-OA ist ein offizielles Manuskript-Verarbeitungs-, Evaluierungs- und Anzeigesystem für Casbin-technische Autoren</td><td>JavaScript + Reagieren und Golang + Beego + MySQL</td></tr>
+<tr><td><a href="https://github.com/casbin/casbin-editor">Casbin Editor</a></td><td><a href="https://casbin.org/casbin-editor">Casbin Editor</a></td><td>Casbin-Editor ist ein web-basierter Casbin-Modell und Richtlinien-Editor</td><td>TypeScript + Reaktion</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="beteilige-dich"></a><a href="#beteilige-dich" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Beteilige dich</h2>
+<p>Es gibt viele Möglichkeiten, um Casbin zu unterstützen, hier sind einige Ideen zu beginnen:</p>
+<ul>
+<li><p><strong>Verwenden Sie Casbin und melden Sie Probleme!</strong> Wenn Sie Casbin verwenden, melden Sie Probleme, um die Entwicklung von Casbin zu fördern, unabhängig von Fehlern oder Vorschlägen. Bevor ein Problem auf GitHub abgelegt wird, wäre es besser, zuerst auf <a href="https://gitter.im/casbin/Lobby">Gitter</a>zu diskutieren <a href="https://forum.casbin.com">Casbin Forum</a>, <a href="https://groups.google.com/g/casbin">Google-Gruppe</a> oder <a href="https://shang.qq.com/wpa/qunwpa?idkey=8ac8b91fc97ace3d383d0035f7aa06f7d670fd8e8d4837347354a31c18fac885">QQ-Gruppe: 546057381</a></p>
+<blockquote>
+<p>Hinweis: Wenn Sie ein Problem melden, verwenden Sie bitte Englisch, um die Details Ihres Problems zu beschreiben.</p>
+</blockquote></li>
+<li><p><strong>Hilfe mit docs!</strong> Einen Beitrag zu leisten ist eine gute Wahl um deinen Beitrag zu starten.</p></li>
+<li><p><strong>Hilf mit, Probleme zu lösen!</strong> Wir bereiten eine Tabelle mit einfachen Aufgaben für Anfänger vor mit verschiedenen Level von Challenges, die mit verschiedenen Tags gekennzeichnet sind, überprüfen Sie die Tabelle <a href="https://github.com/orgs/casbin/projects/2">hier</a>.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="pull-anfragen"></a><a href="#pull-anfragen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pull-Anfragen</h2>
+<p>Casbin verwendet GitHub als Entwicklungsplattform. Daher sind die Pull-Requests die Hauptquelle für Beiträge.</p>
+<p>Es gibt etwas, das du wissen musst, bevor du eine Pull-Requests öffnet:</p>
+<ul>
+<li><p>Erklären Sie, warum Sie diese PR senden und was diese PR dem Repo.</p></li>
+<li><p>Stellen Sie sicher, dass die PR nur eine Sache tut, sonst teilen Sie sie bitte auf.</p></li>
+<li><p>Wenn es neu hinzugefügte Dateien gibt, fügen Sie bitte die Casbin-Lizenz in den oberen Bereich der neuen Datei(en) ein.</p>
+<pre><code class="hljs"><span class="hljs-regexp">//</span> Copyright <span class="hljs-number">2021</span> The casbin Authors. Alle Rechte vorbehalten.
+<span class="hljs-regexp">//</span>
+<span class="hljs-regexp">//</span> Lizenziert unter der Apache-Lizenz, Version <span class="hljs-number">2</span>. (die <span class="hljs-string">"Lizenz"</span>);
+<span class="hljs-regexp">//</span> Sie dürfen diese Datei nur <span class="hljs-keyword">in</span> Übereinstimmung mit der Lizenz verwenden.
+<span class="hljs-regexp">//</span> Eine Kopie der Lizenz erhalten Sie unter
+<span class="hljs-regexp">//</span>
+<span class="hljs-regexp">//</span> http:<span class="hljs-regexp">//</span>www.apache.org<span class="hljs-regexp">/licenses/</span>LICENSE-<span class="hljs-number">2</span>.
+<span class="hljs-regexp">//</span>
+<span class="hljs-regexp">//</span> Sofern nicht gesetzlich vorgeschrieben oder schriftlich vereinbart Software
+<span class="hljs-regexp">//</span> unter der Lizenz vertrieben wird auf einer <span class="hljs-string">"AS IS"</span> BASIS vertrieben,
+<span class="hljs-regexp">//</span> OHNE GEWÄHRLEISTUNGEN ODER BEDINGUNGEN JEGLICHER KIND, sei es ausdrücklich oder stillschweigend.
+<span class="hljs-regexp">//</span> Siehe die Lizenz für die jeweilige Sprache für die Berechtigungen und
+<span class="hljs-regexp">//</span> Einschränkungen unter der Lizenz.
+</code></pre></li>
+<li><p>In <a href="https://github.com/casdoor/casdoor">Casdoor</a>, <a href="https://github.com/casbin/casnode">Casnode</a> and <a href="https://github.com/casbin/casbin-oa">Casbin OA</a>, your might need to setup demo to show the maintainer your pull request help the development of project.</p></li>
+<li><p>Wenn du PR öffnest und deinen Beitrag überträgst, wäre es besser, die semantischen Commits zu verwenden, format: <code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</code>, <code>&lt;scope&gt;</code> ist optional. Für detailliertere Verwendung, siehe <a href="https://www.conventionalcommits.org/en/v1.0.0/">konventionellen Commit</a></p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="lizenz"></a><a href="#lizenz" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lizenz</h2>
+<p>Indem Sie zu Casbin beitragen, stimmen Sie zu, dass Ihre Beiträge unter der Apache Lizenz lizenziert werden.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/de/adopters"><span class="arrow-prev">← </span><span>Unsere Adopter</span></a><a class="docs-next button" href="/docs/de/privacy-policy"><span>Datenschutzerklärung</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#beteilige-dich">Beteilige dich</a></li><li><a href="#pull-anfragen">Pull-Anfragen</a></li><li><a href="#lizenz">Lizenz</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/casbin.svg" alt="Casbin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/de/get-started">Getting Started</a><a href="/docs/de/management-api">Management API</a><a href="/docs/de/rbac-api">RBAC API</a><a href="/docs/de/middlewares">Middlewares</a></div><div><h5>Community</h5><a href="/de/users">Who&#x27;s using Casbin?</a><a href="https://stackoverflow.com/search?q=casbin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51"/></a></div><div><a class="github-button" href="https://github.com/casbin/casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin</a>          <a class="github-button" href="https://github.com/casbin/jcasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">jCasbin</a><br/><a class="github-button" href="https://github.com/casbin/node-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Node-Casbin</a>   <a class="github-button" href="https://github.com/php-casbin/php-casbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PHP-Casbin</a><a class="github-button" href="https://github.com/casbin/pycasbin" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">PyCasbin</a>          <a class="github-button" href="https://github.com/casbin/Casbin.NET" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin.NET</a><a class="github-button" href="https://github.com/casbin/casbin-cpp" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-CPP</a>        <a class="github-button" href="https://github.com/casbin/casbin-rs" data-icon="octicon-star" data-count-href="/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Casbin-RS</a><div class="social"><a href="https://twitter.com/casbinHQ" class="twitter-follow-button">Follow @casbinHQ</a></div><div class="social"><div class="fb-like" data-href="https://casbin.org" data-colorscheme="dark" data-layout="standard" data-share="true" data-width="225" data-show-faces="false"></div></div></div></section><section class="copyright">Copyright © 2022 Casbin Organization</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.fbAsyncInit = function() {FB.init({appId:'1354585054683583',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '2b87bf88e794912bdbe1b08420681efa',
+                indexName: 'casbin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:de"]}
+              });
+            </script></body></html>

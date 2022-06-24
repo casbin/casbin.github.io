@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ja" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-225-tab-226" class="nav-link active" data-group="group_225" data-tab="tab-group-225-content-226">Go</div><div id="tab-group-225-tab-227" class="nav-link" data-group="group_225" data-tab="tab-group-225-content-227">CPP</div><div id="tab-group-225-tab-228" class="nav-link" data-group="group_225" data-tab="tab-group-225-content-228">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-225-content-226" class="tab-pane active" data-group="group_225" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a> では、ポリシー施行のオーバーヘッドがベンチマークされています。 テストベッドは次のとおりです。</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ja" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-263-tab-264" class="nav-link active" data-group="group_263" data-tab="tab-group-263-content-264">Go</div><div id="tab-group-263-tab-265" class="nav-link" data-group="group_263" data-tab="tab-group-263-content-265">CPP</div><div id="tab-group-263-tab-266" class="nav-link" data-group="group_263" data-tab="tab-group-263-content-266">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-263-content-264" class="tab-pane active" data-group="group_263" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a> では、ポリシー施行のオーバーヘッドがベンチマークされています。 テストベッドは次のとおりです。</p>
 <pre><code class="hljs">Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 2601Mhz, 4 Core(s), 8 Logical Processor(s)<br /></code></pre>
 <p><code>のベンチマーク結果 -bench=. -benchmem</code> は以下の通りです (op = <code>Enforce()</code> コール, ms = ミリ秒, KB = kiloバイト):</p>
 <table>
@@ -95,7 +95,7 @@
 <tr><td>優先度</td><td>9 ルール (2 ユーザー、2 ロール)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-225-content-227" class="tab-pane" data-group="group_225" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> のポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> ディレクトリで <a href="https://github.com/google/benchmark">Googleのベンチマークツール</a> の助けを借りてベンチマークされています。 これらのベンチマークのテストベッドは次のとおりです:</p>
+</span></div></div><div id="tab-group-263-content-265" class="tab-pane" data-group="group_263" tabindex="-1"><div><span><p><a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> のポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> ディレクトリで <a href="https://github.com/google/benchmark">Googleのベンチマークツール</a> の助けを借りてベンチマークされています。 これらのベンチマークのテストベッドは次のとおりです:</p>
 <pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
 <p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
@@ -116,7 +116,7 @@
 <tr><td>優先度</td><td>9 ルール (2 ユーザー、2 ロール)</td><td>0.035</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-225-content-228" class="tab-pane" data-group="group_225" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbinの</a> ポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a> でベンチマークされている。 テストベッドは、CPUを備えたUbuntu VMでした。</p>
+</span></div></div><div id="tab-group-263-content-266" class="tab-pane" data-group="group_263" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbinの</a> ポリシー執行のオーバーヘッドは、 <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a> でベンチマークされている。 テストベッドは、CPUを備えたUbuntu VMでした。</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 コア, 12 スレッド<br /></code></pre>
 <p><code>luajit bench.lua</code> のベンチマーク結果は以下のとおりです (op = <code>enforce()</code> 呼び出し、ms = ミリ秒):</p>
 <table>

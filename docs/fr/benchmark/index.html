@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-221-tab-222" class="nav-link active" data-group="group_221" data-tab="tab-group-221-content-222">Go</div><div id="tab-group-221-tab-223" class="nav-link" data-group="group_221" data-tab="tab-group-221-content-223">CPP</div><div id="tab-group-221-tab-224" class="nav-link" data-group="group_221" data-tab="tab-group-221-content-224">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-221-content-222" class="tab-pane active" data-group="group_221" tabindex="-1"><div><span><p>Les frais de mise en application de la politique sont comparés dans <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. Le lit de test est :</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/fr" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Benchmarks</h1></header><article><div><span><div class="tabs"><div class="nav-tabs"><div id="tab-group-255-tab-256" class="nav-link active" data-group="group_255" data-tab="tab-group-255-content-256">Go</div><div id="tab-group-255-tab-257" class="nav-link" data-group="group_255" data-tab="tab-group-255-content-257">CPP</div><div id="tab-group-255-tab-258" class="nav-link" data-group="group_255" data-tab="tab-group-255-content-258">Lua (JIT)</div></div><div class="tab-content"><div id="tab-group-255-content-256" class="tab-pane active" data-group="group_255" tabindex="-1"><div><span><p>Les frais de mise en application de la politique sont comparés dans <a href="https://github.com/casbin/casbin/blob/master/model_b_test.go">model_b_test.go</a>. Le lit de test est :</p>
 <pre><code class="hljs">Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 2601 Mhz, 4 Core(s), 8 Processeur(s) logique(s)<br /></code></pre>
 <p>Le résultat du benchmarking de <code>va test -bench=. -benchmem</code> est comme suit (op = un appel <code>Enforce()</code> , ms = milliseconde, KB = kilo octets):</p>
 <table>
@@ -95,7 +95,7 @@
 <tr><td>Priorité</td><td>9 règles (2 utilisateurs, 2 rôles)</td><td>0.016389</td><td>5.313</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-221-content-223" class="tab-pane" data-group="group_221" tabindex="-1"><div><span><p>Les frais d'exécution de la politique de <a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> sont comparés dans le répertoire <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> à l'aide de <a href="https://github.com/google/benchmark">l'outil de benchmarking de Google</a>. Le lit de test pour ces repères est :</p>
+</span></div></div><div id="tab-group-255-content-257" class="tab-pane" data-group="group_255" tabindex="-1"><div><span><p>Les frais d'exécution de la politique de <a href="https://github.com/casbin/casbin-cpp">Casbin CPP</a> sont comparés dans le répertoire <a href="https://github.com/casbin/casbin-cpp/tree/master/tests/benchmarks"><code>tests/benchmarks</code></a> à l'aide de <a href="https://github.com/google/benchmark">l'outil de benchmarking de Google</a>. Le lit de test pour ces repères est :</p>
 <pre><code class="hljs">Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 4 threads<br /></code></pre>
 <p>Here is the benchmarking result of executing <code>casbin_benchmark</code> target built in <code>Release</code> configuration (op = an <code>enforce()</code> call, ms = millisecond):</p>
 <table>
@@ -116,7 +116,7 @@
 <tr><td>Priorité</td><td>9 règles (2 utilisateurs, 2 rôles)</td><td>0.035</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-221-content-224" class="tab-pane" data-group="group_221" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement est comparé dans <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. Le lit testé était une VM Ubuntu avec le CPU:</p>
+</span></div></div><div id="tab-group-255-content-258" class="tab-pane" data-group="group_255" tabindex="-1"><div><span><p><a href="https://github.com/casbin/lua-casbin">Lua Casbin's</a> overhead of policy enforcement est comparé dans <a href="https://github.com/casbin/lua-casbin/blob/master/bench.lua">bench.lua</a>. Le lit testé était une VM Ubuntu avec le CPU:</p>
 <pre><code class="hljs">AMD Ryzen(TM) 5 4600H CPU @ 3.0GHz, 6 Cores, 12 Threads<br /></code></pre>
 <p>Le résultat de benchmarking de <code>luajit bench.lua</code> est le suivant (op = un appel <code>enforce()</code> , ms = millisecond):</p>
 <table>
