@@ -6,7 +6,7 @@
 
               ga('create', 'UA-119750650-1', 'auto');
               ga('send', 'pageview');
-            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/overview" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/management-api" target="_self">API</a></li><li class=""><a href="/zh-CN/editor" target="_self">编辑器</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/ide-plugins" target="_self">IDE 插件</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">论坛</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/ko/watchers">한국어</a></li><li><a href="/docs/ru/watchers">Русский</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/de/watchers">Deutsch</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">参与翻译</a></li></ul></div></li><script>
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/probe.js"></script><script type="text/javascript" src="/js/tawk.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-CN"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-CN/overview" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/management-api" target="_self">API</a></li><li class=""><a href="/zh-CN/editor" target="_self">编辑器</a></li><li class="siteNavGroupActive"><a href="/docs/zh-CN/ide-plugins" target="_self">IDE 插件</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">论坛</a></li><li class=""><a href="/zh-CN/help" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/ko/watchers">한국어</a></li><li><a href="/docs/ru/watchers">Русский</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/de/watchers">Deutsch</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">参与翻译</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -76,7 +76,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">观察者</h1></header><article><div><span><p>我们支持使用分布式消息系统，例如 <a href="https://github.com/coreos/etcd">etcd</a> 来保持多个Casbin执行器实例之间的一致性。 因此，我们的用户可以同时使用多个Casbin 执行器来处理大量的权限检查请求。</p>
 <p>与策略存储 adapters类似，我们没有把watcher的代码放在主库中。 任何对新消息系统的支持都应该作为watcher程序来实现。 完整的Casbin watchers列表如下所示。 欢迎任何第三方对 watcher 进行新的贡献，如果有请告知我们，我将把它放在这个列表中:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-5226-tab-5227" class="nav-link active" data-group="group_5226" data-tab="tab-group-5226-content-5227">Go</div><div id="tab-group-5226-tab-5228" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5228">Java</div><div id="tab-group-5226-tab-5229" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5229">Node.js</div><div id="tab-group-5226-tab-5230" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5230">Python</div><div id="tab-group-5226-tab-5231" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5231">.NET</div><div id="tab-group-5226-tab-5232" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5232">Ruby</div><div id="tab-group-5226-tab-5233" class="nav-link" data-group="group_5226" data-tab="tab-group-5226-content-5233">PHP</div></div><div class="tab-content"><div id="tab-group-5226-content-5227" class="tab-pane active" data-group="group_5226" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-5227-tab-5228" class="nav-link active" data-group="group_5227" data-tab="tab-group-5227-content-5228">Go</div><div id="tab-group-5227-tab-5229" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5229">Java</div><div id="tab-group-5227-tab-5230" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5230">Node.js</div><div id="tab-group-5227-tab-5231" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5231">Python</div><div id="tab-group-5227-tab-5232" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5232">.NET</div><div id="tab-group-5227-tab-5233" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5233">Ruby</div><div id="tab-group-5227-tab-5234" class="nav-link" data-group="group_5227" data-tab="tab-group-5227-content-5234">PHP</div></div><div class="tab-content"><div id="tab-group-5227-content-5228" class="tab-pane active" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -92,7 +92,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">RocketMQ 观察器</a></td><td>消息传递系统。</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td><a href="https://rocketmq.apache.org/">Apache RocketMQ的监视器</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5228" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5229" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -102,7 +102,7 @@
 <tr><td><a href="https://github.com/jcasbin/kafka-watcher">卡夫卡观察者</a></td><td>消息系统</td><td>Casbin</td><td><a href="https://kafka.apache.org/">Apache Kafka的关注者</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5229" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5230" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -113,7 +113,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Postgres Watcher</a></td><td>数据库</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5230" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5231" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -122,7 +122,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">PostgreSQL Watcher</a></td><td>数据库</td><td>Casbin</td><td><a href="https://www.postgresql.org/">PostgreSQL</a>的监视器</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5231" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5232" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>说明</th></tr>
 </thead>
@@ -130,7 +130,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Redis Watcher</a></td><td>KV store</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td><a href="http://redis.io/">Redis</a>的Watcher</td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5232" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5233" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>描述</th></tr>
 </thead>
@@ -139,7 +139,7 @@
 <tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-rabbitmq-watcher">RabbitMQ 监视器</a></td><td>消息传递系统。</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td><a href="https://www.rabbitmq.com/">RabbitMQ 的监视器</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5226-content-5233" class="tab-pane" data-group="group_5226" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5227-content-5234" class="tab-pane" data-group="group_5227" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>监视器</th><th>类型</th><th>作者</th><th>描述</th></tr>
 </thead>

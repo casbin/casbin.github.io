@@ -6,7 +6,7 @@
 
               ga('create', 'UA-119750650-1', 'auto');
               ga('send', 'pageview');
-            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/probe.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ru"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ru/overview" target="_self">Документ</a></li><li class="siteNavGroupActive"><a href="/docs/ru/management-api" target="_self">API</a></li><li class=""><a href="/ru/editor" target="_self">Редактор</a></li><li class="siteNavGroupActive"><a href="/docs/ru/ide-plugins" target="_self">Плагины IDE</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Форум</a></li><li class=""><a href="/ru/help" target="_self">Справка</a></li><li class=""><a href="/blog/" target="_self">Блог</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Русский</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/zh-CN/watchers">中文</a></li><li><a href="/docs/ko/watchers">한국어</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/de/watchers">Deutsch</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Помочь перевести</a></li></ul></div></li><script>
+            </script><link rel="stylesheet" href="/css/code-blocks-buttons.css"/><link rel="stylesheet" href="/css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.casbin.org/casbin-website/js/clipboard.js"></script><script type="text/javascript" src="/js/code-blocks-buttons.js"></script><script type="text/javascript" src="/js/disqus.js"></script><script type="text/javascript" src="/js/baidu-analytics.js"></script><script type="text/javascript" src="/js/hotjar.js"></script><script type="text/javascript" src="/js/gitter.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script><script type="text/javascript" src="/js/probe.js"></script><script type="text/javascript" src="/js/tawk.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ru"><img class="logo" src="/img/casbin.svg" alt="Casbin"/><h2 class="headerTitleWithLogo">Casbin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/ru/overview" target="_self">Документ</a></li><li class="siteNavGroupActive"><a href="/docs/ru/management-api" target="_self">API</a></li><li class=""><a href="/ru/editor" target="_self">Редактор</a></li><li class="siteNavGroupActive"><a href="/docs/ru/ide-plugins" target="_self">Плагины IDE</a></li><li class=""><a href="https://casdoor.org" target="_self">Single Sign-On (SSO)</a></li><li class=""><a href="https://forum.casbin.com" target="_self">Форум</a></li><li class=""><a href="/ru/help" target="_self">Справка</a></li><li class=""><a href="/blog/" target="_self">Блог</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Русский</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/watchers">English</a></li><li><a href="/docs/zh-CN/watchers">中文</a></li><li><a href="/docs/ko/watchers">한국어</a></li><li><a href="/docs/fr/watchers">Français</a></li><li><a href="/docs/de/watchers">Deutsch</a></li><li><a href="/docs/ja/watchers">日本語</a></li><li><a href="https://crowdin.com/project/casbin" target="_blank" rel="noreferrer noopener">Помочь перевести</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -76,7 +76,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/casbin/ru" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">Наблюдатели</h1></header><article><div><span><p>Мы поддерживаем использование распределенных систем обмена сообщениями, таких как <a href="https://github.com/coreos/etcd">и т.д.,</a> для поддержания связи между несколькими информер Casbin. Таким образом, наши пользователи могут одновременно использовать несколько караулов для обработки большого количества запросов проверки разрешений.</p>
 <p>Подобно адаптерам хранения политики, мы не ставим код наблюдателя в основную библиотеку. Любая поддержка новой системы обмена сообщениями должна осуществляться в качестве наблюдателя. Полный список наблюдателей Casbin представлен ниже. Любой вклад сторонних наблюдателей приветствуется, пожалуйста, сообщите нам и я поместим его в этот список:)</p>
-<div class="tabs"><div class="nav-tabs"><div id="tab-group-5242-tab-5243" class="nav-link active" data-group="group_5242" data-tab="tab-group-5242-content-5243">Go</div><div id="tab-group-5242-tab-5244" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5244">Java</div><div id="tab-group-5242-tab-5245" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5245">Node.js</div><div id="tab-group-5242-tab-5246" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5246">Python</div><div id="tab-group-5242-tab-5247" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5247">.NET</div><div id="tab-group-5242-tab-5248" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5248">Ruby</div><div id="tab-group-5242-tab-5249" class="nav-link" data-group="group_5242" data-tab="tab-group-5242-content-5249">PHP</div></div><div class="tab-content"><div id="tab-group-5242-content-5243" class="tab-pane active" data-group="group_5242" tabindex="-1"><div><span><table>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-5243-tab-5244" class="nav-link active" data-group="group_5243" data-tab="tab-group-5243-content-5244">Go</div><div id="tab-group-5243-tab-5245" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5245">Java</div><div id="tab-group-5243-tab-5246" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5246">Node.js</div><div id="tab-group-5243-tab-5247" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5247">Python</div><div id="tab-group-5243-tab-5248" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5248">.NET</div><div id="tab-group-5243-tab-5249" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5249">Ruby</div><div id="tab-group-5243-tab-5250" class="nav-link" data-group="group_5243" data-tab="tab-group-5243-content-5250">PHP</div></div><div class="tab-content"><div id="tab-group-5243-content-5244" class="tab-pane active" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -92,7 +92,7 @@
 <tr><td><a href="https://github.com/fmyxyz/casbin-rocketmq-watcher">Наблюдатель RocketMQ</a></td><td>Система сообщений</td><td><a href="https://github.com/fmyxyz">@fmyxyz</a></td><td>Наблюдатель от <a href="https://rocketmq.apache.org/">Apache RocketMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5244" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5245" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -102,7 +102,7 @@
 <tr><td><a href="https://github.com/jcasbin/kafka-watcher">Кафка Наблюдатель</a></td><td>Система сообщений</td><td>Casbin</td><td>Наблюдатель от <a href="https://kafka.apache.org/">Apache Kafka</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5245" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5246" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -113,7 +113,7 @@
 <tr><td><a href="https://github.com/mcollina/casbin-pg-watcher">Наблюдатель Postgres</a></td><td>База данных</td><td><a href="https://github.com/mcollina/">Matteo Collina</a></td><td>Наблюдатель от <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5246" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5247" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -122,7 +122,7 @@
 <tr><td><a href="https://github.com/pycasbin/postgresql-watcher">Наблюдатель PostgreSQL</a></td><td>База данных</td><td>Casbin</td><td>Наблюдатель от <a href="https://www.postgresql.org/">PostgreSQL</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5247" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5248" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -130,7 +130,7 @@
 <tr><td><a href="https://github.com/Sbou/Casbin.NET-Redis-Watcher">Наблюдатель Redis</a></td><td>Магазин KV</td><td><a href="https://github.com/Sbou">@Sbou</a></td><td>Наблюдатель для <a href="http://redis.io/">Redis</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5248" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5249" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Наблюдатель</th><th>Тип</th><th>Автор</th><th>Описание</th></tr>
 </thead>
@@ -139,7 +139,7 @@
 <tr><td><a href="https://github.com/CasbinRuby/casbin-ruby-rabbitmq-watcher">Наблюдатель RabbitMQ</a></td><td>Система сообщений</td><td><a href="https://github.com/CasbinRuby">CasbinRuby</a></td><td>Наблюдатель за <a href="https://www.rabbitmq.com/">RabbitMQ</a></td></tr>
 </tbody>
 </table>
-</span></div></div><div id="tab-group-5242-content-5249" class="tab-pane" data-group="group_5242" tabindex="-1"><div><span><table>
+</span></div></div><div id="tab-group-5243-content-5250" class="tab-pane" data-group="group_5243" tabindex="-1"><div><span><table>
 <thead>
 <tr><th>Watcher</th><th>Type</th><th>Author</th><th>Description</th></tr>
 </thead>
