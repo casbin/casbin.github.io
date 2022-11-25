@@ -102,7 +102,7 @@ g, alice, data2_admin
 <li>Casbin 只存储用户角色的映射关系。</li>
 <li>Cabin 没有验证用户是否是有效的用户，或者角色是一个有效的角色。 这应该通过认证来解决。</li>
 <li>RBAC 系统中的用户名称和角色名称不应相同。因为Casbin将用户名和角色识别为字符串， 所以当前语境下Casbin无法得出这个字面量到底指代用户 <code>alice</code> 还是角色 <code>alice</code>。 这时，使用明确的 <code>role_alice</code> ，问题便可迎刃而解。</li>
-<li>假设<code>A</code>具有角色 <code>B</code>，<code>B</code> 具有角色 <code>C</code>，并且 <code>A</code> 有角色 <code>C</code>。 这种传递性在当前版本会造成死循环。</li>
+<li>假设<code>A</code>具有角色 <code>B</code>，<code>B</code> 具有角色 <code>C</code>，那么 <code>A</code> 具有角色 <code>C</code>。 这种传递性在当前版本是无限的。</li>
 </ol>
 </div></div><h2><a class="anchor" aria-hidden="true" id="角色层次"></a><a href="#角色层次" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>角色层次</h2>
 <p>Casbin 的 RBAC 支持 RBAC1 的角色层次结构功能，如果 <code>alice</code>具有<code>role1</code>, <code>role1</code>具有<code>role2</code>，则 <code>alice</code> 也将拥有 <code>role2</code> 并继承其权限。</p>
