@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://casbin.org/blog</id>
+    <id>https://v1.casbin.org/blog</id>
     <title>Casbin Blog</title>
     <updated>2021-08-19T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://casbin.org/blog"/>
+    <link rel="alternate" href="https://v1.casbin.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Casbin news and events.</subtitle>
-    <logo>https://casbin.org/img/casbin.svg</logo>
+    <logo>https://v1.casbin.org/img/casbin.svg</logo>
     <rights>Copyright © 2022 Casbin Organization</rights>
     <entry>
         <title type="html"><![CDATA[Authorization in APISIX using Casbin]]></title>
-        <id>https://casbin.org/blog/2021/08/19/apisix-casbin-authorization.html</id>
-        <link href="https://casbin.org/blog/2021/08/19/apisix-casbin-authorization.html"/>
+        <id>https://v1.casbin.org/blog/2021/08/19/apisix-casbin-authorization.html</id>
+        <link href="https://v1.casbin.org/blog/2021/08/19/apisix-casbin-authorization.html"/>
         <updated>2021-08-19T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<h2><a class="anchor" aria-hidden="true" id="introduction"></a><a href="#introduction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Introduction</h2> <p><a href="https://apisix.apache.org/">APISIX</a> is a high performance and scalable cloud native API gateway based on Nginx and etcd. It is an open source project by the Apache Software Foundation. Besides that, what makes APISIX so good is the support of many great built in plu...</p>]]></summary>
         <author>
@@ -21,10 +21,10 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Yang Luo - Google Open Source Peer Bonus Winner]]></title>
-        <id>https://casbin.org/blog/2020/04/21/google-award.html</id>
-        <link href="https://casbin.org/blog/2020/04/21/google-award.html"/>
+        <id>https://v1.casbin.org/blog/2020/04/21/google-award.html</id>
+        <link href="https://v1.casbin.org/blog/2020/04/21/google-award.html"/>
         <updated>2020-04-21T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Today, we are pleased to announce that Casbin's founder, <a href="https://github.com/hsluoyz">Yang Luo</a> is awarded the &quot;Google Open Source Peer Bonus winners&quot; for his work on <a href="https://casbin.org/">Casbin</a>, <a href="https://nmap.org/npcap/">Npcap</a> and <a href="https://nmap.org/">Nmap</a> in 2019 Q3.</p> <p><img src="https://hsluoyz.github.io/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.png" alt="ospb"></p> <blockquote> <p>The original award letter can be accessed <a href="https://github.com/hsluoyz/hsluoyz.github.io/blob/master/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.pdf">here</a>.</p> </blockquote> <p>The <a href="https://opensource.google.com/docs/growing/peer-bonus/">Google Open S...</a></p>]]></summary>
+        <summary type="html"><![CDATA[<p>Today, we are pleased to announce that Casbin's founder, <a href="https://github.com/hsluoyz">Yang Luo</a> is awarded the &quot;Google Open Source Peer Bonus winners&quot; for his work on <a href="/">Casbin</a>, <a href="https://nmap.org/npcap/">Npcap</a> and <a href="https://nmap.org/">Nmap</a> in 2019 Q3.</p> <p><img src="https://hsluoyz.github.io/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.png" alt="ospb"></p> <blockquote> <p>The original award letter can be accessed <a href="https://github.com/hsluoyz/hsluoyz.github.io/blob/master/download/Open%20Source%20Peer%20Bonus%20Q3%202019%20-%20Yang%20Luo%20-%20OSPB%20Award%20Letter.pdf">here</a>.</p> </blockquote> <p>The <a href="https://opensource.google.com/docs/growing/peer-bonus/">Google Open S...</a></p>]]></summary>
         <author>
             <name>Casbin</name>
             <uri>http://github.com/casbin</uri>
@@ -32,8 +32,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Reworking our Documentation]]></title>
-        <id>https://casbin.org/blog/2018/09/23/new-website.html</id>
-        <link href="https://casbin.org/blog/2018/09/23/new-website.html"/>
+        <id>https://v1.casbin.org/blog/2018/09/23/new-website.html</id>
+        <link href="https://v1.casbin.org/blog/2018/09/23/new-website.html"/>
         <updated>2018-09-23T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Today, we migrated Casbin's documentation from GitHub Wiki to <code>Docs</code> of this website, which is powered by Docusaurus. Docusaurus provides lots of awesome features like better Markdown styles, full-text search, versioning, translation.</p> <p>The documentation...</p>]]></summary>
         <author>
@@ -43,8 +43,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[node-Casbin: New Member of Casbin Family]]></title>
-        <id>https://casbin.org/blog/2018/08/27/node-casbin.html</id>
-        <link href="https://casbin.org/blog/2018/08/27/node-casbin.html"/>
+        <id>https://v1.casbin.org/blog/2018/08/27/node-casbin.html</id>
+        <link href="https://v1.casbin.org/blog/2018/08/27/node-casbin.html"/>
         <updated>2018-08-27T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Today, we successfully ported Casbin to Node.js, which is named as: <a href="https://github.com/casbin/node-casbin">node-Casbin</a>.</p> <p><strong>node-Casbin</strong> shares the similar usage and API with other implementations of Casbin. The middlewares for Express, Koa2 and Egg.js are ready to use. The storage adapter for...</p>]]></summary>
         <author>
@@ -54,8 +54,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Casbin Server is Launched!]]></title>
-        <id>https://casbin.org/blog/2018/08/07/launching-casbin-server.html</id>
-        <link href="https://casbin.org/blog/2018/08/07/launching-casbin-server.html"/>
+        <id>https://v1.casbin.org/blog/2018/08/07/launching-casbin-server.html</id>
+        <link href="https://v1.casbin.org/blog/2018/08/07/launching-casbin-server.html"/>
         <updated>2018-08-07T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Some of our customers ask if Casbin can be used as a service instead of a library. The answer is <strong>YES</strong>. Today, we launched the <a href="https://github.com/casbin/casbin-server">Casbin Server</a> project as a concrete solution for <strong>Access Control as a Service</strong>.</p> <p><strong>Casbin Server</strong> is under active development by ou...</p>]]></summary>
         <author>
