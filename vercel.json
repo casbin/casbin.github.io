@@ -1,0 +1,28 @@
+{
+  "redirects": [
+    { "source": "/docs/:slug(k8s):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/docs/k8s-gatekeeper/", "statusCode": 301 },
+    { "source": "/docs/en/:slug(k8s):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/docs/k8s-gatekeeper/", "statusCode": 301 },
+    { "source": "/docs/zh-CN/:slug(k8s):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/zh/docs/k8s-gatekeeper/", "statusCode": 301 },
+    { "source": "/docs/:lang(de|fr|ja|ko|ru)/:slug(k8s):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/:lang/docs/k8s-gatekeeper/", "statusCode": 301 },
+
+    { "source": "/docs/en/:slug([a-z0-9-]+):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/docs/:slug/", "statusCode": 301 },
+    { "source": "/docs/zh-CN/:slug([a-z0-9-]+):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/zh/docs/:slug/", "statusCode": 301 },
+    { "source": "/docs/:lang(de|fr|ja|ko|ru)/:slug([a-z0-9-]+):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/:lang/docs/:slug/", "statusCode": 301 },
+    { "source": "/docs/:slug([a-z0-9-]+):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/docs/:slug/", "statusCode": 301 },
+
+    { "source": "/blog/:y(\\d{4})/:m(\\d{2})/:d(\\d{2})/:post([a-z0-9-]+):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/blog/:y/:m/:d/:post/", "statusCode": 301 },
+
+    { "source": "/en/:page(users|help|editor):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/:page/", "statusCode": 301 },
+    { "source": "/zh-CN/:page(users|help|editor):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/zh/:page/", "statusCode": 301 },
+    { "source": "/:lang(de|fr|ja|ko|ru)/:page(users|help|editor):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/:lang/:page/", "statusCode": 301 },
+    { "source": "/:page(users|help|editor):ext(\\.html|/index\\.html|/index/?|/)?", "destination": "https://casbin.apache.org/:page/", "statusCode": 301 },
+
+    { "source": "/zh-CN/(.*)", "destination": "https://casbin.apache.org/zh/", "statusCode": 301 },
+    { "source": "/:lang(de|fr|ja|ko|ru)/(.*)", "destination": "https://casbin.apache.org/:lang/", "statusCode": 301 },
+    { "source": "/zh-CN", "destination": "https://casbin.apache.org/zh/", "statusCode": 301 },
+    { "source": "/:lang(de|fr|ja|ko|ru)", "destination": "https://casbin.apache.org/:lang/", "statusCode": 301 },
+
+    { "source": "/sitemap.xml", "destination": "https://casbin.apache.org/sitemap.xml", "statusCode": 301 },
+    { "source": "/(.*)", "destination": "https://casbin.apache.org/", "statusCode": 301 }
+  ]
+}
